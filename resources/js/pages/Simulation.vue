@@ -4,9 +4,9 @@ import { Head } from '@inertiajs/vue3';
 </script>
 
 <template>
-    <Head title="Home"></Head>
+    <Head title="Simulation"></Head>
 
     <WebLayout>
-        <h1>Home</h1>
+        <h1>Simulation</h1>
     </WebLayout>
 </template>
