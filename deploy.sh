@@ -11,7 +11,7 @@ echo "Deploying application ..."
     git reset --hard origin/deploy
 
     # Install dependencies based on lock file
-    composer install --no-interaction --prefer-dist --optimize-autoloader
+    composer_php8.4 install --no-interaction --prefer-dist --optimize-autoloader
 
     # Migrate database
     php-8.4 artisan migrate --force
