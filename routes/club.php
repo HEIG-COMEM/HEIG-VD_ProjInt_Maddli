@@ -24,4 +24,8 @@ Route::prefix('club')->group(function () {
             return Inertia::render('club/Home');
         })->name('club.home');
     });
+
+    // Include other route files
+    require __DIR__ . '/auth.php';
+    require __DIR__ . '/settings.php';
 });
