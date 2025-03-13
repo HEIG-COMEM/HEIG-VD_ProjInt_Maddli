@@ -1,0 +1,57 @@
+name: Deploy to Master
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Copy .env
+        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+      - name: Directory Permissions
+        run: chmod -R 777 storage bootstrap/cache
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '23.x'
+      - run: npm install
+      - run: npm run build
+      - name: Commit built assets
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "Github Action"
+          git checkout -B deploy
+          git add -f public/
+          git commit -m "Build front-end assets"
+          git push -f origin deploy
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to Master
+        uses: appleboy/ssh-action@master
+        with:
+          username: ${{ secrets.MASTER_SSH_USERNAME }}
+          host: ${{ secrets.MASTER_SSH_HOST }}
+          key: ${{ secrets.MASTER_SSH_KEY }}
+          port: ${{ secrets.MASTER_SSH_PORT }}
+          script: |
+            cd ${{ secrets.MASTER_SSH_PATH }}
+            chmod +x ./deploy.sh
+            ./deploy.sh
+  delete:
+    name: Delete deploy branch
+    runs-on: ubuntu-latest
+    needs: deploy
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+      - name: Delete deploy branch
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "Github Action"
+          git push origin --delete deploy
