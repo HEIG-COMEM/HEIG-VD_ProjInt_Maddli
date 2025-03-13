@@ -4,7 +4,7 @@ set -e
 echo "Deploying application ..."
 
 # Enter maintenance mode
-(php artisan down --secret="bypass") || true
+(php-8.4 artisan down --secret="bypass") || true
 
     # Update codebase
     git fetch origin deploy
@@ -14,13 +14,13 @@ echo "Deploying application ..."
     composer install --no-interaction --prefer-dist --optimize-autoloader
 
     # Migrate database
-    php artisan migrate --force
+    php-8.4 artisan migrate --force
 
     # Clear cache
-    php artisan optimize:clear
+    php-8.4 artisan optimize:clear
 
 
 # Exit maintenance mode
-php artisan up
+php-8.4 artisan up
 
 echo "Application deployed!"
