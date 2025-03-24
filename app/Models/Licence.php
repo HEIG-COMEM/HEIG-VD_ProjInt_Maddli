@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class License extends Model
+class Licence extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -14,4 +15,9 @@ class License extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function users(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }
