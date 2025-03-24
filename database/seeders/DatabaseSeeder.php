@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleTableSeeder::class,
             LicenceTableSeeder::class,
+            NationTableSeeder::class,
+            LeagueTableSeeder::class,
         ]);
 
         User::factory(10)->create();

@@ -14,6 +14,7 @@ class League extends Model
      */
     protected $fillable = [
         'name',
+        'nation_id',
     ];
 
     /**
