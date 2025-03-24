@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('leagues', function (Blueprint $table) {
+        Schema::create('club_league_user', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->foreignId('nation_id')->nullable()->constrained()->onUpdate('cascade')->nullOnDelete();
+            $table->foreignId('club_league_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->unique(['club_league_id', 'user_id']);
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('leagues');
+        Schema::dropIfExists('club_league_user');
     }
 };
