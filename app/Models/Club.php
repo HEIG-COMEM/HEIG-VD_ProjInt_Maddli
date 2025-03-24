@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Club extends Model
 {
@@ -14,4 +15,14 @@ class Club extends Model
     protected $fillable = [
         'name',
     ];
+
+    /**
+     * Get all users managing the club.
+     *
+     * @return BelongsToMany
+     */
+    public function managers(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

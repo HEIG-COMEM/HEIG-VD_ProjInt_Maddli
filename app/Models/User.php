@@ -71,4 +71,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class);
     }
+
+    /**
+     * Get all clubs managed by the user.
+     *
+     * @return BelongsToMany
+     */
+    public function clubs(): BelongsToMany
+    {
+        return $this->belongsToMany(Club::class);
+    }
 }
