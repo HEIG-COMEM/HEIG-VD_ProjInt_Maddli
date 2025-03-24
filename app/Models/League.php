@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class League extends Model
 {
@@ -14,4 +15,14 @@ class League extends Model
     protected $fillable = [
         'name',
     ];
+
+    /**
+     * Get the nation that the league belongs to.
+     *
+     * @return BelongsTo
+     */
+    public function nation(): BelongsTo
+    {
+        return $this->belongsTo(Nation::class);
+    }
 }
