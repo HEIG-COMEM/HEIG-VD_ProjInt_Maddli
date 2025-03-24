@@ -17,14 +17,15 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleTableSeeder::class,
             LicenceTableSeeder::class,
-            NationTableSeeder::class,
-            LeagueTableSeeder::class,
+            // NationTableSeeder::class,
+            // LeagueTableSeeder::class,
+            DataSeeder::class,
         ]);
 
         User::factory(10)->create();
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
     }
 }
