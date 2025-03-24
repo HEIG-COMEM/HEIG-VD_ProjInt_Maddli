@@ -52,6 +52,11 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * Get the licence that belongs to the user.
+     *
+     * @return HasOne
+     */
     public function licence(): HasOne
     {
         return $this->hasOne(Licence::class);
