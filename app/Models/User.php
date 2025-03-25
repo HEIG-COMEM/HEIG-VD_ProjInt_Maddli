@@ -81,4 +81,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Club::class);
     }
+
+    /**
+     * Get all club leagues paired with the user. (I.e. Where the user is a coach)
+     *
+     * @return BelongsToMany
+     */
+    public function clubLeagues(): BelongsToMany
+    {
+        return $this->belongsToMany(ClubLeague::class, 'club_league_user', 'user_id', 'club_league_id')->chaperone();
+    }
 }
