@@ -7,6 +7,11 @@ use App\Models\League;
 use Illuminate\Database\Seeder;
 use App\Models\Nation;
 
+/**
+ * Class DataSeeder
+ *
+ * Seed the database with data of countries, leagues, and clubs.
+ */
 class DataSeeder extends Seeder
 {
     /**
