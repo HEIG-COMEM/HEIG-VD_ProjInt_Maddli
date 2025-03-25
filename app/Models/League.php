@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class League extends Model
 {
@@ -25,5 +26,15 @@ class League extends Model
     public function nation(): BelongsTo
     {
         return $this->belongsTo(Nation::class);
+    }
+
+    /**
+     * Get all clubs in the league.
+     *
+     * @return BelongsToMany
+     */
+    public function clubs(): BelongsToMany
+    {
+        return $this->belongsToMany(Club::class);
     }
 }

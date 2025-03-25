@@ -25,4 +25,14 @@ class Club extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    /**
+     * Get all leagues the club is in.
+     *
+     * @return BelongsToMany
+     */
+    public function leagues(): BelongsToMany
+    {
+        return $this->belongsToMany(League::class);
+    }
 }
