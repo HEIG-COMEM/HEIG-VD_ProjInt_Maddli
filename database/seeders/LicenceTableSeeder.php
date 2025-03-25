@@ -5,6 +5,11 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Licence;
 
+/**
+ * Class licenceTableSeeder
+ *
+ * Seed the database with data of coaching licences.
+ */
 class licenceTableSeeder extends Seeder
 {
     /**
