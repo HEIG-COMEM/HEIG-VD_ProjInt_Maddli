@@ -4,11 +4,11 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -85,10 +85,10 @@ class User extends Authenticatable
     /**
      * Get all club leagues paired with the user. (I.e. Where the user is a coach)
      *
-     * @return BelongsToMany
+     * @return HasMany
      */
-    public function clubLeagues(): BelongsToMany
+    public function coaching(): HasMany
     {
-        return $this->belongsToMany(ClubLeague::class, 'club_league_user', 'user_id', 'club_league_id')->chaperone();
+        return $this->hasMany(Coaching::class, 'user_id');
     }
 }

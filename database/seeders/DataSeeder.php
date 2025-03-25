@@ -14,27 +14,28 @@ class DataSeeder extends Seeder
      */
     public function run(): void
     {
-        $data = json_decode(file_get_contents(database_path('data/clubs.json')), true);
+        $nationsData = json_decode(file_get_contents(database_path('data/clubs.json')), true);
 
-        foreach ($data as $code => $nation) {
-            $res = Nation::firstOrCreate(
-                ['code' => $code],
-                ['name' => $nation['name']]
+        foreach ($nationsData as $nationCode => $nationData) {
+            $nation = Nation::updateOrCreate(
+                ['code' => $nationCode],
+                ['name' => $nationData['name']]
             );
 
-            foreach ($nation['leagues'] as $leagueName => $clubs) {
-                $league = League::firstOrCreate(
+            foreach ($nationData['leagues'] as $leagueName => $clubs) {
+                $league = League::updateOrCreate(
                     ['name' => $leagueName]
                 );
 
-                $res->leagues()->save($league);
+                $league->nation()->associate($nation);
+                $league->save();
 
                 foreach ($clubs as $clubName) {
-                    $club = Club::firstOrCreate(
+                    $club = Club::updateOrCreate(
                         ['name' => $clubName]
                     );
 
-                    $league->clubs()->save($club);
+                    $club->leagues()->syncWithoutDetaching($league);
                 }
             }
         }

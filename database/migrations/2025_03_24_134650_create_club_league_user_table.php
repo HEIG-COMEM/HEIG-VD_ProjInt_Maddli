@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('club_league_user', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('club_league_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('club_league_id')->constrained("club_league")->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->unique(['club_league_id', 'user_id']);
             $table->timestamps();

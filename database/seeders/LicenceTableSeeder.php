@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Licence;
 
@@ -23,7 +22,7 @@ class licenceTableSeeder extends Seeder
         Licence::truncate();
 
         foreach ($licences as $licence) {
-            Licence::create([
+            Licence::firstOrCreate([
                 'name' => $licence,
             ]);
         }
