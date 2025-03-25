@@ -1,18 +1,31 @@
 <script setup lang="ts">
 import NavFooter from '@/components/NavFooter.vue';
-import NavMain from '@/components/NavMain.vue';
 import NavUser from '@/components/NavUser.vue';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
-import { type NavItem } from '@/types';
-import { Link } from '@inertiajs/vue3';
-import { Info, LayoutGrid } from 'lucide-vue-next';
+import { type NavItem, type SharedData } from '@/types';
+import { Link, usePage } from '@inertiajs/vue3';
+import { Building2, Info, LayoutGrid, Users } from 'lucide-vue-next';
 import AppLogo from './AppLogo.vue';
+import NavSidebarGroup from './NavSidebarGroup.vue';
 
 const mainNavItems: NavItem[] = [
     {
         title: 'Home',
         href: '/club/',
         icon: LayoutGrid,
+    },
+];
+
+const adminNavItems: NavItem[] = [
+    {
+        title: 'Clubs',
+        href: '/club/',
+        icon: Building2,
+    },
+    {
+        title: 'Users',
+        href: '/club/admin/users',
+        icon: Users,
     },
 ];
 
@@ -23,6 +36,9 @@ const footerNavItems: NavItem[] = [
         icon: Info,
     },
 ];
+
+const page = usePage<SharedData>();
+const roles = page.props.auth.roles as string[];
 </script>
 
 <template>
@@ -40,7 +56,8 @@ const footerNavItems: NavItem[] = [
         </SidebarHeader>
 
         <SidebarContent>
-            <NavMain :items="mainNavItems" />
+            <NavSidebarGroup :items="adminNavItems" title="Administration" v-if="roles.includes('uefa_manager')" />
+            <NavSidebarGroup :items="mainNavItems" title="Platform" />
         </SidebarContent>
 
         <SidebarFooter>

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -23,6 +25,10 @@ Route::prefix('club')->group(function () {
         Route::get('/', function () {
             return Inertia::render('club/Home');
         })->name('club.home');
+
+        Route::prefix('admin')->group(function () {
+            Route::get('/users', [AdminController::class, 'users'])->middleware(Admin::class)->name('club.admin.users');
+        });
     });
 
     // Include other route files
