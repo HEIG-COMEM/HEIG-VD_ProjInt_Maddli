@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             CoachingSeeder::class,
             ClubManagerSeeder::class,
             RelationSeeder::class,
+            MessageSeeder::class,
 
             AccountsSeeder::class,
         ]);
