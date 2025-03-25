@@ -91,4 +91,25 @@ class User extends Authenticatable
     {
         return $this->hasMany(Coaching::class, 'user_id');
     }
+
+    /**
+     * Get all messages send by the user.
+     *
+     * @return HasMany
+     */
+    public function messages(): HasMany
+    {
+        return $this->hasMany(Message::class);
+    }
+
+    /**
+     * Get all conversations where the user is either the first or second user.
+     *
+     * @return HasMany
+     */
+    public function conversations(): HasMany
+    {
+        return $this->hasMany(Conversation::class, 'user_one_id')
+            ->orWhere('user_two_id', $this->id);
+    }
 }
