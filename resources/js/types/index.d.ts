@@ -19,6 +19,13 @@ export interface NavItem {
     isActive?: boolean;
 }
 
+export interface CollapsibleNavItem extends NavItem {
+    items?: {
+        title: string;
+        href: string;
+    }[];
+}
+
 export interface SharedData extends PageProps {
     name: string;
     quote: { message: string; author: string };
