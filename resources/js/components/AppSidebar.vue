@@ -4,7 +4,7 @@ import NavUser from '@/components/NavUser.vue';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem, type SharedData } from '@/types';
 import { Link, usePage } from '@inertiajs/vue3';
-import { Building2, Info, LayoutGrid, Users } from 'lucide-vue-next';
+import { Building2, House, Info, Users } from 'lucide-vue-next';
 import AppLogo from './AppLogo.vue';
 import NavSidebarGroup from './NavSidebarGroup.vue';
 
@@ -12,7 +12,7 @@ const mainNavItems: NavItem[] = [
     {
         title: 'Home',
         href: '/club/',
-        icon: LayoutGrid,
+        icon: House,
     },
 ];
 
