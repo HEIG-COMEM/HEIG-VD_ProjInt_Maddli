@@ -13,8 +13,6 @@ const props = defineProps<{
     data: any;
 }>();
 
-console.log(props.data);
-
 const users = ref(props.data.data);
 const path = ref(props.data.path);
 

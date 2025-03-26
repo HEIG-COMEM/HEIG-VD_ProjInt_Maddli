@@ -53,7 +53,7 @@ const formatRole = (role: string) => {
             <div class="relative min-h-[100vh] flex-1 rounded-xl border border-sidebar-border/70 dark:border-sidebar-border md:min-h-min">
                 <div class="flex flex-col items-center justify-center gap-2 p-4">
                     <Table>
-                        <TableCaption>Lists of users</TableCaption>
+                        <TableCaption>Lists of clubs</TableCaption>
                         <TableHeader>
                             <TableRow>
                                 <TableHead class="w-[100px]"> #ID </TableHead>
