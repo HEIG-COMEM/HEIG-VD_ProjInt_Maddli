@@ -72,8 +72,10 @@ const formatRole = (role: string) => {
                                 <TableCell>{{ user.email }}</TableCell>
                                 <TableCell>
                                     <ScrollArea class="w-40">
-                                        <div v-for="role in user.roles" :key="role.id" class="mb-3 flex gap-2">
-                                            <Badge variant="secondary" class="text-nowrap">{{ formatRole(role.name) }}</Badge>
+                                        <div class="mb-3 flex gap-2">
+                                            <Badge v-for="role in user.roles" :key="role.id" variant="secondary" class="text-nowrap">{{
+                                                formatRole(role.name)
+                                            }}</Badge>
                                             <Badge v-if="user.licence"
                                                 >Coach<span>({{ user.licence.name }})</span></Badge
                                             >
