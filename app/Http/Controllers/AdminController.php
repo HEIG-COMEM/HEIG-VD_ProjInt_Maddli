@@ -10,14 +10,7 @@ class AdminController extends Controller
 {
     public function users(Request $request)
     {
-        $user = $request->user();
-        $roles = $user->roles()->get()->pluck('name')->toArray();
-
-        $data = null;
-
-        if (in_array('uefa_manager', $roles)) {
-            $data = User::orderBy('name', 'asc')->paginate(20);
-        }
+        $data = User::orderBy('name', 'asc')->with(['roles', 'licence', 'coaching.clubLeague.club', 'coaching.clubLeague.league', 'clubs'])->paginate(10);
 
         return Inertia::render('club/admin/Users')->with('data', $data);
     }
