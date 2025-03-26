@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HomeController;
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -22,9 +23,7 @@ Route::prefix('club')->group(function () {
 
     // Only accessible to authenticated users
     Route::middleware('auth')->group(function () {
-        Route::get('/', function () {
-            return Inertia::render('club/Home');
-        })->name('club.home');
+        Route::get('/', [HomeController::class, 'index'])->name('club.home');
 
         Route::prefix('admin')->group(function () {
             Route::get('/', function () {
