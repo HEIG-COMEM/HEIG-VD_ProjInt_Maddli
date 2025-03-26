@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -55,11 +56,11 @@ class User extends Authenticatable
     /**
      * Get the licence that belongs to the user.
      *
-     * @return HasOne
+     * @return BelongsTo
      */
-    public function licence(): HasOne
+    public function licence(): BelongsTo
     {
-        return $this->hasOne(Licence::class);
+        return $this->belongsTo(Licence::class);
     }
 
     /**
