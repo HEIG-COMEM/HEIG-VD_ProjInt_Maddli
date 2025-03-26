@@ -30,7 +30,7 @@ class CoachingSeeder extends Seeder
         foreach ($users as $user) {
 
             // Assign a random licence to the user. Each user should have a licence for coaching.
-            $user->licence_id = $licences->random()->id;
+            $user->licence()->associate($licences->random());
             $user->save();
 
             $clubLeague = ClubLeague::inRandomOrder()->first();
