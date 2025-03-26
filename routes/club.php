@@ -27,7 +27,11 @@ Route::prefix('club')->group(function () {
         })->name('club.home');
 
         Route::prefix('admin')->group(function () {
+            Route::get('/', function () {
+                return redirect()->route('club.admin.clubs');
+            })->name('club.admin');
             Route::get('/users', [AdminController::class, 'users'])->middleware(Admin::class)->name('club.admin.users');
+            Route::get('/clubs', [AdminController::class, 'clubs'])->middleware(Admin::class)->name('club.admin.clubs');
         });
     });
 
