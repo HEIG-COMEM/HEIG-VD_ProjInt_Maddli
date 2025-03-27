@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,7 @@ Route::prefix('club')->group(function () {
     // Only accessible to authenticated users
     Route::middleware('auth')->group(function () {
         Route::get('/', [HomeController::class, 'index'])->name('club.home');
+        Route::get('/conversations', [ConversationController::class, 'index'])->name('club.conversations');
 
         Route::prefix('admin')->group(function () {
             Route::get('/', function () {
