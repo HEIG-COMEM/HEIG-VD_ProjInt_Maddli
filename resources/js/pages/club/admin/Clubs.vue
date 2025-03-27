@@ -46,10 +46,6 @@ const handleNameFilterChange = () => {
     router.visit(url, { preserveScroll: true });
 };
 
-const handleUserClick = (event: any) => {
-    console.log(event);
-};
-
 watch(nameFilter, debounce(handleNameFilterChange, 500));
 
 onMounted(() => {
@@ -105,11 +101,9 @@ onMounted(() => {
                                     <ScrollArea class="w-40">
                                         <div class="mb-3 flex flex-row gap-1">
                                             <template v-for="manager in club.managers" :key="manager.id">
-                                                <AppUserInitialToolTip
-                                                    :user-name="manager.name"
-                                                    :user-id="manager.id"
-                                                    @click="handleUserClick($event)"
-                                                />
+                                                <AppUserSheet :user-id="manager.id">
+                                                    <AppUserInitialToolTip :user-name="manager.name" :user-id="manager.id" />
+                                                </AppUserSheet>
                                             </template>
                                         </div>
                                         <ScrollBar orientation="horizontal" />
@@ -120,11 +114,7 @@ onMounted(() => {
                                         <div class="mb-3 flex flex-row gap-1">
                                             <template v-for="coach in club.coaches" :key="coach.id">
                                                 <AppUserSheet :user-id="coach.id">
-                                                    <AppUserInitialToolTip
-                                                        :user-name="coach.name"
-                                                        :user-id="coach.id"
-                                                        @click="handleUserClick($event)"
-                                                    />
+                                                    <AppUserInitialToolTip :user-name="coach.name" :user-id="coach.id" />
                                                 </AppUserSheet>
                                             </template>
                                         </div>
