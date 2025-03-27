@@ -84,6 +84,16 @@ class User extends Authenticatable
     }
 
     /**
+     * Get all nations managed by the user.
+     *
+     * @return BelongsToMany
+     */
+    public function nations(): BelongsToMany
+    {
+        return $this->belongsToMany(Nation::class);
+    }
+
+    /**
      * Get all club leagues paired with the user. (I.e. Where the user is a coach)
      *
      * @return HasMany

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Nation;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -14,13 +15,40 @@ class AccountsSeeder extends Seeder
      */
     public function run(): void
     {
-        $ueafaManager = User::firstOrCreate([
-            'name' => 'UEFA Manager',
-            'email' => env('UEFA_MANAGER_EMAIL'),
-            'password' => Hash::make(env('UEFA_MANAGER_PASSWORD')),
-            'birth_date' => '1970-01-01',
-        ]);
+        $uefaManager = User::firstOrCreate(
+            [
+                'email' => env('UEFA_MANAGER_EMAIL'),
+            ],
+            [
+                'name' => 'UEFA Manager',
+                'password' => Hash::make(env('UEFA_MANAGER_PASSWORD')),
+                'birth_date' => '1970-01-01',
+            ]
+        );
 
-        $ueafaManager->roles()->attach(Role::class::where('name', 'uefa_manager')->first());
+        $uefaManagerRole = Role::where('name', 'uefa_manager')->first();
+        if ($uefaManagerRole && !$uefaManager->roles->contains($uefaManagerRole->id)) {
+            $uefaManager->roles()->attach($uefaManagerRole->id);
+        }
+
+        $nations = Nation::all();
+        $nationManagerRole = Role::where(
+            'name',
+            'federation_manager'
+        )->first();
+        foreach ($nations as $nation) {
+            $nationManager = User::firstOrCreate(
+                [
+                    'email' => strtolower(str_replace(' ', '_', $nation->name)) . '@hello-coach.ch',
+                ],
+                [
+                    'name' => $nation->name . ' Manager',
+                    'password' => Hash::make('password'),
+                    'birth_date' => '1970-01-01',
+                ]
+            );
+            $nationManager->roles()->syncWithoutDetaching([$nationManagerRole->id]);
+            $nation->users()->syncWithoutDetaching([$nationManager->id]);
+        }
     }
 }

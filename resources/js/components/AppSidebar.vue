@@ -67,7 +67,11 @@ const roles = page.props.auth.roles as string[];
         </SidebarHeader>
 
         <SidebarContent>
-            <NavSidebarGroup :items="adminNavItems" label="Administration" v-if="roles.includes('uefa_manager')" />
+            <NavSidebarGroup
+                :items="adminNavItems"
+                label="Administration"
+                v-if="roles.some((role) => ['uefa_manager', 'federation_manager', 'club_manager'].includes(role))"
+            />
             <NavSidebarGroup :items="mainNavItems" label="Platform" />
         </SidebarContent>
 
