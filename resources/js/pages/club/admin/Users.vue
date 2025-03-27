@@ -9,7 +9,7 @@ import AppLayout from '@/layouts/AppLayout.vue';
 import { debounce } from '@/lib/utils';
 import { type BreadcrumbItem } from '@/types';
 import { Head, router } from '@inertiajs/vue3';
-import { defineProps, ref, watch } from 'vue';
+import { defineProps, onMounted, ref, useTemplateRef, watch } from 'vue';
 
 const props = defineProps<{
     data: any;
@@ -19,6 +19,7 @@ const props = defineProps<{
 const users = ref(props.data.data);
 const path = ref(props.data.path);
 const nameFilter = ref(props.filters.name || '');
+const nameFilterInput = useTemplateRef('nameFilterInput');
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -47,6 +48,12 @@ const formatRole = (role: string) => {
 };
 
 watch(nameFilter, debounce(handleNameFilterChange, 500));
+
+onMounted(() => {
+    if (nameFilter.value) {
+        nameFilterInput.value?.$el.focus();
+    }
+});
 </script>
 
 <template>
@@ -61,7 +68,7 @@ watch(nameFilter, debounce(handleNameFilterChange, 500));
             </div>
             <div class="relative min-h-[100vh] flex-1 rounded-xl border border-sidebar-border/70 dark:border-sidebar-border md:min-h-min">
                 <div class="flex flex-col items-center justify-center gap-2 p-4">
-                    <Input v-model="nameFilter" type="text" placeholder="Search by name" class="w-full md:w-96" />
+                    <Input ref="nameFilterInput" v-model="nameFilter" type="text" placeholder="Search by name" class="w-full md:w-96" />
                     <Table>
                         <TableCaption>Lists of {{ data.total }} users</TableCaption>
                         <TableHeader>
