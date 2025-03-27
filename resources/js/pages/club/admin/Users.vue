@@ -2,19 +2,23 @@
 import AppPagination from '@/components/AppPagination.vue';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import AppLayout from '@/layouts/AppLayout.vue';
+import { debounce } from '@/lib/utils';
 import { type BreadcrumbItem } from '@/types';
 import { Head, router } from '@inertiajs/vue3';
-import { defineProps, ref } from 'vue';
+import { defineProps, ref, watch } from 'vue';
 
 const props = defineProps<{
     data: any;
+    filters: any;
 }>();
 
 const users = ref(props.data.data);
 const path = ref(props.data.path);
+const nameFilter = ref(props.filters.name || '');
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -29,13 +33,20 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 const handlePageChange = (page: number) => {
     const url = `${path.value}?page=${page}`;
-    router.visit(url, { preserveScroll: false });
+    router.visit(url, { preserveScroll: true });
+};
+
+const handleNameFilterChange = () => {
+    const url = `${path.value}?name=${nameFilter.value}`;
+    router.visit(url, { preserveScroll: true });
 };
 
 const formatRole = (role: string) => {
     role = role.replace('_', ' ');
     return role.charAt(0).toUpperCase() + role.slice(1);
 };
+
+watch(nameFilter, debounce(handleNameFilterChange, 500));
 </script>
 
 <template>
@@ -50,8 +61,9 @@ const formatRole = (role: string) => {
             </div>
             <div class="relative min-h-[100vh] flex-1 rounded-xl border border-sidebar-border/70 dark:border-sidebar-border md:min-h-min">
                 <div class="flex flex-col items-center justify-center gap-2 p-4">
+                    <Input v-model="nameFilter" type="text" placeholder="Search by name" class="w-full md:w-96" />
                     <Table>
-                        <TableCaption>Lists of users</TableCaption>
+                        <TableCaption>Lists of {{ data.total }} users</TableCaption>
                         <TableHeader>
                             <TableRow>
                                 <TableHead class="w-[100px]"> #ID </TableHead>
@@ -64,7 +76,10 @@ const formatRole = (role: string) => {
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            <TableRow v-for="user in users" :key="user.id">
+                            <TableRow v-if="!users.length">
+                                <TableCell colspan="7" class="text-center">No users found</TableCell>
+                            </TableRow>
+                            <TableRow v-else v-for="user in users" :key="user.id">
                                 <TableCell class="font-medium">{{ user.id }}</TableCell>
                                 <TableCell>{{ user.name }}</TableCell>
                                 <TableCell>{{ user.email }}</TableCell>
@@ -98,6 +113,7 @@ const formatRole = (role: string) => {
                     </Table>
 
                     <AppPagination
+                        v-if="users.length"
                         :items-per-page="data.per_page"
                         :total="data.total"
                         :sibling-count="3"

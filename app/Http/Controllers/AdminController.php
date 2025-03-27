@@ -2,22 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Models\User;
+use App\Models\Club;
 
 class AdminController extends Controller
 {
     public function users(Request $request)
     {
-        $data = User::orderBy('name', 'asc')->with(['roles', 'licence', 'coaching.clubLeague.club', 'coaching.clubLeague.league', 'clubs'])->paginate(10);
+        $query = User::orderBy('name', 'asc')
+            ->with(['roles', 'licence', 'coaching.clubLeague.club', 'coaching.clubLeague.league', 'clubs']);
 
-        return Inertia::render('club/admin/Users')->with('data', $data);
+        if ($request->has('name')) {
+            $name = $request->query('name');
+            $query->whereRaw('LOWER(name) LIKE ?', ['%' . strtolower($name) . '%']);
+        }
+
+        $data = $query->paginate(10)->withQueryString();
+
+        return Inertia::render('club/admin/Users')->with(['data' => $data, 'filters' => $request->all()]);
     }
 
     public function clubs(Request $request)
     {
-        $data = User::orderBy('name', 'asc')->with(['roles', 'licence', 'coaching.clubLeague.club', 'coaching.clubLeague.league', 'clubs'])->paginate(10);
+        $data = Club::orderBy('name', 'asc')->paginate(10);
 
         return Inertia::render('club/admin/Clubs')->with('data', $data);
     }
