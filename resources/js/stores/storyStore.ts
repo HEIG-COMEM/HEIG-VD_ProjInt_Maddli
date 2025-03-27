@@ -28,6 +28,8 @@ export const storyStore = reactive<StoryStore>({
     // Method to add a choice to the choices array
     addChoice(choice: any) {
         this.choices.push(choice);
+        console.log(`Added to store: ${choice}`);
+        console.log(`Choices: ${this.choices}`);
     },
 
     // Method to retrieve all choices
