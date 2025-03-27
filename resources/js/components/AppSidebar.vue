@@ -4,8 +4,9 @@ import NavUser from '@/components/NavUser.vue';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type CollapsibleNavItem, type NavItem, type SharedData } from '@/types';
 import { Link, usePage } from '@inertiajs/vue3';
-import { Building2, House, Info, Users } from 'lucide-vue-next';
+import { Building2, House, Info, List, MessageCircle, Users } from 'lucide-vue-next';
 import AppLogo from './AppLogo.vue';
+import NavMain from './NavMain.vue';
 import NavSidebarGroup from './NavSidebarGroup.vue';
 
 const mainNavItems: CollapsibleNavItem[] = [
@@ -14,16 +15,19 @@ const mainNavItems: CollapsibleNavItem[] = [
         href: '/club/',
         icon: House,
         isActive: true,
-        items: [
-            {
-                title: 'Dashboard',
-                href: '/club/',
-            },
-            {
-                title: 'Clubs',
-                href: '/club/clubs',
-            },
-        ],
+    },
+    {
+        title: 'Discutions',
+        href: '/club/discutions',
+        icon: MessageCircle,
+        isActive: true,
+        items: [],
+    },
+    {
+        title: 'Lists',
+        href: '/club/lists',
+        icon: List,
+        isActive: true,
     },
 ];
 
@@ -72,7 +76,7 @@ const roles = page.props.auth.roles as string[];
                 label="Administration"
                 v-if="roles.some((role) => ['uefa_manager', 'federation_manager', 'club_manager'].includes(role))"
             />
-            <NavSidebarGroup :items="mainNavItems" label="Platform" />
+            <NavMain :items="mainNavItems" label="Platform" />
         </SidebarContent>
 
         <SidebarFooter>
