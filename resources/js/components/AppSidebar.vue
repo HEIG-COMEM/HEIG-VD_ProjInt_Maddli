@@ -18,7 +18,7 @@ onMounted(async () => {
     const prepared = data.map((item: any) => {
         return {
             title: `${item.user.name}`,
-            href: `/club/discutions/${item.id}`,
+            href: `/club/conversations/${item.id}`,
         };
     });
 
@@ -33,8 +33,8 @@ const mainNavItems = ref<CollapsibleNavItem[]>([
         isActive: true,
     },
     {
-        title: 'Discutions',
-        href: '/club/discutions',
+        title: 'Conversation',
+        href: '/club/conversations',
         icon: MessageCircle,
         isActive: true,
         items: conversations,

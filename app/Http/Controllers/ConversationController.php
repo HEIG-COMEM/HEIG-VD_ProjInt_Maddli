@@ -12,23 +12,23 @@ class ConversationController extends Controller
         $jsonResp = $request->has('json');
         $user = $request->user();
 
-        $discutions = $user->conversations()->with(['userOne', 'userTwo', 'userOne.roles', 'userTwo.roles', 'relationType'])->get();
+        $conversations = $user->conversations()->with(['userOne', 'userTwo', 'userOne.roles', 'userTwo.roles', 'relationType'])->get();
 
-        $discutions->transform(function ($discution) use ($user) {
-            if ($discution->userOne->id === $user->id) {
-                $discution->user = $discution->userTwo;
+        $conversations->transform(function ($conversation) use ($user) {
+            if ($conversation->userOne->id === $user->id) {
+                $conversation->user = $conversation->userTwo;
             } else {
-                $discution->user = $discution->userOne;
+                $conversation->user = $conversation->userOne;
             }
-            unset($discution->userOne);
-            unset($discution->userTwo);
-            return $discution;
+            unset($conversation->userOne);
+            unset($conversation->userTwo);
+            return $conversation;
         });
 
         if ($jsonResp) {
-            return response()->json($discutions);
+            return response()->json($conversations);
         } else {
-            return Inertia::render('club/Discutions'); //TODO: Implement the Discutions component
+            return Inertia::render('club/Conversation'); //TODO: Implement the conversation component
         }
     }
 }
