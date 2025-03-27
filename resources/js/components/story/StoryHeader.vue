@@ -1,5 +1,5 @@
 <script setup lang="ts"></script>
 
 <template>
-    <div>Progress</div>
+    <div>Header</div>
 </template>
