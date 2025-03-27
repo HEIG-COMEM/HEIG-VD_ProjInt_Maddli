@@ -26,8 +26,22 @@ class AdminController extends Controller
 
     public function clubs(Request $request)
     {
-        $data = Club::orderBy('name', 'asc')->paginate(10);
+        $query = Club::orderBy('name', 'asc')
+            ->with(['leagues', 'managers']);
 
-        return Inertia::render('club/admin/Clubs')->with('data', $data);
+
+        if ($request->has('name')) {
+            $name = $request->query('name');
+            $query->whereRaw('LOWER(name) LIKE ?', ['%' . strtolower($name) . '%']);
+        }
+
+        $data = $query->paginate(10)->withQueryString();
+
+        // loop through the clubs and append the coaches
+        foreach ($data as $club) {
+            $club->coaches = $club->coaches();
+        }
+
+        return Inertia::render('club/admin/Clubs')->with(['data' => $data, 'filters' => $request->all()]);
     }
 }

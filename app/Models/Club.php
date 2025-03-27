@@ -35,4 +35,18 @@ class Club extends Model
     {
         return $this->belongsToMany(League::class);
     }
+
+    public function coaches()
+    {
+        $clubLeagues = ClubLeague::where('club_id', $this->id)->get();
+        $coaches = [];
+
+        foreach ($clubLeagues as $clubLeague) {
+            $clubLeague->coaches()->each(function ($coaching) use (&$coaches) {
+                $coaches[] = $coaching->user;
+            });
+        }
+
+        return $coaches;
+    }
 }
