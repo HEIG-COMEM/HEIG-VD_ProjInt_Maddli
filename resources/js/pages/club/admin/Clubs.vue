@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import AppPagination from '@/components/AppPagination.vue';
 import AppUserInitialToolTip from '@/components/AppUserInitialToolTip.vue';
+import AppUserSheet from '@/components/AppUserSheet.vue';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -118,7 +119,13 @@ onMounted(() => {
                                     <ScrollArea class="w-40">
                                         <div class="mb-3 flex flex-row gap-1">
                                             <template v-for="coach in club.coaches" :key="coach.id">
-                                                <AppUserInitialToolTip :user-name="coach.name" :user-id="coach.id" @click="handleUserClick($event)" />
+                                                <AppUserSheet :user-id="coach.id">
+                                                    <AppUserInitialToolTip
+                                                        :user-name="coach.name"
+                                                        :user-id="coach.id"
+                                                        @click="handleUserClick($event)"
+                                                    />
+                                                </AppUserSheet>
                                             </template>
                                         </div>
                                         <ScrollBar orientation="horizontal" />

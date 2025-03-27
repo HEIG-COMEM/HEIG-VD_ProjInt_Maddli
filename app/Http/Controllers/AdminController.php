@@ -9,6 +9,26 @@ use App\Models\Club;
 
 class AdminController extends Controller
 {
+
+    public function user(Request $request, $id)
+    {
+        $jsonResp = $request->has('json');
+
+        $user = User::with(['roles', 'licence', 'coaching.clubLeague.club', 'coaching.clubLeague.league', 'clubs'])->find($id);
+
+        if ($jsonResp) {
+            return response()->json($user);
+        }
+
+        //TODO: Remove this debug code
+        echo "<pre>";
+        print_r($user);
+        echo "</pre>";
+        die();
+
+        // return Inertia::render('club/admin/User', ['user' => $user]); //TODO: Implement the User component
+    }
+
     public function users(Request $request)
     {
         $query = User::orderBy('name', 'asc')

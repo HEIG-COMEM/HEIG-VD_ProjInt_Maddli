@@ -30,6 +30,7 @@ Route::prefix('club')->group(function () {
                 return redirect()->route('club.admin.clubs');
             })->name('club.admin');
             Route::get('/users', [AdminController::class, 'users'])->middleware(Admin::class)->name('club.admin.users');
+            Route::get('/users/{id}', [AdminController::class, 'user'])->middleware(Admin::class)->name('club.admin.user');
             Route::get('/clubs', [AdminController::class, 'clubs'])->middleware(Admin::class)->name('club.admin.clubs');
         });
     });
