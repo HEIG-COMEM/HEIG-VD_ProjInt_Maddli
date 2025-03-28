@@ -10,6 +10,14 @@ import SettingsLayout from '@/layouts/settings/Layout.vue';
 
 const breadcrumbItems: BreadcrumbItem[] = [
     {
+        title: 'Home',
+        href: '/club',
+    },
+    {
+        title: 'Settings',
+        href: '/club/settings/profile',
+    },
+    {
         title: 'Appearance settings',
         href: '/club/settings/appearance',
     },
