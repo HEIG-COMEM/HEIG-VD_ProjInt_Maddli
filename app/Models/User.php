@@ -120,7 +120,6 @@ class User extends Authenticatable
      */
     public function conversations(): HasMany
     {
-        return $this->hasMany(Conversation::class, 'user_one_id')
-            ->orWhere('user_two_id', $this->id);
+        return $this->hasMany(Conversation::class, 'user_one_id')->orWhere('user_two_id', $this->id);
     }
 }

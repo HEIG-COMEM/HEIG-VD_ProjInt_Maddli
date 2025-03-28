@@ -26,6 +26,7 @@ Route::prefix('club')->group(function () {
     Route::middleware('auth')->group(function () {
         Route::get('/', [HomeController::class, 'index'])->name('club.home');
         Route::get('/conversations', [ConversationController::class, 'index'])->name('club.conversations');
+        Route::get('/conversations/{id}', [ConversationController::class, 'show'])->name('club.conversation');
 
         Route::prefix('admin')->group(function () {
             Route::get('/', function () {
