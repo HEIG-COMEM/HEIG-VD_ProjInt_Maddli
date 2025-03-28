@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Conversation;
+use App\Models\Message;
 
 class ConversationController extends Controller
 {
@@ -60,5 +61,27 @@ class ConversationController extends Controller
         }
 
         return Inertia::render('club/Conversation')->with('conversation', $conversation);
+    }
+
+    public function storeMessage(Request $request, int $id)
+    {
+        $request->validate([
+            'newMessage' => 'required|string',
+        ]);
+
+        $user = $request->user();
+        $conversation = Conversation::where(function ($query) use ($user, $id) {
+            $query->where('id', $id)
+                ->where(function ($q) use ($user) {
+                    $q->where('user_one_id', $user->id)
+                        ->orWhere('user_two_id', $user->id);
+                });
+        })->firstOrFail();
+        $message = new Message([
+            'user_id' => $user->id,
+            'conversation_id' => $conversation->id,
+            'content' => $request->input('newMessage'),
+        ]);
+        $message->save();
     }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -25,8 +26,12 @@ Route::prefix('club')->group(function () {
     // Only accessible to authenticated users
     Route::middleware('auth')->group(function () {
         Route::get('/', [HomeController::class, 'index'])->name('club.home');
+
+        Route::get('/users/{id}', [UserController::class, 'show'])->name('club.user');
+
         Route::get('/conversations', [ConversationController::class, 'index'])->name('club.conversations');
         Route::get('/conversations/{id}', [ConversationController::class, 'show'])->name('club.conversation');
+        Route::post('/conversations/{id}/messages', [ConversationController::class, 'storeMessage'])->name('club.conversation.message');
 
         Route::prefix('admin')->group(function () {
             Route::get('/', function () {
