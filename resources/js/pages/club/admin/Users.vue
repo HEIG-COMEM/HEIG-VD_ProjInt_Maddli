@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import AppPagination from '@/components/AppPagination.vue';
+import { H1 } from '@/components/typography/headings';
+import { Lead } from '@/components/typography/texts';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -57,10 +59,14 @@ onMounted(() => {
 </script>
 
 <template>
-    <Head title="Home" />
+    <Head title="Users" />
 
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
+            <div>
+                <H1>Users</H1>
+                <Lead>Manage users</Lead>
+            </div>
             <div class="relative min-h-[100vh] flex-1 rounded-xl border border-sidebar-border/70 dark:border-sidebar-border md:min-h-min">
                 <div class="flex flex-col items-center justify-center gap-2 p-4">
                     <Input ref="nameFilterInput" v-model="nameFilter" type="text" placeholder="Search by name" class="w-full md:w-96" />
