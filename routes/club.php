@@ -29,10 +29,12 @@ Route::prefix('club')->group(function () {
 
         Route::get('/users/{id}', [UserController::class, 'show'])->name('club.user');
 
-        Route::post('/conversations/new', [ConversationController::class, 'store'])->name('club.conversation.new');
-        Route::get('/conversations', [ConversationController::class, 'index'])->name('club.conversations');
-        Route::get('/conversations/{id}', [ConversationController::class, 'show'])->name('club.conversation');
-        Route::post('/conversations/{id}/messages', [ConversationController::class, 'storeMessage'])->name('club.conversation.message');
+        Route::prefix('conversations')->group(function () {
+            Route::post('/new', [ConversationController::class, 'store'])->name('club.conversation.new');
+            Route::get('/', [ConversationController::class, 'index'])->name('club.conversations');
+            Route::get('/{id}', [ConversationController::class, 'show'])->name('club.conversation');
+            Route::post('/{id}/messages', [ConversationController::class, 'storeMessage'])->name('club.conversation.message');
+        });
 
         Route::prefix('admin')->group(function () {
             Route::get('/', function () {
