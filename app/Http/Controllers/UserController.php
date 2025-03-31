@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     public function show(Request $request, int $id)
     {
-        $user = User::whereId($id)->with(['licence', 'coaching.clubLeague.club', 'coaching.clubLeague.league'])->firstOrFail();
+        $user = User::whereId($id)->with(['licence', 'roles', 'coaching.clubLeague.club', 'coaching.clubLeague.league'])->firstOrFail();
 
         return response()->json($user);
     }

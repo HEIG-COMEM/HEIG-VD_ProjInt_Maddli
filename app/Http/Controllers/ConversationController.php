@@ -35,6 +35,32 @@ class ConversationController extends Controller
         //return Inertia::render('club/Conversations'); //TODO: Implement the conversations component
     }
 
+    public function store(Request $request)
+    {
+        $request->validate([
+            'user_id' => 'required|integer|exists:users,id',
+        ]);
+
+        $user = $request->user();
+        $conversation = Conversation::where(function ($query) use ($user, $request) {
+            $query->where('user_one_id', $user->id)
+                ->where('user_two_id', $request->input('user_id'));
+        })->orWhere(function ($query) use ($user, $request) {
+            $query->where('user_one_id', $request->input('user_id'))
+                ->where('user_two_id', $user->id);
+        })->first();
+
+        if (!$conversation) {
+            $conversation = new Conversation([
+                'user_one_id' => $user->id,
+                'user_two_id' => $request->input('user_id'),
+            ]);
+            $conversation->save();
+        }
+
+        return redirect()->route('club.conversation', ['id' => $conversation->id]);
+    }
+
     public function show(Request $request, int $id)
     {
         $jsonResp = $request->has('json');
