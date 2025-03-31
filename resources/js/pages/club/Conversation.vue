@@ -97,15 +97,29 @@ const formatRole = (role: string) => {
                     </div>
                 </AppUserSheet>
             </div>
-            <div class="flex max-h-[80dvh] flex-1 flex-col justify-between gap-4 p-4">
+            <div class="flex max-h-[80dvh] max-w-[100dvw] flex-1 flex-col justify-between gap-4 p-4 md:max-w-[85dvw]">
                 <ScrollArea ref="scrollArea" class="relative">
                     <div class="mr-4 space-y-4">
-                        <AppChatMessage
-                            v-for="message in conversation.messages"
-                            :message="message.content"
-                            :toMe="message.user_id !== user.id"
-                            :key="message.id"
-                        />
+                        <template v-for="(message, index) in conversation.messages" :key="message.id">
+                            <template
+                                v-if="
+                                    index === 0 ||
+                                    new Date(message.created_at).toDateString() !==
+                                        new Date(conversation.messages[index - 1].created_at).toDateString()
+                                "
+                            >
+                                <P class="text-center text-xs text-muted-foreground">
+                                    {{
+                                        new Date(message.created_at).toLocaleDateString('en-US', {
+                                            month: 'long',
+                                            day: 'numeric',
+                                            year: 'numeric',
+                                        })
+                                    }}
+                                </P>
+                            </template>
+                            <AppChatMessage :message="message" :toMe="message.user_id !== user.id" />
+                        </template>
                     </div>
                 </ScrollArea>
                 <form @submit.prevent="submit()" class="mt-4 flex w-full items-center gap-1.5">
