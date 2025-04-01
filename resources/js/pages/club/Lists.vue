@@ -32,7 +32,7 @@ defineProps<{
 }>();
 
 const page = usePage<SharedData>();
-const isNewUser = computed(() => page.props.auth.roles.length >= 1);
+const isNewUser = computed(() => !page.props.auth.roles.length);
 </script>
 
 <template>
