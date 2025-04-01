@@ -10,7 +10,7 @@ import AppLogo from './AppLogo.vue';
 import NavMain from './NavMain.vue';
 import NavSidebarGroup from './NavSidebarGroup.vue';
 
-const conversations = reactive<{ title: string; href: string }[]>([]);
+const conversations = reactive<{ title: string; href: string; badge: string }[]>([]);
 
 onMounted(async () => {
     const response = await fetch(`/club/conversations?json`);
@@ -19,6 +19,7 @@ onMounted(async () => {
         return {
             title: `${item.user.name}`,
             href: `/club/conversations/${item.id}`,
+            ...(item.unreadMessagesCount ? { badge: `${item.unreadMessagesCount}` } : {}),
         };
     });
 

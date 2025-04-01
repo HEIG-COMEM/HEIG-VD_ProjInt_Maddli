@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Muted } from '@/components/typography/texts';
+import { Badge } from '@/components/ui/badge';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import {
     SidebarGroup,
@@ -13,7 +15,7 @@ import {
 import { Link } from '@inertiajs/vue3';
 import { ChevronRight, type LucideIcon } from 'lucide-vue-next';
 import { defineProps } from 'vue';
-import { Muted } from './typography/texts';
+
 defineProps<{
     label: string;
     items: {
@@ -24,6 +26,7 @@ defineProps<{
         items?: {
             title: string;
             href: string;
+            badge?: string;
         }[];
     }[];
 }>();
@@ -47,7 +50,10 @@ defineProps<{
                                 <SidebarMenuSubItem v-for="subItem in item.items" :key="subItem.title">
                                     <SidebarMenuSubButton as-child>
                                         <a :href="subItem.href">
-                                            <span>{{ subItem.title }}</span>
+                                            {{ subItem.title }}
+                                            <Badge v-if="subItem.badge">
+                                                {{ subItem.badge }}
+                                            </Badge>
                                         </a>
                                     </SidebarMenuSubButton>
                                 </SidebarMenuSubItem>
