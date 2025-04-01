@@ -90,12 +90,12 @@ console.log(isNewUser.value);
                         <AlertDescription>
                             <div>Let's get started and find a mentor !</div>
                             <AppFindRepresentative
-                                title="Find a mentor"
-                                description="We will find a mentor for you. Please fill out the form so we can determine the best match."
-                                save-label="Find a mentor"
+                                title="Find a ambassador"
+                                description="We will find a ambassador for you. Please fill out the form so we can determine the best match."
+                                save-label="Find an ambassador"
                             >
                                 <template #trigger>
-                                    <Button variant="outline" class="mt-4">Find a mentor</Button>
+                                    <Button variant="outline" class="mt-4">Find an ambassador</Button>
                                 </template>
                             </AppFindRepresentative>
                         </AlertDescription>

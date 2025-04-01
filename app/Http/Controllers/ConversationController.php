@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Models\Conversation;
 use App\Models\Role;
 use App\Models\Message;
+use App\Models\RelationType;
 
 class ConversationController extends Controller
 {
@@ -58,14 +59,27 @@ class ConversationController extends Controller
         })->first();
 
         if (!$conversation) {
+            $userRole = Role::whereHas('users', function ($query) use ($request) {
+                $query->where('users.id', $request->input('user_id'));
+            })->pluck('name')->first();
+
+            if ($userRole === 'mentor') {
+                $conversationTypeId = RelationType::where('name', 'Mentor / Mentee')->first()->id;
+                $roleId = Role::where('name', 'mentee')->first()->id;
+                $user->roles()->attach($roleId);
+            } elseif ($userRole === 'ambassador') {
+                $conversationTypeId = RelationType::where('name', 'Ambassador / Prospect')->first()->id;
+                $roleId = Role::where('name', 'prospect')->first()->id;
+                $user->roles()->attach($roleId);
+            } else {
+                $conversationTypeId = null;
+            }
             $conversation = new Conversation([
                 'user_one_id' => $user->id,
                 'user_two_id' => $request->input('user_id'),
+                'relation_type_id' => $conversationTypeId,
             ]);
             $conversation->save();
-
-            $roleId = Role::where('name', 'mentee')->first()->id;
-            $user->roles()->attach($roleId);
         }
 
         return redirect()->route('club.conversations', ['id' => $conversation->id]);

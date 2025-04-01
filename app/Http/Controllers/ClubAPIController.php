@@ -45,7 +45,7 @@ class ClubAPIController extends Controller
         ]);
     }
 
-    public function findRepresentative(Request $request, string $role = 'mentor')
+    public function findRepresentative(Request $request, string $role = 'ambassador')
     {
         $request->validate([
             'countryCode' => 'string|exists:nations,code',
