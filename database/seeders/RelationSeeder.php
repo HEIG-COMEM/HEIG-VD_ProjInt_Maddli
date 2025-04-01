@@ -42,6 +42,8 @@ class RelationSeeder extends Seeder
 
         // for each new prospect, find a coach with the ambassador role and create a conversation
         $newProspects->each(function ($prospect) {
+            // set the role prospect
+            $prospect->roles()->syncWithoutDetaching(Role::where('name', 'prospect')->first());
             // find a coach with the ambassador role
             $coach = User::whereHas('roles', function (Builder $query) {
                 $query->where('name', 'ambassador');
@@ -57,6 +59,8 @@ class RelationSeeder extends Seeder
 
         // for each new coach, find a coach with the mentor role and create a conversation
         $newCoaches->each(function ($coach) {
+            // set the role mentee
+            $coach->roles()->syncWithoutDetaching(Role::where('name', 'mentee')->first());
             // find a coach with the mentor role
             $mentor = User::whereHas('roles', function (Builder $query) {
                 $query->where('name', 'mentor');
