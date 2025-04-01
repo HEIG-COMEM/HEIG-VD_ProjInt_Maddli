@@ -17,7 +17,7 @@ const handleChat = () => {
     const form = useForm({
         user_id: props.userId,
     });
-    form.post(route('club.conversation.new'), {
+    form.post(route('club.conversations.new'), {
         onFinish: () => {
             form.reset();
         },

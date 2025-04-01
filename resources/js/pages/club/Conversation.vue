@@ -23,7 +23,7 @@ const breadcrumbs: BreadcrumbItem[] = [
         href: '/club',
     },
     {
-        title: 'Conversation',
+        title: 'Conversations',
         href: '/club/conversations',
     },
     {
@@ -41,7 +41,7 @@ const form = useForm({
 });
 
 const submit = () => {
-    form.post(route('club.conversation.message', props.conversation.id), {
+    form.post(route('club.conversations.message', props.conversation.id), {
         preserveScroll: true,
         onSuccess: () => {
             form.reset('newMessage');

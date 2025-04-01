@@ -34,7 +34,7 @@ const mainNavItems = ref<CollapsibleNavItem[]>([
         isActive: true,
     },
     {
-        title: 'Conversation',
+        title: 'Conversations',
         href: '/club/conversations',
         icon: MessageCircle,
         isActive: true,

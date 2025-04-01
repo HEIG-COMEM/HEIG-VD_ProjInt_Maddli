@@ -64,7 +64,7 @@ class ConversationController extends Controller
             $conversation->save();
         }
 
-        return redirect()->route('club.conversation', ['id' => $conversation->id]);
+        return redirect()->route('club.conversations', ['id' => $conversation->id]);
     }
 
     public function show(Request $request, int $id)
