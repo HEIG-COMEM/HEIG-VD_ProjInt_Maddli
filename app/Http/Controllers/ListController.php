@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Conversation;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\User;
+use App\Models\RelationType;
 
 class ListController extends Controller
 {
-    public function index(Request $request)
+    public function indexOld(Request $request)
     {
         $hasJson = $request->has('json');
         $roles = [
@@ -57,5 +59,51 @@ class ListController extends Controller
         return Inertia::render('club/Lists', [
             'users' => [], // Replace with actual data
         ]);
+    }
+
+    public function index(Request $request)
+    {
+        $user = $request->user();
+        $user_roles = $user->roles->pluck('name')->toArray();
+
+        $contacts = [
+            'federations' => $this->loadUsersByRole('federation_contact'),
+            'ambassadors' => in_array('prospect', $user_roles) ? $this->loadConversations($user, 'Ambassador / Prospect') : null,
+            'prospects' => in_array('ambassador', $user_roles) ? $this->loadConversations($user, 'Ambassador / Prospect') : null,
+            'mentors' => in_array('mentor', $user_roles) ? $this->loadConversations($user, 'Mentor / Mentee') : null,
+            'mentees' => in_array('mentor', $user_roles) ? $this->loadConversations($user, 'Mentor / Mentee') : null,
+        ];
+
+        return Inertia::render('club/Lists', [
+            'contacts' => $contacts,
+        ]);
+    }
+
+    private function loadUsersByRole($role)
+    {
+        return User::whereHas('roles', function ($query) use ($role) {
+            $query->where('name', $role);
+        })
+            ->with(['roles'])
+            ->get();
+    }
+
+    private function loadConversations($user, $relationTypeName)
+    {
+        $relationTypeId = RelationType::where('name', $relationTypeName)->first()->id;
+
+        $conversations = Conversation::where('relation_type_id', $relationTypeId)
+            ->where(function ($query) use ($user) {
+                $query->where('user_one_id', $user->id)
+                    ->orWhere('user_two_id', $user->id);
+            })
+            ->with(['userOne.roles', 'userTwo.roles'])
+            ->get();
+
+        return $conversations->transform(function ($conversation) use ($user) {
+            $conversation->user = $conversation->userOne->id === $user->id ? $conversation->userTwo : $conversation->userOne;
+            unset($conversation->userOne, $conversation->userTwo);
+            return $conversation;
+        });
     }
 }
