@@ -2,6 +2,6 @@
 
 <template>
     <section>
-        <h1>Chapter 2 - Slide 1</h1>
+        <h1>Chapter 2 - Slide 6</h1>
     </section>
 </template>
