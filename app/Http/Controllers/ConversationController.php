@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Conversation;
+use App\Models\Role;
 use App\Models\Message;
 
 class ConversationController extends Controller
@@ -62,6 +63,9 @@ class ConversationController extends Controller
                 'user_two_id' => $request->input('user_id'),
             ]);
             $conversation->save();
+
+            $roleId = Role::where('name', 'mentee')->first()->id;
+            $user->roles()->attach($roleId);
         }
 
         return redirect()->route('club.conversations', ['id' => $conversation->id]);

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ClubAPIController;
 use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ListController;
@@ -46,6 +47,12 @@ Route::prefix('club')->group(function () {
             Route::get('/users', [AdminController::class, 'users'])->middleware(Admin::class)->name('club.admin.users');
             Route::get('/users/{id}', [AdminController::class, 'user'])->middleware(Admin::class)->name('club.admin.user');
             Route::get('/clubs', [AdminController::class, 'clubs'])->middleware(Admin::class)->name('club.admin.clubs');
+        });
+
+        Route::prefix('api')->group(function () {
+            Route::get('/countries', [ClubAPIController::class, 'countries'])->name('club.api.countries');
+            Route::get('/countries/{countryCode}/clubs', [ClubAPIController::class, 'clubs'])->name('club.api.clubs');
+            Route::get('/find-representative', [ClubAPIController::class, 'findRepresentative'])->name('club.api.find-representative');
         });
     });
 

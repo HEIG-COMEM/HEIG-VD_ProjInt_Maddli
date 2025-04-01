@@ -66,6 +66,13 @@ class ListController extends Controller
         $user = $request->user();
         $user_roles = $user->roles->pluck('name')->toArray();
 
+        if (!count($user_roles)) {
+            return Inertia::render('club/Lists', [
+                'newUser' => true,
+                'contacts' => [],
+            ]);
+        }
+
         $contacts = [
             'federations' => $this->loadUsersByRole('federation_contact'),
             'ambassadors' => in_array('prospect', $user_roles) ? $this->loadConversations($user, 'Ambassador / Prospect') : null,
