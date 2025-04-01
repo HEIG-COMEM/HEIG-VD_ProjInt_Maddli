@@ -36,6 +36,10 @@ class AccountsSeeder extends Seeder
             'name',
             'federation_manager'
         )->first();
+        $federationContactRole = Role::where(
+            'name',
+            'federation_contact'
+        )->first();
         foreach ($nations as $nation) {
             $nationManager = User::firstOrCreate(
                 [
@@ -49,6 +53,19 @@ class AccountsSeeder extends Seeder
             );
             $nationManager->roles()->syncWithoutDetaching([$nationManagerRole->id]);
             $nation->users()->syncWithoutDetaching([$nationManager->id]);
+
+            $federationContact = User::firstOrCreate(
+                [
+                    'email' => strtolower(str_replace(' ', '_', $nation->name)) . '_contact@hello-coach.ch',
+                ],
+                [
+                    'name' => $nation->name . ' Contact',
+                    'password' => Hash::make('password'),
+                    'birth_date' => '1970-01-01',
+                ]
+            );
+            $federationContact->roles()->syncWithoutDetaching([$federationContactRole->id]);
+            $nation->users()->syncWithoutDetaching([$federationContact->id]);
         }
     }
 }
