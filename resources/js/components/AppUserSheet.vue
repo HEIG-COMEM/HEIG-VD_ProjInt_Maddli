@@ -3,6 +3,7 @@ import TheLoading from '@/components/TheLoading.vue';
 import { List, Muted, P } from '@/components/typography/texts';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { formatRoles } from '@/composables/useFormat';
 import { router, useForm } from '@inertiajs/vue3';
 import { useFetch } from '@vueuse/core';
 import { Mail } from 'lucide-vue-next';
@@ -90,10 +91,6 @@ interface UserData {
 
 const { isFetching, error, data: user } = useFetch<UserData>(`${props.path}/${props.userId}?json`, { refetch: true }).json();
 
-const formatRoles = (roles: Role[]) => {
-    return roles.map((role) => role.name.charAt(0).toUpperCase() + role.name.slice(1)).join(', ');
-};
-
 const handleChat = () => {
     const form = useForm({
         user_id: props.userId,
@@ -129,7 +126,7 @@ const handleChat = () => {
                             </div>
                             <P class="text-xl font-bold">{{ user.name }}</P>
                             <Muted>
-                                <template v-for="role in formatRoles(user.roles)">{{ role }}</template>
+                                {{ formatRoles(user.roles) }}
                             </Muted>
                             <div v-if="user.coaching.length > 0">
                                 <List class="my-6 ml-6 list-disc [&>li]:mt-1">
