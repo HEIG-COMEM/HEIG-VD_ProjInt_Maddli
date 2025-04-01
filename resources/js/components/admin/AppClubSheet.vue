@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import AppUserCard from '@/components/admin/AppUserCard.vue';
-import { H3 } from '@/components/typography/headings';
+import AppComboboxTrigger from '@/components/AppComboboxTrigger.vue';
+import { H3, H4 } from '@/components/typography/headings';
 import { Button } from '@/components/ui/button';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { availableCoach } from '@/stores/admin/availableCoachStore';
 import { router } from '@inertiajs/vue3';
 import { useFetch } from '@vueuse/core';
 import { X } from 'lucide-vue-next';
@@ -37,6 +39,8 @@ const removeCoach = ({ clubId, userId }: { clubId: number; userId: number }) => 
         preserveScroll: true,
     });
 };
+
+// availableCoachesStore.fetchAvailableCoaches();
 </script>
 
 <template>
@@ -76,6 +80,10 @@ const removeCoach = ({ clubId, userId }: { clubId: number; userId: number }) => 
                         </div>
                         <ScrollBar orientation="horizontal" />
                     </ScrollArea>
+                    <div>
+                        <H4>Add a coaching staff</H4>
+                        <AppComboboxTrigger item-name="user" :items="availableCoach.availableCoaches" @select="console.log($event)" />
+                    </div>
                     <br />
                     <H3>Leagues</H3>
                     {{ data.club?.leagues }}

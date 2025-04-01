@@ -12,6 +12,7 @@ import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { debounce } from '@/lib/utils';
+import { availableCoach } from '@/stores/admin/availableCoachStore';
 import { type BreadcrumbItem } from '@/types';
 import { Head, router } from '@inertiajs/vue3';
 import { Shield } from 'lucide-vue-next';
@@ -26,6 +27,8 @@ const clubs = ref(props.data.data);
 const path = ref(props.data.path);
 const nameFilter = ref(props.filters.name || '');
 const nameFilterInput = useTemplateRef('nameFilterInput');
+
+availableCoach.fetchAvailableCoaches();
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
