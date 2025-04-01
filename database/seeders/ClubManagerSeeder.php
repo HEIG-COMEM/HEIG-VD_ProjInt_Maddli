@@ -24,7 +24,7 @@ class ClubManagerSeeder extends Seeder
         $role = Role::where('name', 'club_manager')->first();
         foreach ($clubs as $club) {
             $user = User::firstOrCreate(
-                ['email' => strtolower(str_replace(' ', '_', $club->name)) . '@maddli.com'],
+                ['email' => strtolower(str_replace(' ', '_', $club->name)) . '@hello-coach.ch'],
                 ['name' => $club->name . ' Manager', 'password' => Hash::make('manager'), 'birth_date' => now()->subYears(30)]
             );
             $user->roles()->sync($role);

@@ -23,6 +23,7 @@ export interface CollapsibleNavItem extends NavItem {
     items?: {
         title: string;
         href: string;
+        badge?: string;
     }[];
 }
 

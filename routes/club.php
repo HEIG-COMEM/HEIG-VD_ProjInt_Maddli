@@ -1,7 +1,11 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ClubAPIController;
+use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ListController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -25,6 +29,17 @@ Route::prefix('club')->group(function () {
     Route::middleware('auth')->group(function () {
         Route::get('/', [HomeController::class, 'index'])->name('club.home');
 
+        Route::get('/users/{id}', [UserController::class, 'show'])->name('club.user');
+
+        Route::get('/lists', [ListController::class, 'index'])->name('club.lists');
+
+        Route::prefix('conversations')->group(function () {
+            Route::post('/new', [ConversationController::class, 'store'])->name('club.conversations.new');
+            Route::get('/', [ConversationController::class, 'index'])->name('club.conversations');
+            Route::get('/{id}', [ConversationController::class, 'show'])->name('club.conversations');
+            Route::post('/{id}/messages', [ConversationController::class, 'storeMessage'])->name('club.conversations.message');
+        });
+
         Route::prefix('admin')->group(function () {
             Route::get('/', function () {
                 return redirect()->route('club.admin.clubs');
@@ -32,6 +47,12 @@ Route::prefix('club')->group(function () {
             Route::get('/users', [AdminController::class, 'users'])->middleware(Admin::class)->name('club.admin.users');
             Route::get('/users/{id}', [AdminController::class, 'user'])->middleware(Admin::class)->name('club.admin.user');
             Route::get('/clubs', [AdminController::class, 'clubs'])->middleware(Admin::class)->name('club.admin.clubs');
+        });
+
+        Route::prefix('api')->group(function () {
+            Route::get('/countries', [ClubAPIController::class, 'countries'])->name('club.api.countries');
+            Route::get('/countries/{countryCode}/clubs', [ClubAPIController::class, 'clubs'])->name('club.api.clubs');
+            Route::get('/find-representative', [ClubAPIController::class, 'findRepresentative'])->name('club.api.find-representative');
         });
     });
 

@@ -16,6 +16,7 @@ class Message extends Model
         'user_id',
         'conversation_id',
         'content',
+        'is_read',
     ];
 
     /**

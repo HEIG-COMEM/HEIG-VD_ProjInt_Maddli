@@ -21,6 +21,14 @@ defineProps<Props>();
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
+        title: 'Home',
+        href: '/club',
+    },
+    {
+        title: 'Settings',
+        href: '/club/settings/profile',
+    },
+    {
         title: 'Profile settings',
         href: '/club/settings/profile',
     },

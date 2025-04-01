@@ -5,11 +5,28 @@ import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, Sid
 import { type CollapsibleNavItem, type NavItem, type SharedData } from '@/types';
 import { Link, usePage } from '@inertiajs/vue3';
 import { Building2, House, Info, List, MessageCircle, Users } from 'lucide-vue-next';
+import { onMounted, reactive, ref } from 'vue';
 import AppLogo from './AppLogo.vue';
 import NavMain from './NavMain.vue';
 import NavSidebarGroup from './NavSidebarGroup.vue';
 
-const mainNavItems: CollapsibleNavItem[] = [
+const conversations = reactive<{ title: string; href: string; badge: string }[]>([]);
+
+onMounted(async () => {
+    const response = await fetch(`/club/conversations?json`);
+    const data = await response.json();
+    const prepared = data.map((item: any) => {
+        return {
+            title: `${item.user.name}`,
+            href: `/club/conversations/${item.id}`,
+            ...(item.unreadMessagesCount ? { badge: `${item.unreadMessagesCount}` } : {}),
+        };
+    });
+
+    conversations.push(...prepared);
+});
+
+const mainNavItems = ref<CollapsibleNavItem[]>([
     {
         title: 'Home',
         href: '/club/',
@@ -17,19 +34,19 @@ const mainNavItems: CollapsibleNavItem[] = [
         isActive: true,
     },
     {
-        title: 'Discutions',
-        href: '/club/discutions',
-        icon: MessageCircle,
-        isActive: true,
-        items: [],
-    },
-    {
         title: 'Lists',
         href: '/club/lists',
         icon: List,
         isActive: true,
     },
-];
+    {
+        title: 'Conversations',
+        href: '/club/conversations',
+        icon: MessageCircle,
+        isActive: true,
+        items: conversations,
+    },
+]);
 
 const adminNavItems: NavItem[] = [
     {

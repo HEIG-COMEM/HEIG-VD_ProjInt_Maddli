@@ -14,6 +14,14 @@ import { type BreadcrumbItem } from '@/types';
 
 const breadcrumbItems: BreadcrumbItem[] = [
     {
+        title: 'Home',
+        href: '/club',
+    },
+    {
+        title: 'Settings',
+        href: '/club/settings/profile',
+    },
+    {
         title: 'Password settings',
         href: '/club/settings/password',
     },
