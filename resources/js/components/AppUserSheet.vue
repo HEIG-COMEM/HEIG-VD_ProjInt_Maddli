@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import TheLoading from '@/components/TheLoading.vue';
 import { List, Muted, P } from '@/components/typography/texts';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import { getInitials } from '@/composables/useInitials';
 import { router, useForm } from '@inertiajs/vue3';
 import { useFetch } from '@vueuse/core';
 import { Mail } from 'lucide-vue-next';
+import AppAvatar from './AppAvatar.vue';
 
 const props = withDefaults(
     defineProps<{
@@ -126,11 +125,7 @@ const handleChat = () => {
                     <div v-else class="mt-24 flex w-full flex-col items-center gap-12">
                         <div class="text-center">
                             <div class="flex justify-center">
-                                <Avatar class="center size-16 overflow-hidden rounded-full">
-                                    <AvatarFallback class="rounded-lg bg-neutral-200 font-semibold text-black dark:bg-neutral-700 dark:text-white">
-                                        <p class="text-xl">{{ getInitials(user.name) }}</p>
-                                    </AvatarFallback>
-                                </Avatar>
+                                <AppAvatar :name="user.name" />
                             </div>
                             <P class="text-xl font-bold">{{ user.name }}</P>
                             <Muted>

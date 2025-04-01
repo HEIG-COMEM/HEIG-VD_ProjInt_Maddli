@@ -1,12 +1,11 @@
 <script setup lang="ts">
+import AppAvatar from '@/components/AppAvatar.vue';
 import AppChatMessage from '@/components/AppChatMessage.vue';
 import AppUserSheet from '@/components/AppUserSheet.vue';
 import { Muted, P } from '@/components/typography/texts';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { getInitials } from '@/composables/useInitials';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { SharedData, User, type BreadcrumbItem } from '@/types';
 import { Head, useForm, usePage } from '@inertiajs/vue3';
@@ -83,11 +82,7 @@ const formatRole = (role: string) => {
             <div class="relative border-b border-sidebar-border/70 p-4 dark:border-sidebar-border">
                 <AppUserSheet :user-id="conversation.user.id" :path="`/club/users`">
                     <div class="flex flex-row items-center gap-4 text-left">
-                        <Avatar class="size-8 overflow-hidden rounded-full">
-                            <AvatarFallback class="rounded-lg bg-neutral-200 font-semibold text-black dark:bg-neutral-700 dark:text-white">
-                                {{ getInitials(conversation.user.name) }}
-                            </AvatarFallback>
-                        </Avatar>
+                        <AppAvatar :name="conversation.user.name" />
                         <div>
                             <P>{{ conversation.user.name }}</P>
                             <Muted>
