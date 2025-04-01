@@ -27,6 +27,15 @@ class ConversationController extends Controller
             return $conversation;
         });
 
+        // for each conversation, count the unread messages from the user
+        $conversations->transform(function ($conversation) use ($user) {
+            $conversation->unreadMessagesCount = $conversation->messages()
+                ->where('is_read', false)
+                ->where('user_id', '!=', $user->id)
+                ->count();
+            return $conversation;
+        });
+
         if ($jsonResp) {
             return response()->json($conversations);
         }
@@ -85,6 +94,9 @@ class ConversationController extends Controller
         if ($jsonResp) {
             return response()->json($conversation);
         }
+
+        // mark all message from the other user as read
+        $conversation->messages()->where('user_id', '!=', $user->id)->update(['is_read' => true]);
 
         return Inertia::render('club/Conversation')->with('conversation', $conversation);
     }
