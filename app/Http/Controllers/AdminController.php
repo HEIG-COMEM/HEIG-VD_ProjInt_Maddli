@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\User;
 use App\Models\Club;
+use App\Models\Coaching;
 
 class AdminController extends Controller
 {
@@ -63,5 +64,41 @@ class AdminController extends Controller
         }
 
         return Inertia::render('club/admin/Clubs')->with(['data' => $data, 'filters' => $request->all()]);
+    }
+
+    public function club(Request $request, int $id)
+    {
+        $club = Club::with(['leagues', 'managers'])->find($id);
+
+        if (!$club) abort(404);
+
+        $club->coaches = $club->coaches();
+
+        $jsonResp = $request->has('json');
+
+        if ($jsonResp) {
+            return response()->json(['club' => $club]);
+        }
+    }
+
+    public function deleteClubCoache(Request $request, int $clubId, int $userId)
+    {
+        $club = Club::find($clubId);
+        if (!$club) abort(404);
+        $user = User::find($userId);
+        if (!$user) abort(404);
+
+        // Get all coaching records for the user
+        $coachingRecords = Coaching::where('user_id', $userId)
+            ->whereHas('clubLeague', function ($query) use ($clubId) {
+                $query->where('club_id', $clubId);
+            })
+            ->get();
+        // Loop through each coaching record and delete it
+        foreach ($coachingRecords as $coaching) {
+            // $coaching->delete(); //TODO: Uncomment this line to actually delete the coaching record
+        }
+
+        return redirect()->back()->with('success', 'Coach removed from club successfully.');
     }
 }

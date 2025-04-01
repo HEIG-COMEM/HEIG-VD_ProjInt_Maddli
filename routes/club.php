@@ -47,6 +47,8 @@ Route::prefix('club')->group(function () {
             Route::get('/users', [AdminController::class, 'users'])->middleware(Admin::class)->name('club.admin.users');
             Route::get('/users/{id}', [AdminController::class, 'user'])->middleware(Admin::class)->name('club.admin.user');
             Route::get('/clubs', [AdminController::class, 'clubs'])->middleware(Admin::class)->name('club.admin.clubs');
+            Route::get('/clubs/{id}', [AdminController::class, 'club'])->middleware(Admin::class)->name('club.admin.club');
+            Route::delete('/club/{clubId}/coaches/{userId}', [AdminController::class, 'deleteClubCoache'])->middleware(Admin::class)->name('club.admin.club.coaches');
         });
 
         Route::prefix('api')->group(function () {

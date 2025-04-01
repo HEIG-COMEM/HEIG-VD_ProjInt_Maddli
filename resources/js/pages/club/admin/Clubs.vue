@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import AppClubSheet from '@/components/admin/AppClubSheet.vue';
 import AppPagination from '@/components/AppPagination.vue';
 import AppUserInitialToolTip from '@/components/AppUserInitialToolTip.vue';
 import AppUserSheet from '@/components/AppUserSheet.vue';
@@ -13,14 +14,13 @@ import AppLayout from '@/layouts/AppLayout.vue';
 import { debounce } from '@/lib/utils';
 import { type BreadcrumbItem } from '@/types';
 import { Head, router } from '@inertiajs/vue3';
+import { Shield } from 'lucide-vue-next';
 import { defineProps, onMounted, ref, useTemplateRef, watch } from 'vue';
 
 const props = defineProps<{
     data: any;
     filters: any;
 }>();
-
-console.log(props.data);
 
 const clubs = ref(props.data.data);
 const path = ref(props.data.path);
@@ -122,7 +122,15 @@ onMounted(() => {
                                         <ScrollBar orientation="horizontal" />
                                     </ScrollArea>
                                 </TableCell>
-                                <TableCell class="text-right"><Button>⚡️</Button></TableCell>
+                                <TableCell class="text-right">
+                                    <AppClubSheet :title="`Club ${club.name}`" :description="`Manage ${club.name} club`" :club-id="club.id">
+                                        <template #trigger>
+                                            <Button variant="secondary">
+                                                <Shield class="h-4 w-4" />
+                                            </Button>
+                                        </template>
+                                    </AppClubSheet>
+                                </TableCell>
                             </TableRow>
                         </TableBody>
                     </Table>
