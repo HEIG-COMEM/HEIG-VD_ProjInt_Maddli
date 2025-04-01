@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ListController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,8 @@ Route::prefix('club')->group(function () {
         Route::get('/', [HomeController::class, 'index'])->name('club.home');
 
         Route::get('/users/{id}', [UserController::class, 'show'])->name('club.user');
+
+        Route::get('/lists', [ListController::class, 'index'])->name('club.lists');
 
         Route::prefix('conversations')->group(function () {
             Route::post('/new', [ConversationController::class, 'store'])->name('club.conversation.new');

@@ -30,17 +30,17 @@ const breadcrumbs: BreadcrumbItem[] = [
                 <Lead>Get started and get your questions answered!</Lead>
             </div>
             <div class="grid auto-rows-min gap-4 md:grid-cols-3">
-                <AppOnBoardingCard title="Contact your federation">
+                <AppOnBoardingCard title="Contact your federation" :href="route('club.lists', { federation: true })">
                     <template #icon>
                         <img src="/assets/icons/Football_Suisse_federation.svg" alt="Talk to ASF" class="h-16" />
                     </template>
                 </AppOnBoardingCard>
-                <AppOnBoardingCard title="Talk to ambassadors">
+                <AppOnBoardingCard title="Talk to ambassadors" :href="route('club.lists', { ambassadors: true })">
                     <template #icon>
                         <img src="/assets/icons/ambassadors.png" alt="Talk to ambassadors" class="h-16" />
                     </template>
                 </AppOnBoardingCard>
-                <AppOnBoardingCard title="Talk to mentors">
+                <AppOnBoardingCard title="Talk to mentors" :href="route('club.lists', { mentors: true })">
                     <template #icon>
                         <img src="/assets/icons/coaches.png" alt="Talk to mentors" class="h-16" />
                     </template>
