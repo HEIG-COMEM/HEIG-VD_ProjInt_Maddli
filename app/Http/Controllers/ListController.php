@@ -68,7 +68,6 @@ class ListController extends Controller
 
         if (!count($user_roles)) {
             return Inertia::render('club/Lists', [
-                'newUser' => true,
                 'contacts' => [],
             ]);
         }

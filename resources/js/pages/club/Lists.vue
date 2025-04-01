@@ -5,10 +5,10 @@ import { H1 } from '@/components/typography/headings';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import AppLayout from '@/layouts/AppLayout.vue';
-import { type BreadcrumbItem } from '@/types';
-import { Head } from '@inertiajs/vue3';
+import { type BreadcrumbItem, type SharedData } from '@/types';
+import { Head, usePage } from '@inertiajs/vue3';
 import { Rocket } from 'lucide-vue-next';
-import { ref } from 'vue';
+import { computed } from 'vue';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -21,24 +21,18 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-const props = withDefaults(
-    defineProps<{
-        newUser?: boolean;
-        contacts: {
-            federations: any[] | null;
-            ambassadors: any[] | null;
-            prospects: any[] | null;
-            mentors: any[] | null;
-            mentees: any[] | null;
-        };
-    }>(),
-    {
-        newUser: false,
-    },
-);
+defineProps<{
+    contacts: {
+        federations: any[] | null;
+        ambassadors: any[] | null;
+        prospects: any[] | null;
+        mentors: any[] | null;
+        mentees: any[] | null;
+    };
+}>();
 
-const isNewUser = ref(props.newUser);
-console.log(isNewUser.value);
+const page = usePage<SharedData>();
+const isNewUser = computed(() => page.props.auth.roles.length >= 1);
 </script>
 
 <template>
