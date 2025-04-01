@@ -12,6 +12,8 @@ class ConversationController extends Controller
     public function index(Request $request)
     {
         $jsonResp = $request->has('json');
+        if (!$jsonResp) return redirect()->route('club.lists');
+
         $user = $request->user();
 
         $conversations = $user->conversations()->with(['userOne', 'userTwo'])->get();
@@ -36,12 +38,7 @@ class ConversationController extends Controller
             return $conversation;
         });
 
-        if ($jsonResp) {
-            return response()->json($conversations);
-        }
-
-        return "WIP";
-        //return Inertia::render('club/Conversations'); //TODO: Implement the conversations component
+        return response()->json($conversations);
     }
 
     public function store(Request $request)
