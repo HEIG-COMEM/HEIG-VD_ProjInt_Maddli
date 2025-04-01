@@ -70,7 +70,7 @@ class ListController extends Controller
             'federations' => $this->loadUsersByRole('federation_contact'),
             'ambassadors' => in_array('prospect', $user_roles) ? $this->loadConversations($user, 'Ambassador / Prospect') : null,
             'prospects' => in_array('ambassador', $user_roles) ? $this->loadConversations($user, 'Ambassador / Prospect') : null,
-            'mentors' => in_array('mentor', $user_roles) ? $this->loadConversations($user, 'Mentor / Mentee') : null,
+            'mentors' => in_array('mentee', $user_roles) ? $this->loadConversations($user, 'Mentor / Mentee') : null,
             'mentees' => in_array('mentor', $user_roles) ? $this->loadConversations($user, 'Mentor / Mentee') : null,
         ];
 
