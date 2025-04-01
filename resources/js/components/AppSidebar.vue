@@ -34,17 +34,17 @@ const mainNavItems = ref<CollapsibleNavItem[]>([
         isActive: true,
     },
     {
+        title: 'Lists',
+        href: '/club/lists',
+        icon: List,
+        isActive: true,
+    },
+    {
         title: 'Conversations',
         href: '/club/conversations',
         icon: MessageCircle,
         isActive: true,
         items: conversations,
-    },
-    {
-        title: 'Lists',
-        href: '/club/lists',
-        icon: List,
-        isActive: true,
     },
 ]);
 
