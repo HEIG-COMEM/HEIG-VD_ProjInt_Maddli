@@ -24,12 +24,6 @@ withDefaults(defineProps<Props>(), {
             </CardContent>
             <CardTitle>{{ title }}</CardTitle>
         </Card>
-        <Card class="flex flex-col items-center justify-center bg-accent p-4 text-accent-foreground">
-            <CardContent>
-                <slot name="icon"></slot>
-            </CardContent>
-            <CardTitle>{{ title }}</CardTitle>
-        </Card>
     </Link>
     <Card v-else class="flex flex-col items-center justify-center bg-accent p-4 text-accent-foreground">
         <CardContent>
