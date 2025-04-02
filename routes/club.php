@@ -49,10 +49,12 @@ Route::prefix('club')->group(function () {
             Route::get('/users/{id}', [AdminController::class, 'user'])->name('club.admin.user');
             Route::get('/clubs', [AdminController::class, 'clubs'])->name('club.admin.clubs');
             Route::get('/clubs/{id}', [AdminController::class, 'club'])->name('club.admin.club');
-            Route::delete('/club/{clubId}/coaches/{userId}', [AdminController::class, 'deleteClubCoache'])->name('club.admin.club.coaches');
+            Route::delete('/club/{clubId}/coaches/{userId}', [AdminController::class, 'deleteClubCoach'])->name('club.admin.club.coaches');
+            Route::post('/club/{clubId}/coaches/{userId}', [AdminController::class, 'addClubCoach'])->name('club.admin.club.coaches.add');
 
             Route::prefix('api')->group(function () {
                 Route::get('/available-coaches', [AdminAPIController::class, 'availableCoaches'])->name('club.admin.api.available-coaches');
+                Route::get('/clubs/{id}/available-leagues', [AdminAPIController::class, 'availableLeagues'])->name('club.admin.api.available-leagues');
             });
         });
 

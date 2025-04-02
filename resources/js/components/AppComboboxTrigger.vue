@@ -27,7 +27,7 @@ defineEmits<{
 </script>
 
 <template>
-    <div class="w-full">
+    <div>
         <Muted> Select {{ itemName }} ({{ items.length }}) </Muted>
         <Combobox by="label">
             <ComboboxAnchor>
