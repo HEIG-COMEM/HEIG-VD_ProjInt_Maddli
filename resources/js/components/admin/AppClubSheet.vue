@@ -82,10 +82,12 @@ const removeCoach = ({ clubId, userId }: { clubId: number; userId: number }) => 
                     </div>
                     <br />
                     <H3>Leagues</H3>
-                    {{ data.club?.leagues }}
+                    <!-- {{ data.club?.leagues }} -->
+                    Incoming...
                     <br />
                     <H3>Managers</H3>
-                    {{ data.club?.managers }}
+                    <!-- {{ data.club?.managers }} -->
+                    Incoming...
                 </div>
             </div>
         </SheetContent>
