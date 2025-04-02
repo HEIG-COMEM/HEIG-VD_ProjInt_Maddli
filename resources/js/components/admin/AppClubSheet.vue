@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import AddCoach from '@/components/admin/AddCoach.vue';
+import AddLeague from '@/components/admin/AddLeague.vue';
 import AddManager from '@/components/admin/AddManager.vue';
 import AppUserCard from '@/components/admin/AppUserCard.vue';
 import { H3 } from '@/components/typography/headings';
@@ -156,6 +157,7 @@ const removeLeague = ({ clubId, leagueId }: { clubId: number; leagueId: number }
                             <ScrollBar orientation="horizontal" />
                         </ScrollArea>
                         <Muted v-else> No leagues found </Muted>
+                        <AddLeague :club-id="clubId" @add-league="executeFetch()" />
                     </div>
                     <div class="flex flex-col gap-4">
                         <H3>Managers</H3>
