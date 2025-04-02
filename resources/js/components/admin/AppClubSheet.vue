@@ -4,6 +4,7 @@ import AddManager from '@/components/admin/AddManager.vue';
 import AppUserCard from '@/components/admin/AppUserCard.vue';
 import { H3 } from '@/components/typography/headings';
 import { Muted } from '@/components/typography/texts';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
@@ -54,6 +55,20 @@ const removeManager = ({ clubId, userId }: { clubId: number; userId: number }) =
         preserveScroll: true,
     });
 };
+
+const removeLeague = ({ clubId, leagueId }: { clubId: number; leagueId: number }) => {
+    router.delete(route('club.admin.league.clubs.delete', { leagueId, clubId }), {
+        onSuccess: () => {
+            executeFetch();
+            toast.success('League removed successfully');
+        },
+        onError: (error) => {
+            toast.error('Error removing league');
+            console.error(error);
+        },
+        preserveScroll: true,
+    });
+};
 </script>
 
 <template>
@@ -99,9 +114,20 @@ const removeManager = ({ clubId, userId }: { clubId: number; userId: number }) =
                     </div>
                     <div class="flex flex-col gap-4">
                         <H3>Leagues</H3>
-                        <!-- TODO: Implement leagues section functionality -->
-                        <!-- {{ data.club?.leagues }} -->
-                        Incoming...
+                        <ScrollArea class="w-full" type="hover" v-if="data.club?.leagues">
+                            <div class="mb-4 flex flex-row gap-4">
+                                <Badge v-for="league in data.club?.leagues" :key="league.id" variant="secondary" class="cursor-default">
+                                    <X
+                                        class="mr-2 h-4 w-4 cursor-pointer text-destructive"
+                                        @click="removeLeague({ clubId: props.clubId, leagueId: league.id })"
+                                    />
+                                    {{ league.name }}
+                                </Badge>
+                            </div>
+                            <ScrollBar orientation="horizontal" />
+                        </ScrollArea>
+                        <Muted>Incoming...</Muted>
+                        {{ data.club?.leagues }}
                     </div>
                     <div class="flex flex-col gap-4">
                         <H3>Managers</H3>
