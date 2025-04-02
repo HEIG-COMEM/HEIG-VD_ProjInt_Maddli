@@ -78,21 +78,23 @@ fetchAvailableLeagues(props.clubId);
 </script>
 
 <template>
-    <H4>Add a coaching staff</H4>
-    <div class="flex flex-row items-end gap-2">
-        <AppComboboxTrigger item-name="user" :items="availableCoach.availableCoaches" @select="handleSelectedCoach($event)" />
-        <Select v-model="selectedLeague" :disabled="!selectedCoach?.label">
-            <SelectTrigger>
-                <SelectValue placeholder="Select a league" />
-            </SelectTrigger>
-            <SelectContent>
-                <SelectItem v-if="!availableLeagues.length" value="empty" disabled>No leagues found</SelectItem>
-                <SelectItem v-for="league in availableLeagues" :key="league.value" :value="league.value">
-                    {{ league.label }}
-                </SelectItem>
-            </SelectContent>
-        </Select>
-        <Button :disabled="!selectedCoach || !selectedLeague" @click="handleAddCoach()"> Add a coach </Button>
+    <div class="flex flex-col gap-2">
+        <H4>Add a coaching staff</H4>
+        <div class="flex flex-row items-end gap-2">
+            <AppComboboxTrigger item-name="user" :items="availableCoach.availableCoaches" @select="handleSelectedCoach($event)" />
+            <Select v-model="selectedLeague" :disabled="!selectedCoach?.label">
+                <SelectTrigger>
+                    <SelectValue placeholder="Select a league" />
+                </SelectTrigger>
+                <SelectContent>
+                    <SelectItem v-if="!availableLeagues.length" value="empty" disabled>No leagues found</SelectItem>
+                    <SelectItem v-for="league in availableLeagues" :key="league.value" :value="league.value">
+                        {{ league.label }}
+                    </SelectItem>
+                </SelectContent>
+            </Select>
+            <Button :disabled="!selectedCoach || !selectedLeague" @click="handleAddCoach()"> Add a coach </Button>
+        </div>
     </div>
 </template>
 

@@ -3,6 +3,7 @@ import AddCoach from '@/components/admin/AddCoach.vue';
 import AddManager from '@/components/admin/AddManager.vue';
 import AppUserCard from '@/components/admin/AppUserCard.vue';
 import { H3 } from '@/components/typography/headings';
+import { Muted } from '@/components/typography/texts';
 import { Button } from '@/components/ui/button';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
@@ -71,56 +72,63 @@ const removeManager = ({ clubId, userId }: { clubId: number; userId: number }) =
             <div class="mt-12">
                 <div v-if="isFetching">Loading...</div>
                 <div v-else-if="error">Error: {{ error.message }}</div>
-                <div v-else>
-                    <H3>Coaches</H3>
-                    <ScrollArea class="w-full" type="hover">
-                        <div class="mb-4 flex flex-row gap-4">
-                            <AppUserCard
-                                v-for="coach in data.club?.coaches"
-                                :key="coach.id"
-                                :userId="coach.id"
-                                :name="coach.name"
-                                :email="coach.email"
-                            >
-                                <template #content>
-                                    <Button variant="destructive" class="w-full" @click="removeCoach({ clubId: props.clubId, userId: coach.id })">
-                                        <X class="mr-2 h-4 w-4" />
-                                        Remove from coaching staff
-                                    </Button>
-                                </template>
-                            </AppUserCard>
-                        </div>
-                        <ScrollBar orientation="horizontal" />
-                    </ScrollArea>
-                    <div>
+                <div v-else class="flex flex-col gap-8">
+                    <div class="flex flex-col gap-4">
+                        <H3>Coaches</H3>
+                        <ScrollArea class="w-full" type="hover" v-if="data.club?.coaches.length">
+                            <div class="mb-4 flex flex-row gap-4">
+                                <AppUserCard
+                                    v-for="coach in data.club?.coaches"
+                                    :key="coach.id"
+                                    :userId="coach.id"
+                                    :name="coach.name"
+                                    :email="coach.email"
+                                >
+                                    <template #content>
+                                        <Button variant="destructive" class="w-full" @click="removeCoach({ clubId: props.clubId, userId: coach.id })">
+                                            <X class="mr-2 h-4 w-4" />
+                                            Remove from coaching staff
+                                        </Button>
+                                    </template>
+                                </AppUserCard>
+                            </div>
+                            <ScrollBar orientation="horizontal" />
+                        </ScrollArea>
+                        <Muted v-else> No coaches found </Muted>
                         <AddCoach :club-id="props.clubId" @add-coach="executeFetch()" />
                     </div>
-                    <br />
-                    <H3>Leagues</H3>
-                    <!-- {{ data.club?.leagues }} -->
-                    Incoming...
-                    <br />
-                    <H3>Managers</H3>
-                    <ScrollArea class="w-full" type="hover">
-                        <div class="mb-4 flex flex-row gap-4">
-                            <AppUserCard
-                                v-for="manager in data.club?.managers"
-                                :key="manager.id"
-                                :userId="manager.id"
-                                :name="manager.name"
-                                :email="manager.email"
-                            >
-                                <template #content>
-                                    <Button variant="destructive" class="w-full" @click="removeManager({ clubId: props.clubId, userId: manager.id })">
-                                        <X class="mr-2 h-4 w-4" />
-                                        Remove from management
-                                    </Button>
-                                </template>
-                            </AppUserCard>
-                        </div>
-                        <ScrollBar orientation="horizontal" />
-                    </ScrollArea>
-                    <div>
+                    <div class="flex flex-col gap-4">
+                        <H3>Leagues</H3>
+                        <!-- TODO: Implement leagues section functionality -->
+                        <!-- {{ data.club?.leagues }} -->
+                        Incoming...
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <H3>Managers</H3>
+                        <ScrollArea class="w-full" type="hover" v-if="data.club?.managers.length">
+                            <div class="mb-4 flex flex-row gap-4">
+                                <AppUserCard
+                                    v-for="manager in data.club?.managers"
+                                    :key="manager.id"
+                                    :userId="manager.id"
+                                    :name="manager.name"
+                                    :email="manager.email"
+                                >
+                                    <template #content>
+                                        <Button
+                                            variant="destructive"
+                                            class="w-full"
+                                            @click="removeManager({ clubId: props.clubId, userId: manager.id })"
+                                        >
+                                            <X class="mr-2 h-4 w-4" />
+                                            Remove from management
+                                        </Button>
+                                    </template>
+                                </AppUserCard>
+                            </div>
+                            <ScrollBar orientation="horizontal" />
+                        </ScrollArea>
+                        <Muted v-else> No managers found </Muted>
                         <AddManager :club-id="props.clubId" @add-manager="executeFetch()" />
                     </div>
                 </div>

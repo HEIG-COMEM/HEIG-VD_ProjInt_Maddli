@@ -50,10 +50,12 @@ const handleAddManager = () => {
 </script>
 
 <template>
-    <H4>Add a manager</H4>
-    <div class="flex flex-row items-end gap-2">
-        <AppComboboxTrigger item-name="user" :items="availableManager.availableManagers" @select="handleSelectedManager($event)" />
-        <Button :disabled="!selectedManager" @click="handleAddManager()"> Add a manager </Button>
+    <div class="flex flex-col gap-2">
+        <H4>Add a manager</H4>
+        <div class="flex flex-row items-end gap-2">
+            <AppComboboxTrigger item-name="user" :items="availableManager.availableManagers" @select="handleSelectedManager($event)" />
+            <Button :disabled="!selectedManager" @click="handleAddManager()"> Add a manager </Button>
+        </div>
     </div>
 </template>
 
