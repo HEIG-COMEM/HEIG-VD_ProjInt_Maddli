@@ -5,9 +5,9 @@ import { computed } from 'vue';
 const props = withDefaults(
     defineProps<{
         position?: {
-            top: number; // Top position of the caption
-            left: number; // Left position of the caption
-            unit: 'px' | '%' | 'viewport'; // Unit for positioning (pixels, percentage, or viewport)
+            top: number; // Caption's top position
+            left: number; // Caption's left position
+            unit: 'px' | '%' | 'viewport'; // Positioning unit: pixels, percentage, or viewport
         };
     }>(),
     {
@@ -19,7 +19,7 @@ const props = withDefaults(
     },
 );
 
-// Compute the CSS style for positioning the caption
+// Compute CSS style for caption positioning
 const unit = computed(() => {
     if (props.position.unit === 'viewport') {
         // Convert viewport units to vh and vw
@@ -28,7 +28,7 @@ const unit = computed(() => {
             left: `${props.position.left}vw`,
         };
     }
-    // Use the specified unit for positioning
+    // Use specified unit for positioning
     return {
         top: `${props.position.top}${props.position.unit}`,
         left: `${props.position.left}${props.position.unit}`,
@@ -37,11 +37,11 @@ const unit = computed(() => {
 </script>
 
 <template>
-    <!-- Main container for the caption, positioned absolutely -->
+    <!-- Caption container with absolute positioning -->
     <div class="absolute" :style="unit">
-        <!-- Text content with styling for the caption -->
-        <div class="font-comic"><slot /></div>
+        <!-- Caption styled as a sticky note -->
+        <div class="font-comic max-w-[400px] break-words rounded bg-[#feffd3] p-4 px-6 text-left text-xl leading-relaxed text-[#321c16] shadow-md">
+            <slot />
+        </div>
     </div>
 </template>
-
-<style scoped></style>
