@@ -13,6 +13,7 @@ import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Tabl
 import AppLayout from '@/layouts/AppLayout.vue';
 import { debounce } from '@/lib/utils';
 import { availableCoach } from '@/stores/admin/availableCoachStore';
+import { availableManager } from '@/stores/admin/availableManagerStore';
 import { type BreadcrumbItem } from '@/types';
 import { Head, router } from '@inertiajs/vue3';
 import { Shield } from 'lucide-vue-next';
@@ -29,6 +30,7 @@ const nameFilter = ref(props.filters.name || '');
 const nameFilterInput = useTemplateRef('nameFilterInput');
 
 availableCoach.fetchAvailableCoaches();
+availableManager.fetchAvailableManagers();
 
 const breadcrumbs: BreadcrumbItem[] = [
     {

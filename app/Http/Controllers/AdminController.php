@@ -138,4 +138,72 @@ class AdminController extends Controller
 
         return redirect()->back()->with('success', 'Coach added to club successfully.');
     }
+
+    public function deleteClubManager(Request $request, int $clubId, int $userId)
+    {
+        $club = Club::find($clubId);
+        if (!$club) abort(404);
+        $user = User::find($userId);
+        if (!$user) abort(404);
+
+        $club->managers()->detach($userId);
+
+        return redirect()->back()->with('success', 'Manager removed from club successfully.');
+    }
+
+    public function addClubManager(Request $request, int $clubId, int $userId)
+    {
+        $club = Club::find($clubId);
+        if (!$club) abort(404);
+        $user = User::find($userId);
+        if (!$user) abort(404);
+
+        // Check if the user is already a manager in the club
+        if ($club->managers()->where('user_id', $userId)->exists()) {
+            return redirect()->back()->withErrors(['message' => 'User is already a manager in this club.']);
+        }
+
+        $club->managers()->attach($userId);
+
+        return redirect()->back()->with('success', 'Manager added to club successfully.');
+    }
+
+    public function deleteLeagueClub(Request $request, int $leagueId, int $clubId)
+    {
+        $club = Club::find($clubId);
+        if (!$club) abort(404);
+
+        $clubLeague = ClubLeague::where('club_id', $clubId)
+            ->where('league_id', $leagueId)
+            ->first();
+
+        if (!$clubLeague) {
+            return redirect()->back()->withErrors(['message' => 'Club league not found.']);
+        }
+
+        $clubLeague->delete();
+
+        return redirect()->back()->with('success', 'Club removed from league successfully.');
+    }
+
+    public function addLeagueClub(Request $request, int $clubId, int $leagueId)
+    {
+        $club = Club::find($clubId);
+        if (!$club) abort(404);
+
+        $clubLeague = ClubLeague::where('club_id', $clubId)
+            ->where('league_id', $leagueId)
+            ->first();
+
+        if ($clubLeague) {
+            return redirect()->back()->withErrors(['message' => 'Club is already in this league.']);
+        }
+
+        ClubLeague::create([
+            'club_id' => $clubId,
+            'league_id' => $leagueId,
+        ]);
+
+        return redirect()->back()->with('success', 'Club added to league successfully.');
+    }
 }

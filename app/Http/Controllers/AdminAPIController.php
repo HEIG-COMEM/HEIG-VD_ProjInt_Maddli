@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ClubLeague;
+use App\Models\League;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -20,6 +21,14 @@ class AdminAPIController extends Controller
         ]);
     }
 
+    public function availableManagers(Request $request)
+    {
+        $managers = User::get(['id', 'name']);
+        return response()->json([
+            'managers' => $managers,
+        ]);
+    }
+
     public function availableLeagues(Request $request, int $id)
     {
         $clubLeagues = ClubLeague::where('club_id', $id)
@@ -33,6 +42,15 @@ class AdminAPIController extends Controller
                 'name' => $clubLeague->league->name,
             ];
         }
+
+        return response()->json([
+            'leagues' => $leagues,
+        ]);
+    }
+
+    public function leagues(Request $request)
+    {
+        $leagues = League::all(['id', 'name']);
 
         return response()->json([
             'leagues' => $leagues,
