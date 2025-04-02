@@ -51,6 +51,7 @@ Route::prefix('club')->group(function () {
             Route::get('/clubs/{id}', [AdminController::class, 'club'])->name('club.admin.club');
             Route::delete('/club/{clubId}/coaches/{userId}', [AdminController::class, 'deleteClubCoach'])->name('club.admin.club.coaches');
             Route::delete('/club/{clubId}/managers/{userId}', [AdminController::class, 'deleteClubManager'])->name('club.admin.club.managers.delete');
+            Route::delete('/league/{leagueId}/clubs/{clubId}', [AdminController::class, 'deleteLeagueClub'])->name('club.admin.league.clubs.delete');
             Route::post('/club/{clubId}/coaches/{userId}', [AdminController::class, 'addClubCoach'])->name('club.admin.club.coaches.add');
             Route::post('/club/{clubId}/managers/{userId}', [AdminController::class, 'addClubManager'])->name('club.admin.club.managers.add');
 

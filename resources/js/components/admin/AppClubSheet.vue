@@ -4,6 +4,17 @@ import AddManager from '@/components/admin/AddManager.vue';
 import AppUserCard from '@/components/admin/AppUserCard.vue';
 import { H3 } from '@/components/typography/headings';
 import { Muted } from '@/components/typography/texts';
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
@@ -114,20 +125,37 @@ const removeLeague = ({ clubId, leagueId }: { clubId: number; leagueId: number }
                     </div>
                     <div class="flex flex-col gap-4">
                         <H3>Leagues</H3>
-                        <ScrollArea class="w-full" type="hover" v-if="data.club?.leagues">
+                        <ScrollArea class="w-full" type="hover" v-if="data.club?.leagues.length">
                             <div class="mb-4 flex flex-row gap-4">
                                 <Badge v-for="league in data.club?.leagues" :key="league.id" variant="secondary" class="cursor-default">
-                                    <X
-                                        class="mr-2 h-4 w-4 cursor-pointer text-destructive"
-                                        @click="removeLeague({ clubId: props.clubId, leagueId: league.id })"
-                                    />
-                                    {{ league.name }}
+                                    <AlertDialog>
+                                        <AlertDialogTrigger class="flex items-center gap-1">
+                                            <X class="mr-2 h-4 w-4 cursor-pointer text-destructive" />
+                                            {{ league.name }}
+                                        </AlertDialogTrigger>
+                                        <AlertDialogContent>
+                                            <AlertDialogHeader>
+                                                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                                                <AlertDialogDescription>
+                                                    This action cannot be undone. This will permanently remove all coaches in this league from the
+                                                    club.
+                                                </AlertDialogDescription>
+                                            </AlertDialogHeader>
+                                            <AlertDialogFooter>
+                                                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                                <AlertDialogAction
+                                                    class="bg-destructive text-destructive-foreground hover:bg-destructive/90 focus:ring-destructive"
+                                                    @click="removeLeague({ clubId: props.clubId, leagueId: league.id })"
+                                                    >Permanently delete</AlertDialogAction
+                                                >
+                                            </AlertDialogFooter>
+                                        </AlertDialogContent>
+                                    </AlertDialog>
                                 </Badge>
                             </div>
                             <ScrollBar orientation="horizontal" />
                         </ScrollArea>
-                        <Muted>Incoming...</Muted>
-                        {{ data.club?.leagues }}
+                        <Muted v-else> No leagues found </Muted>
                     </div>
                     <div class="flex flex-col gap-4">
                         <H3>Managers</H3>

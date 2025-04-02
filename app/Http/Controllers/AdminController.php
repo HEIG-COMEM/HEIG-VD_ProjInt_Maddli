@@ -167,4 +167,22 @@ class AdminController extends Controller
 
         return redirect()->back()->with('success', 'Manager added to club successfully.');
     }
+
+    public function deleteLeagueClub(Request $request, int $leagueId, int $clubId)
+    {
+        $club = Club::find($clubId);
+        if (!$club) abort(404);
+
+        $clubLeague = ClubLeague::where('club_id', $clubId)
+            ->where('league_id', $leagueId)
+            ->first();
+
+        if (!$clubLeague) {
+            return redirect()->back()->withErrors(['message' => 'Club league not found.']);
+        }
+
+        $clubLeague->delete();
+
+        return redirect()->back()->with('success', 'Club removed from league successfully.');
+    }
 }
