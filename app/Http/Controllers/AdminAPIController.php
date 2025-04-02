@@ -20,6 +20,14 @@ class AdminAPIController extends Controller
         ]);
     }
 
+    public function availableManagers(Request $request)
+    {
+        $managers = User::get(['id', 'name']);
+        return response()->json([
+            'managers' => $managers,
+        ]);
+    }
+
     public function availableLeagues(Request $request, int $id)
     {
         $clubLeagues = ClubLeague::where('club_id', $id)

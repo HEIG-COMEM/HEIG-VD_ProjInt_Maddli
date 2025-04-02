@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import AddCoach from '@/components/admin/AddCoach.vue';
+import AddManager from '@/components/admin/AddManager.vue';
 import AppUserCard from '@/components/admin/AppUserCard.vue';
 import { H3 } from '@/components/typography/headings';
 import { Button } from '@/components/ui/button';
@@ -38,6 +39,20 @@ const removeCoach = ({ clubId, userId }: { clubId: number; userId: number }) => 
         preserveScroll: true,
     });
 };
+
+const removeManager = ({ clubId, userId }: { clubId: number; userId: number }) => {
+    router.delete(route('club.admin.club.managers.delete', { clubId, userId }), {
+        onSuccess: () => {
+            executeFetch();
+            toast.success('Manager removed successfully');
+        },
+        onError: (error) => {
+            toast.error('Error removing manager');
+            console.error(error);
+        },
+        preserveScroll: true,
+    });
+};
 </script>
 
 <template>
@@ -68,7 +83,7 @@ const removeCoach = ({ clubId, userId }: { clubId: number; userId: number }) => 
                                 :email="coach.email"
                             >
                                 <template #content>
-                                    <Button variant="destructive" class="w-full" @click="removeCoach({ clubId: clubId, userId: coach.id })">
+                                    <Button variant="destructive" class="w-full" @click="removeCoach({ clubId: props.clubId, userId: coach.id })">
                                         <X class="mr-2 h-4 w-4" />
                                         Remove from coaching staff
                                     </Button>
@@ -86,8 +101,28 @@ const removeCoach = ({ clubId, userId }: { clubId: number; userId: number }) => 
                     Incoming...
                     <br />
                     <H3>Managers</H3>
-                    <!-- {{ data.club?.managers }} -->
-                    Incoming...
+                    <ScrollArea class="w-full" type="hover">
+                        <div class="mb-4 flex flex-row gap-4">
+                            <AppUserCard
+                                v-for="manager in data.club?.managers"
+                                :key="manager.id"
+                                :userId="manager.id"
+                                :name="manager.name"
+                                :email="manager.email"
+                            >
+                                <template #content>
+                                    <Button variant="destructive" class="w-full" @click="removeManager({ clubId: props.clubId, userId: manager.id })">
+                                        <X class="mr-2 h-4 w-4" />
+                                        Remove from management
+                                    </Button>
+                                </template>
+                            </AppUserCard>
+                        </div>
+                        <ScrollBar orientation="horizontal" />
+                    </ScrollArea>
+                    <div>
+                        <AddManager :club-id="props.clubId" @add-manager="executeFetch()" />
+                    </div>
                 </div>
             </div>
         </SheetContent>

@@ -13,7 +13,7 @@ defineProps<{
 </script>
 
 <template>
-    <Card class="w-full max-w-xs">
+    <Card class="w-full max-w-sm">
         <CardHeader class="flex flex-row items-center space-x-4">
             <AppAvatar :name="name" />
             <div class="flex flex-col justify-between">
