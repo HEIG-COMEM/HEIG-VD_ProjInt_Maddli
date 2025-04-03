@@ -40,7 +40,7 @@ const unit = computed(() => {
     <!-- Caption container with absolute positioning -->
     <div class="absolute" :style="unit">
         <!-- Caption styled as a sticky note -->
-        <div class="font-comic max-w-[400px] break-words rounded bg-[#feffd3] p-4 px-6 text-left text-xl leading-relaxed text-[#321c16] shadow-md">
+        <div class="max-w-[400px] break-words rounded bg-[#feffd3] p-4 px-6 text-left font-comic text-xl leading-relaxed text-[#321c16] shadow-md">
             <slot />
         </div>
     </div>
