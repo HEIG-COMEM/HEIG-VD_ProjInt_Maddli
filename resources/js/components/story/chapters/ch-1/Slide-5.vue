@@ -1,19 +1,22 @@
 <script setup lang="ts">
-import AnswerFeedback from '@/components/story/feedback/AnswerFeedback.vue';
+import InsightBox from '@/components/story/feedback/InsightBox.vue';
+
+const bgColor = '#504D48';
 </script>
 
 <template>
-    <section>
-        <h1>Chapter 1 - Slide 5</h1>
-        <AnswerFeedback
-            :isCorrect="true"
-            feedbackTitle="Great job! You've made the right choice."
-            feedbackText="Well done! That was the correct choice. By refocusing the team while maintaining a positive atmosphere, you help them approach the match with the right mindset."
-        />
-        <AnswerFeedback
-            :isCorrect="false"
-            feedbackTitle="Oops! You made the wrong choice."
-            feedbackText="That was not the correct choice. By focusing too much on the score, you risk creating tension and stress within the team. Instead, try to refocus on the process and the team's performance."
-        />
+    <section :data-background-color="bgColor" data-auto-animate class="h-full">
+        <div class="flex h-full w-full flex-col">
+            <InsightBox title="Responsibilities">
+                <p>
+                    As a coach, you are <span class="font-bold">the point of reference</span> for your team, which entails responsibilities towards
+                    your club, your players, their parents, and your football league.
+                </p>
+                <p>
+                    The squad call-up is a concrete example of this responsibility. You must make decisions that will have a
+                    <span class="font-bold">direct impact</span> on your squad, the group dynamic, and the progress of each player.
+                </p>
+            </InsightBox>
+        </div>
     </section>
 </template>

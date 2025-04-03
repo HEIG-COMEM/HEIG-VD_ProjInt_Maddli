@@ -1,16 +1,15 @@
 <script setup lang="ts">
-import QuestionMultipleChoice from '@/components/story/questions/QuestionMultipleChoice.vue';
+import TheCoach from '@/components/story/characters/TheCoach.vue';
+import DialogBubble from '@/components/story/ui/DialogBubble.vue';
+
+const bg = '/assets/story/bg/1.png';
 </script>
 
 <template>
-    <section>
-        <QuestionMultipleChoice
-            question="You see the players joking around before the warm-up. How do you get them to refocus?"
-            :answers="[
-                'I remind them of the importance of proper preparation to enter the game in the best conditions.',
-                'I let them continue, hoping they will focus on their own by kickoff.',
-                'I shout at them to stop immediately and line up.',
-            ]"
-        />
+    <section :data-background-image="bg" data-auto-animate class="h-full">
+        <div class="flex h-full w-full flex-col items-center justify-center">
+            <TheCoach :scale="1.2" :poseNumber="1" :chNumber="1" class="xl:!-bottom-2/5 !-bottom-[60%] !left-1/4" />
+            <DialogBubble class="!left-1/3 !top-[15%] !max-w-xs xl:!left-[28%]" text="Tomorrow is match day, you need to set up the match sheet." />
+        </div>
     </section>
 </template>

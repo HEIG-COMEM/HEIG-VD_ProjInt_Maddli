@@ -9,6 +9,7 @@ defineProps<{
 </script>
 
 <template>
+    <div class="absolute inset-0 -z-10 h-full w-full scale-150 bg-black opacity-50"></div>
     <div class="flex flex-col items-center justify-center gap-4 p-4">
         <div class="relative w-full max-w-3xl rounded-3xl border-2 border-gray-200 bg-white p-8 text-center shadow-lg">
             <div :class="['absolute -left-8 -top-8 h-16 w-16 rounded-full p-3', isCorrect ? 'bg-green-100' : 'bg-red-100']">
