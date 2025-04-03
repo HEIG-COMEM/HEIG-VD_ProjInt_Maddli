@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Caption from '../../ui/Caption.vue';
+import Caption from '@/components/story/ui/Caption.vue';
 </script>
 
 <template>

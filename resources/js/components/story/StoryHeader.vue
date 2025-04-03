@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import StoryProgress from './StoryProgress.vue';
+import StoryProgress from '@/components/story/StoryProgress.vue';
 </script>
 
 <template>

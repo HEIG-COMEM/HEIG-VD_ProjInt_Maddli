@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import DialogBubble from '../../ui/DialogBubble.vue';
+import DialogBubble from '@/components/story/ui/DialogBubble.vue';
 </script>
 
 <template>
