@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { Button } from '@/components/ui/button';
 import { storyStore } from '@/stores/storyStore';
+import { GripHorizontal } from 'lucide-vue-next';
 import { createSwapy } from 'swapy';
 import { onMounted, ref } from 'vue';
 
@@ -56,21 +58,13 @@ onMounted(() => {
                         data-swapy-handle
                     >
                         {{ choice }}
-                        <div class="ml-auto h-6 w-6 rounded bg-gray-500">
-                            <!-- TODO : SVG icon will be added here -->
-                        </div>
+                        <GripHorizontal class="ml-auto h-6 w-6" />
                     </div>
                 </div>
             </div>
 
             <!-- Validate Button -->
-            <button
-                :disabled="isButtonDisabled"
-                @click="validateOrder"
-                class="mt-8 rounded-xl bg-blue-500 px-6 py-3 font-bold text-white transition-colors duration-1000 hover:bg-blue-600 disabled:bg-gray-500"
-            >
-                Validate
-            </button>
+            <Button :disabled="isButtonDisabled" @click="validateOrder"> Validate </Button>
         </div>
     </div>
 </template>
