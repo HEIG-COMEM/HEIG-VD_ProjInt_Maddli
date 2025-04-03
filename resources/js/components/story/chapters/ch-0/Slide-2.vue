@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { storyStore } from '../../../../stores/storyStore';
-import IntroOutro from '../../ui/IntroOutro.vue';
+import IntroOutro from '@/components/story/ui/IntroOutro.vue';
+import { storyStore } from '@/stores/storyStore';
 </script>
 
 <template>

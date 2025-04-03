@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import StoryChapter from './StoryChapter.vue';
-import StoryHeader from './StoryHeader.vue';
+import StoryChapter from '@/components/story/StoryChapter.vue';
+import StoryHeader from '@/components/story/StoryHeader.vue';
 </script>
 
 <template>
