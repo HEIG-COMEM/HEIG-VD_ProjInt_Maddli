@@ -19,11 +19,11 @@ import { Timer } from 'lucide-vue-next';
             </div>
             <div class="relative flex h-96 justify-center">
                 <DialogBubble
-                    text="I am a ambassador of the Hello Coach program."
+                    text="Are you ready to begin? Let’s go!"
                     tailPosition="left"
-                    class="!-top-1/2 !left-1/2 object-contain xl:!-top-1/4 xl:!left-1/3"
+                    class="!-top-1/2 !left-2/3 object-contain xl:!-top-1/4 xl:!left-1/2"
                 />
-                <TheCoach :scale="1.2" :poseNumber="3" :chNumber="0" class="!-bottom-[120%] !left-1/3 xl:!-bottom-full" />
+                <TheCoach :scale="1.2" :poseNumber="5" :chNumber="0" class="!-bottom-[120%] !left-1/2 xl:!-bottom-full" />
             </div>
         </div>
     </section>
