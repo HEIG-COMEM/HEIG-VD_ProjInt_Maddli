@@ -2,6 +2,6 @@
 
 <template>
     <section data-background-image="/assets/story/bg/8.png" data-auto-animate>
-        <h1>Chapter 7 - Slide 5</h1>
+        <h1>FEED BACK</h1>
     </section>
 </template>
