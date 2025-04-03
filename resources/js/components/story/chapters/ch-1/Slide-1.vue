@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import DialogBubble from '@/components/story/ui/DialogBubble.vue';
+import Caption from '@/components/story/ui/Caption.vue';
 </script>
 
 <template>
-    <section data-background-color="aquamarine" class="relative">
-        <h1>Chapter 1 - Slide 1</h1>
-        <DialogBubble
-            text="Hello world ! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos."
-            :position="{ top: 0, left: 25, unit: 'viewport' }"
-        />
+    <section data-background-color="aquamarine" class="relative h-full">
+        <div class="flex h-full w-full flex-col items-end justify-end">
+            <Caption class="!static">One day before the game.</Caption>
+        </div>
     </section>
 </template>
