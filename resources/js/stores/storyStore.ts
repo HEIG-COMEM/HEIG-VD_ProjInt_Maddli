@@ -1,29 +1,5 @@
 import { reactive, shallowRef } from 'vue';
 
-// Define color constants with their hex codes
-const COLORS = {
-    BROWN: '#321C16',
-    GRAY: '#504D48',
-    DARK_GREEN: '#1A240B',
-    LIGHT_GREEN: '#384712',
-    LIGHT_BROWN: '#5E2C02',
-    RED: '#873035',
-    BLUE: '#1E404A',
-    WHITE: '#FFFFFF',
-} as const;
-
-// Define background image paths
-const BACKGROUND_IMAGES = {
-    IMG1: '/img1.png',
-    IMG2: '/img2.png',
-    IMG3: '/img3.png',
-    IMG4: '/img4.png',
-    IMG5: '/img5.png',
-    IMG6: '/img6.png',
-    IMG7: '/img7.png',
-    IMG8: '/img8.png',
-} as const;
-
 // Define the structure of a Slide with a path and a component reference
 interface Slide {
     path: string;
@@ -37,9 +13,7 @@ interface StoryStore {
     choices: any[];
     slides: Slide[];
     currentSlideIndex: number;
-    backgroundColor: string; // Global variable for background color
-    backgroundImage: string; // Global variable for background image
-    duration: string; // Add this new property
+    duration: string;
 
     addChoice(choice: any): void; // Method to add a choice to the choices array
     getChoices(): any[]; // Method to retrieve all choices
@@ -53,8 +27,6 @@ interface StoryStore {
     getAllChaptersFoldersNames(): string[]; // Method to retrieve all chapters folders
     getNumberOfSlidesInChapter(chapter: string): number; // Method to retrieve the number of slides in a chapter
     getNumberOfSlidesInEachChapter(): number[]; // Method to retrieve the number of slides in each chapter
-    setBackground(background: keyof typeof COLORS | keyof typeof BACKGROUND_IMAGES): void; // Method to set the background using predefined values
-    updateBackground(): void; // Method to update the DOM with current background settings
     getDuration(): string; // Add this new method signature
 }
 
@@ -65,9 +37,7 @@ export const storyStore = reactive<StoryStore>({
     choices: [],
     slides: [],
     currentSlideIndex: 0,
-    backgroundColor: '', // Initialize empty background color
-    backgroundImage: '', // Initialize empty background image
-    duration: '', // Add this new property initialization
+    duration: '',
 
     // Method to add a choice to the choices array
     addChoice(choice: any) {
@@ -136,35 +106,6 @@ export const storyStore = reactive<StoryStore>({
         return this.getAllChaptersFolders().map((chapter) => this.getNumberOfSlidesInChapter(chapter));
     },
 
-    // Method to set the background using predefined values
-    setBackground(background: keyof typeof COLORS | keyof typeof BACKGROUND_IMAGES) {
-        if (background in COLORS) {
-            this.backgroundColor = COLORS[background as keyof typeof COLORS];
-            this.backgroundImage = '';
-        } else if (background in BACKGROUND_IMAGES) {
-            this.backgroundImage = BACKGROUND_IMAGES[background as keyof typeof BACKGROUND_IMAGES];
-            this.backgroundColor = '';
-        }
-        this.updateBackground();
-    },
-
-    // Method to update the DOM with current background settings
-    updateBackground() {
-        const currentSlide = this.getCurrentSlide();
-        if (currentSlide) {
-            const slideElement = document.querySelector(`section[data-background-color], section[data-background-image]`);
-            if (slideElement) {
-                if (this.backgroundColor) {
-                    slideElement.removeAttribute('data-background-image');
-                    slideElement.setAttribute('data-background-color', this.backgroundColor);
-                } else if (this.backgroundImage) {
-                    slideElement.removeAttribute('data-background-color');
-                    slideElement.setAttribute('data-background-image', this.backgroundImage);
-                }
-            }
-        }
-    },
-
     // Method to initialize slide components by importing and structuring them
     initializeSlides() {
         const modules = import.meta.glob('../components/story/chapters/ch-*/Slide-*.vue', { eager: true });
@@ -176,7 +117,7 @@ export const storyStore = reactive<StoryStore>({
             }))
             .sort((a, b) => a.path.localeCompare(b.path));
 
-        // Add this duration calculation
+        // Calculate the total duration of the slides based on a fixed time per slide and format result
         const totalSeconds = this.getTotalSlides() * 7;
         if (totalSeconds < 60) {
             this.duration = `${totalSeconds} seconds`;
@@ -189,11 +130,9 @@ export const storyStore = reactive<StoryStore>({
             const minutes = Math.floor((totalSeconds % 3600) / 60);
             this.duration = `${hours} hour${hours > 1 ? 's' : ''}${minutes > 0 ? ` and ${minutes} minute${minutes > 1 ? 's' : ''}` : ''}`;
         }
-
-        this.setBackground('BROWN');
     },
 
-    // Add this new method
+    // Method to retrieve the total duration of the slides
     getDuration() {
         return this.duration;
     },
