@@ -13,7 +13,7 @@ onMounted(() => {
         plugins: [], // No plugins are used in this Reveal.js instance
         progress: false, // Disabling progress bar in Reveal.js (using our own progress bar StoryProgress.vue)
     });
-    deck.value.initialize({ width: '100%', height: '100%' }); // Initialize Reveal.js with full width and height
+    deck.value.initialize({ width: '90%', height: '100%' }); // Initialize Reveal.js with full width and height
     deck.value.on('slidechanged', (event: any) => {
         storyStore.updateCurrentSlideIndex(event.indexh); // Update current slide index in storyStore when slide changes
     });
