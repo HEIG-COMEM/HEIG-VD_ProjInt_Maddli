@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import IntroOutro from '@/components/story/ui/IntroOutro.vue';
+import { storyStore } from '@/stores/storyStore';
 import { watch } from 'vue';
-import { storyStore } from '../../../../stores/storyStore';
-import IntroOutro from '../../ui/IntroOutro.vue';
 
 // update the background color of the slide to BROWN when the slide is currentSlide
 watch(
