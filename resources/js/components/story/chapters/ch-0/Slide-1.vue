@@ -1,7 +1,26 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import IntroOutro from '@/components/story/ui/IntroOutro.vue';
+import { storyStore } from '@/stores/storyStore';
+import { watch } from 'vue';
+
+// update the background color of the slide to BROWN when the slide is currentSlide
+watch(
+    () => storyStore.currentSlideIndex,
+    () => {
+        // log color before setting it
+        // console.log(storyStore.backgroundColor);
+        storyStore.setBackground('GRAY');
+        // log color after setting it
+        // console.log(storyStore.backgroundColor);
+        // log querySelector current slide data-background-color
+        // console.log(document.querySelector('section[data-background-color]')?.getAttribute('data-background-color'));
+    },
+);
+</script>
 
 <template>
-    <section>
+    <section :data-background-color="storyStore.backgroundColor">
         <h1>Introduction- Slide 1</h1>
+        <IntroOutro type="intro" />
     </section>
 </template>
