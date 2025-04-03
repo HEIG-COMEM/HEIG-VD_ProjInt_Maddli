@@ -91,7 +91,8 @@ export const storyStore = reactive<StoryStore>({
             'ch-4': 'Chapter 4',
             'ch-5': 'Chapter 5',
             'ch-6': 'Chapter 6',
-            'ch-7': 'Conclusion',
+            'ch-7': 'Chapter 7',
+            'ch-8': 'Conclusion',
         };
         return this.getAllChaptersFolders().map((folder) => chapterNames[folder as keyof typeof chapterNames]);
     },
