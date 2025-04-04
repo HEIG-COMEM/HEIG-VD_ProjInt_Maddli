@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import TheCoach from '@/components/story/characters/TheCoach.vue';
 import DialogBubble from '@/components/story/ui/DialogBubble.vue';
+import { storyStore } from '@/stores/storyStore';
 import { Timer } from 'lucide-vue-next';
+import Character from '../../characters/Character.vue';
 </script>
 
 <template>
@@ -13,7 +14,7 @@ import { Timer } from 'lucide-vue-next';
                     How to become a coach?
                     <div class="mt-1 flex items-center text-sm sm:text-lg md:mt-4 md:text-xl lg:text-2xl">
                         <Timer class="mr-2" />
-                        Duration: 7 minutes
+                        Duration: {{ storyStore.getDuration() }}
                     </div>
                 </div>
             </div>
@@ -23,7 +24,8 @@ import { Timer } from 'lucide-vue-next';
                     tailPosition="right"
                     class="!-top-1/2 !left-1/3 sm:!left-[30%] md:!-top-3/4 lg:!-top-1/4 lg:!left-1/4 xl:!-top-1/3 xl:!left-1/4"
                 />
-                <TheCoach
+                <Character
+                    :type="'coach'"
                     :scale="0.2"
                     :poseNumber="2"
                     :chNumber="0"

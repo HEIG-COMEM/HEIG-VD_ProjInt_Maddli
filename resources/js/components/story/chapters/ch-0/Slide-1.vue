@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import TheCoach from '@/components/story/characters/TheCoach.vue';
+import Character from '@/components/story/characters/Character.vue';
 import Caption from '@/components/story/ui/Caption.vue';
+import { storyStore } from '@/stores/storyStore';
 import { MoveDown, MoveLeft, MoveRight, MoveUp, Timer } from 'lucide-vue-next';
 </script>
 
@@ -13,7 +14,7 @@ import { MoveDown, MoveLeft, MoveRight, MoveUp, Timer } from 'lucide-vue-next';
                     How to become a coach?
                     <div class="mt-1 flex items-center text-sm sm:text-lg md:mt-4 md:text-xl lg:text-2xl">
                         <Timer class="mr-2" />
-                        Duration: 7 minutes
+                        Duration: {{ storyStore.getDuration() }}
                     </div>
                 </div>
             </div>
@@ -38,13 +39,13 @@ import { MoveDown, MoveLeft, MoveRight, MoveUp, Timer } from 'lucide-vue-next';
                         </div>
                     </div>
                     <Caption class="!static">
-                        <p class="text-base">
+                        <p class="text-base font-medium">
                             Use your <span class="font-bold">keyboard arrows</span> to play ! Or tap with your <span class="font-bold">finger</span>
                         </p>
                     </Caption>
                 </div>
             </div>
-            <TheCoach :scale="0.2" :poseNumber="1" :chNumber="0" class="!-top-1/3 !left-0 md:!left-1/4 lg:!left-1/4 lg:!top-1/2" />
+            <Character :type="'coach'" :scale="0.2" :poseNumber="1" :chNumber="0" class="!-top-1/3 !left-0 md:!left-1/4 lg:!left-1/4 lg:!top-1/2" />
         </div>
     </section>
 </template>

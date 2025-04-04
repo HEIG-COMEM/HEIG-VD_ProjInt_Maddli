@@ -123,13 +123,12 @@ export const storyStore = reactive<StoryStore>({
         if (totalSeconds < 60) {
             this.duration = `${totalSeconds} seconds`;
         } else if (totalSeconds < 3600) {
-            const minutes = Math.floor(totalSeconds / 60);
-            const seconds = totalSeconds % 60;
-            this.duration = `${minutes} minute${minutes > 1 ? 's' : ''}${seconds > 0 ? ` and ${seconds} second${seconds > 1 ? 's' : ''}` : ''}`;
+            const minutes = Math.round(totalSeconds / 60);
+            this.duration = `~${minutes} minute${minutes > 1 ? 's' : ''}`;
         } else {
             const hours = Math.floor(totalSeconds / 3600);
-            const minutes = Math.floor((totalSeconds % 3600) / 60);
-            this.duration = `${hours} hour${hours > 1 ? 's' : ''}${minutes > 0 ? ` and ${minutes} minute${minutes > 1 ? 's' : ''}` : ''}`;
+            const minutes = Math.round((totalSeconds % 3600) / 60);
+            this.duration = `${hours} hour${hours > 1 ? 's' : ''}${minutes > 0 ? ` and ~${minutes} minute${minutes > 1 ? 's' : ''}` : ''}`;
         }
     },
 
