@@ -13,6 +13,7 @@ interface StoryStore {
     choices: any[];
     slides: Slide[];
     currentSlideIndex: number;
+    duration: string;
 
     addChoice(choice: any): void; // Method to add a choice to the choices array
     getChoices(): any[]; // Method to retrieve all choices
@@ -26,6 +27,7 @@ interface StoryStore {
     getAllChaptersFoldersNames(): string[]; // Method to retrieve all chapters folders
     getNumberOfSlidesInChapter(chapter: string): number; // Method to retrieve the number of slides in a chapter
     getNumberOfSlidesInEachChapter(): number[]; // Method to retrieve the number of slides in each chapter
+    getDuration(): string; // Add this new method signature
 }
 
 // Create a reactive StoryStore instance
@@ -35,6 +37,7 @@ export const storyStore = reactive<StoryStore>({
     choices: [],
     slides: [],
     currentSlideIndex: 0,
+    duration: '',
 
     // Method to add a choice to the choices array
     addChoice(choice: any) {
@@ -88,7 +91,8 @@ export const storyStore = reactive<StoryStore>({
             'ch-4': 'Chapter 4',
             'ch-5': 'Chapter 5',
             'ch-6': 'Chapter 6',
-            'ch-7': 'Conclusion',
+            'ch-7': 'Chapter 7',
+            'ch-8': 'Conclusion',
         };
         return this.getAllChaptersFolders().map((folder) => chapterNames[folder as keyof typeof chapterNames]);
     },
@@ -105,16 +109,32 @@ export const storyStore = reactive<StoryStore>({
 
     // Method to initialize slide components by importing and structuring them
     initializeSlides() {
-        // Automatically import all slide components from specified path
         const modules = import.meta.glob('../components/story/chapters/ch-*/Slide-*.vue', { eager: true });
 
-        // Transform the imported modules into a structured format for slides
         this.slides = Object.entries(modules)
             .map(([path, module]) => ({
-                path, // Store the path of the slide
-                component: shallowRef((module as { default: any }).default), // Store the component reference
+                path,
+                component: shallowRef((module as { default: any }).default),
             }))
-            // Sort slides by path to ensure a consistent order
             .sort((a, b) => a.path.localeCompare(b.path));
+
+        // Calculate the total duration of the slides based on a fixed time per slide and format result
+        const totalSeconds = this.getTotalSlides() * 7;
+        if (totalSeconds < 60) {
+            this.duration = `${totalSeconds} seconds`;
+        } else if (totalSeconds < 3600) {
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
+            this.duration = `${minutes} minute${minutes > 1 ? 's' : ''}${seconds > 0 ? ` and ${seconds} second${seconds > 1 ? 's' : ''}` : ''}`;
+        } else {
+            const hours = Math.floor(totalSeconds / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            this.duration = `${hours} hour${hours > 1 ? 's' : ''}${minutes > 0 ? ` and ${minutes} minute${minutes > 1 ? 's' : ''}` : ''}`;
+        }
+    },
+
+    // Method to retrieve the total duration of the slides
+    getDuration() {
+        return this.duration;
     },
 });
