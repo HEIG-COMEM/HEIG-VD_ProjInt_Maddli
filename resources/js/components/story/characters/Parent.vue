@@ -17,8 +17,27 @@ const props = defineProps({
     },
 });
 
-const { width } = useWindowSize();
-const adjustedScale = computed(() => (width.value <= 1280 ? props.scale / 2 : props.scale));
+//TODO: Remove console.log statements in production
+const { width, height } = useWindowSize();
+const adjustedScale = computed(() => {
+    const isLandscape = width.value > height.value;
+    if (width.value <= 640) {
+        console.log('Mobile');
+        return props.scale;
+    } else if (width.value <= 1024 && isLandscape) {
+        console.log('Landscape Phone/Tablet');
+        return props.scale * 2;
+    } else if (width.value <= 1024) {
+        console.log('Tablet');
+        return props.scale * 3;
+    } else if (width.value <= 1280) {
+        console.log('Small Desktop');
+        return props.scale * 4.5;
+    } else {
+        console.log('Large Desktop');
+        return props.scale * 6;
+    }
+});
 </script>
 
 <template>
