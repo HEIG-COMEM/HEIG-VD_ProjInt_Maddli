@@ -13,8 +13,6 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Instrument Sans', ...defaultTheme.fontFamily.sans],
-                baloo: ['"Baloo 2"', ...defaultTheme.fontFamily.serif],
-                comic: ['"Comic Neue"', ...defaultTheme.fontFamily.serif],
             },
             borderRadius: {
                 lg: 'var(--radius)',

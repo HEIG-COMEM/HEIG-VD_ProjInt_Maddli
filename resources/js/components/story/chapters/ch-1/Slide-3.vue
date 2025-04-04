@@ -1,18 +1,58 @@
 <script setup lang="ts">
-import TheCoach from '@/components/story/characters/TheCoach.vue';
-import DialogBubble from '@/components/story/ui/DialogBubble.vue';
+import { storyStore } from '@/stores/storyStore';
+import { ref } from 'vue';
 
-const bg = '/assets/story/bg/1.png';
+const selectedAnswer = ref<string | null>(null);
+
+function handleChoice(answer: string) {
+    if (selectedAnswer.value === null) {
+        selectedAnswer.value = answer;
+        storyStore.addChoice(answer);
+    }
+}
 </script>
 
 <template>
-    <section :data-background-image="bg" data-auto-animate class="h-full">
-        <div class="flex h-full w-full flex-col items-center justify-center">
-            <TheCoach :scale="1.2" :poseNumber="2" :chNumber="1" class="xl:!-bottom-2/5 !-bottom-[60%] !left-1/4" />
-            <DialogBubble
-                class="!left-1/3 !top-[15%] !max-w-xs xl:!left-[28%]"
-                text="Unfortunately, you can't call up everyone, so you have to make choices."
-            />
+    <section>
+        <h1>Chapter 1 - Slide 3</h1>
+        <div class="flex flex-col justify-center gap-2 p-4">
+            <!-- Question Box -->
+            <div class="mb-4 rounded border-2 border-gray-300 bg-gray-100 p-4">
+                <p class="text-lg font-bold">What is your choice?</p>
+            </div>
+            <!-- Choices -->
+            <label
+                :class="{ locked: storyStore.choices.includes('Answer 1'), 'bg-blue-500 text-white': selectedAnswer === 'Answer 1' }"
+                class="cursor-pointer rounded border-2 border-blue-500 px-4 py-2 font-bold text-blue-500"
+                :style="{ pointerEvents: selectedAnswer ? 'none' : 'auto' }"
+            >
+                <input type="radio" name="answers" value="Answer 1" @change="handleChoice('Answer 1')" class="hidden" />
+                Answer 1
+            </label>
+            <label
+                :class="{ locked: storyStore.choices.includes('Answer 2'), 'bg-blue-500 text-white': selectedAnswer === 'Answer 2' }"
+                class="cursor-pointer rounded border-2 border-blue-500 px-4 py-2 font-bold text-blue-500"
+                :style="{ pointerEvents: selectedAnswer ? 'none' : 'auto' }"
+            >
+                <input type="radio" name="answers" value="Answer 2" @change="handleChoice('Answer 2')" class="hidden" />
+                Answer 2
+            </label>
+            <label
+                :class="{ locked: storyStore.choices.includes('Answer 3'), 'bg-blue-500 text-white': selectedAnswer === 'Answer 3' }"
+                class="cursor-pointer rounded border-2 border-blue-500 px-4 py-2 font-bold text-blue-500"
+                :style="{ pointerEvents: selectedAnswer ? 'none' : 'auto' }"
+            >
+                <input type="radio" name="answers" value="Answer 3" @change="handleChoice('Answer 3')" class="hidden" />
+                Answer 3
+            </label>
+            <label
+                :class="{ locked: storyStore.choices.includes('Answer 4'), 'bg-blue-500 text-white': selectedAnswer === 'Answer 4' }"
+                class="cursor-pointer rounded border-2 border-blue-500 px-4 py-2 font-bold text-blue-500"
+                :style="{ pointerEvents: selectedAnswer ? 'none' : 'auto' }"
+            >
+                <input type="radio" name="answers" value="Answer 4" @change="handleChoice('Answer 4')" class="hidden" />
+                Answer 4
+            </label>
         </div>
     </section>
 </template>

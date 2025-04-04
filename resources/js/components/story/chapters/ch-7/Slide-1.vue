@@ -1,13 +1,7 @@
-<script setup lang="ts">
-import Caption from '@/components/story/ui/Caption.vue';
-</script>
+<script setup lang="ts"></script>
 
 <template>
-    <section data-background-image="/assets/story/bg/3-blurry.png" data-auto-animate class="h-full">
-        <div class="flex h-full flex-col items-end justify-end">
-            <Caption class="!static">
-                <p>Parents are waiting for their kids to finish showering after the game.</p>
-            </Caption>
-        </div>
+    <section>
+        <h1>Chapter 7 - Slide 1</h1>
     </section>
 </template>

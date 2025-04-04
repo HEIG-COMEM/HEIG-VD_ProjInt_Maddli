@@ -1,15 +1,13 @@
 <script setup lang="ts">
-import Caption from '@/components/story/ui/Caption.vue';
-
-const bg = '/assets/story/bg/1.png';
+import DialogBubble from '../../ui/DialogBubble.vue';
 </script>
 
 <template>
-    <section :data-background-image="bg" data-auto-animate class="h-full">
-        <div class="absolute bottom-[10%] right-[5%] flex flex-col items-end">
-            <Caption class="!static">
-                <p class="text-left">The coach is watching the team's practice</p>
-            </Caption>
-        </div>
+    <section data-background-color="aquamarine" class="relative bg-red-500">
+        <h1>Chapter 1 - Slide 1</h1>
+        <DialogBubble
+            text="Hello world ! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos."
+            :position="{ top: 0, left: 25, unit: 'viewport' }"
+        />
     </section>
 </template>
