@@ -42,20 +42,20 @@ onMounted(() => {
     <div class="flex h-full items-center justify-center">
         <!-- Question Box -->
         <div
-            class="flex max-w-3xl flex-col items-center justify-center gap-1 rounded-xl border-2 border-gray-200 bg-white p-2 text-center shadow-lg md:rounded-2xl md:p-6 lg:gap-4 lg:rounded-3xl lg:p-8"
+            class="mt-2 flex max-w-3xl flex-col items-center justify-center gap-1 rounded-xl border-2 border-gray-200 bg-white p-2 text-center shadow-lg md:rounded-2xl lg:gap-2 lg:rounded-3xl lg:p-4 xl:gap-4"
         >
-            <p class="text-sm font-bold text-black md:text-lg lg:text-2xl">{{ props.question }}</p>
+            <p class="md:text-md text-sm font-bold text-black lg:text-xl xl:text-2xl">{{ props.question }}</p>
 
             <!-- Swappable Choices Container -->
             <div :class="['container flex flex-col gap-2', { 'disabled-container': isContainerDisabled }]">
                 <div
                     v-for="(choice, index) in props.choices"
                     :key="index"
-                    class="rounded-lg border border-gray-300 bg-gray-50 p-1 md:rounded-xl md:p-3 lg:rounded-2xl lg:p-4"
+                    class="rounded-lg border border-gray-300 bg-gray-50 p-1 md:rounded-xl lg:rounded-2xl lg:p-2 xl:rounded-3xl xl:p-3"
                     :data-swapy-slot="index"
                 >
                     <div
-                        class="flex cursor-grab items-center justify-between border border-gray-200 bg-white p-1 text-xs font-medium hover:border-blue-300 hover:bg-blue-50 active:cursor-grabbing md:rounded-xl md:p-3 lg:rounded-2xl lg:p-4 lg:text-lg"
+                        class="flex cursor-grab items-center justify-between rounded-md border border-gray-200 bg-white p-1 text-xs font-medium hover:border-blue-300 hover:bg-blue-50 active:cursor-grabbing md:rounded-lg md:px-2 lg:rounded-2xl lg:p-3 lg:text-lg xl:text-xl"
                         :data-swapy-item="index"
                         data-swapy-handle
                     >
@@ -71,7 +71,7 @@ onMounted(() => {
                 @click="validateOrder"
                 :class="[
                     'rounded-lg border-2 border-gray-200 bg-black px-2 py-1 text-center font-medium text-white transition-all duration-200',
-                    'lg:text-md text-xs xl:text-lg',
+                    'text-xs lg:px-3 lg:text-lg xl:text-xl',
                     { 'cursor-not-allowed opacity-50': isButtonDisabled, 'hover:border-blue-300 hover:bg-blue-50': !isButtonDisabled },
                 ]"
             >
