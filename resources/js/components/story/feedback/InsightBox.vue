@@ -5,7 +5,7 @@ const props = defineProps<{
 </script>
 
 <template>
-    <div class="flex flex-col gap-6 font-baloo">
+    <div class="ml-16 mt-8 flex flex-col gap-6 font-baloo xl:ml-32 xl:mt-16">
         <!-- Insight label -->
         <p class="text-left text-xl text-white">Insight</p>
 
