@@ -45,7 +45,9 @@ const unit = computed(() => {
         <!-- Inner container with styling for the dialog bubble -->
         <div class="relative mr-4 inline-block max-w-md rounded-3xl border-2 border-black bg-white p-4 md:p-6">
             <!-- Text content with comfortable reading space -->
-            <p class="text-pretty break-words text-left font-comic text-sm font-bold leading-relaxed text-black md:text-lg">{{ props.text }}</p>
+            <p class="text-pretty break-words text-left font-comic text-sm font-bold leading-relaxed text-black md:text-lg lg:text-xl xl:text-3xl">
+                {{ props.text }}
+            </p>
 
             <!-- Tail/pointer of the bubble -->
             <div :class="`absolute -bottom-7 ${props.tailPosition === 'left' ? 'left-3' : 'right-3'} z-10`">
