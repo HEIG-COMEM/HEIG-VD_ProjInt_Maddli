@@ -42,8 +42,8 @@ const adjustedScale = computed(() => {
 
 <template>
     <img
-        :src="`/assets/story/ch-${props.chNumber}/coach/${props.poseNumber}.svg`"
-        alt="The Coach"
+        :src="`/assets/story/ch-${props.chNumber}/parents/${props.poseNumber}.svg`"
+        alt="A Parent"
         class="absolute bottom-0 left-0 object-contain"
         :style="{ zIndex: 1000, transform: `scale(${adjustedScale}) translateX(-50%)` }"
     />

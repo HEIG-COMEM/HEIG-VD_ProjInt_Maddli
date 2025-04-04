@@ -9,7 +9,7 @@ import TheCoach from '@/components/story/characters/TheCoach.vue';
                 <h1 class="max-w-sm text-left font-baloo text-6xl font-bold">Hello Coach Simulation</h1>
                 <div data-id="lead" class="text-left font-baloo text-3xl">Great job coach!</div>
             </div>
-            <TheCoach :scale="1.2" :poseNumber="4" :chNumber="8" class="!-bottom-2/3 !left-1/3 xl:!left-1/3" />
+            <TheCoach :scale="0.2" :poseNumber="4" :chNumber="8" class="!-bottom-2/3 !left-1/3 xl:!left-1/3" />
             <div class="flex h-fit w-1/2 flex-col gap-6 self-center rounded-md bg-white p-12 font-baloo">
                 <p class="text-3xl font-bold">What’s next ?</p>
                 <div class="flex h-full w-full flex-row items-center justify-between gap-4">
