@@ -44,7 +44,7 @@ import { MoveDown, MoveLeft, MoveRight, MoveUp, Timer } from 'lucide-vue-next';
                     </Caption>
                 </div>
             </div>
-            <TheCoach :scale="0.2" :poseNumber="1" :chNumber="0" class="!-top-1/3 !left-0 md:!left-1/4 lg:!left-1/2 lg:!top-[30%]" />
+            <TheCoach :scale="0.2" :poseNumber="1" :chNumber="0" class="!-top-1/3 !left-0 md:!left-1/4 lg:!left-1/4 lg:!top-1/2" />
         </div>
     </section>
 </template>

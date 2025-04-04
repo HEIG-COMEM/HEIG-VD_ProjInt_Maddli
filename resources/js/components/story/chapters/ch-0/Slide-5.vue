@@ -21,9 +21,9 @@ import { Timer } from 'lucide-vue-next';
                 <DialogBubble
                     text="Are you ready to begin? Let’s go!"
                     tailPosition="left"
-                    class="!-top-1/2 !left-2/3 object-contain xl:!-top-1/4 xl:!left-1/2"
+                    class="!-top-1/2 !left-2/3 object-contain md:!-top-full md:!left-[60%] xl:!-top-1/4 xl:!left-1/2"
                 />
-                <TheCoach :scale="0.2" :poseNumber="5" :chNumber="0" class="!-bottom-[120%] !left-1/2 xl:!-bottom-full" />
+                <TheCoach :scale="0.2" :poseNumber="5" :chNumber="0" class="!-bottom-[350%] !left-1/2 xl:!-bottom-full" />
             </div>
         </div>
     </section>

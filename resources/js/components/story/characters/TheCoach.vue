@@ -26,7 +26,7 @@ const adjustedScale = computed(() => {
         return props.scale;
     } else if (width.value <= 1024 && isLandscape) {
         console.log('Landscape Phone/Tablet');
-        return props.scale * 2;
+        return props.scale * 2.5;
     } else if (width.value <= 1024) {
         console.log('Tablet');
         return props.scale * 3;
