@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Button } from '@/components/ui/button';
 import { storyStore } from '@/stores/storyStore';
 import { GripHorizontal } from 'lucide-vue-next';
 import { createSwapy } from 'swapy';
@@ -40,32 +39,44 @@ onMounted(() => {
 
 <template>
     <div class="absolute inset-0 -z-10 h-full w-full scale-150 bg-black opacity-50"></div>
-    <div class="flex flex-col items-center justify-center gap-4 p-4">
+    <div class="flex h-full items-center justify-center">
         <!-- Question Box -->
-        <div class="w-full max-w-3xl rounded-3xl border-2 border-gray-200 bg-white p-8 text-center shadow-lg">
-            <p class="mb-8 text-2xl font-bold text-black">{{ props.question }}</p>
+        <div
+            class="flex max-w-3xl flex-col items-center justify-center gap-1 rounded-xl border-2 border-gray-200 bg-white p-2 text-center shadow-lg md:rounded-2xl md:p-6 lg:gap-4 lg:rounded-3xl lg:p-8"
+        >
+            <p class="text-sm font-bold text-black md:text-lg lg:text-2xl">{{ props.question }}</p>
 
             <!-- Swappable Choices Container -->
-            <div :class="['container mx-auto max-w-[600px]', { 'disabled-container': isContainerDisabled }]">
+            <div :class="['container flex flex-col gap-2', { 'disabled-container': isContainerDisabled }]">
                 <div
                     v-for="(choice, index) in props.choices"
                     :key="index"
-                    class="my-2 min-h-[60px] rounded-2xl border border-gray-300 bg-gray-50 p-2"
+                    class="rounded-lg border border-gray-300 bg-gray-50 p-1 md:rounded-xl md:p-3 lg:rounded-2xl lg:p-4"
                     :data-swapy-slot="index"
                 >
                     <div
-                        class="flex cursor-grab items-center justify-between rounded-xl border border-gray-200 bg-white p-4 text-lg font-medium hover:border-blue-300 hover:bg-blue-50 active:cursor-grabbing"
+                        class="flex cursor-grab items-center justify-between border border-gray-200 bg-white p-1 text-xs font-medium hover:border-blue-300 hover:bg-blue-50 active:cursor-grabbing md:rounded-xl md:p-3 lg:rounded-2xl lg:p-4 lg:text-lg"
                         :data-swapy-item="index"
                         data-swapy-handle
                     >
                         {{ choice }}
-                        <GripHorizontal class="ml-auto h-6 w-6" />
+                        <GripHorizontal class="h-3 w-3 md:h-5 md:w-5 lg:h-6 lg:w-6" />
                     </div>
                 </div>
             </div>
 
             <!-- Validate Button -->
-            <Button :disabled="isButtonDisabled" @click="validateOrder"> Validate </Button>
+            <button
+                :disabled="isButtonDisabled"
+                @click="validateOrder"
+                :class="[
+                    'rounded-lg border-2 border-gray-200 bg-black px-2 py-1 text-center font-medium text-white transition-all duration-200',
+                    'lg:text-md text-xs xl:text-lg',
+                    { 'cursor-not-allowed opacity-50': isButtonDisabled, 'hover:border-blue-300 hover:bg-blue-50': !isButtonDisabled },
+                ]"
+            >
+                Validate
+            </button>
         </div>
     </div>
 </template>
