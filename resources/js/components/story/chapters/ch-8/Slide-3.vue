@@ -15,7 +15,7 @@ import DialogBubble from '@/components/story/ui/DialogBubble.vue';
                 tailPosition="left"
                 class="!left-[40%] !top-[10%] object-contain xl:!left-[35%]"
             />
-            <TheCoach :scale="1.2" :poseNumber="3" :chNumber="8" class="!-bottom-2/3 !left-1/3 xl:!left-1/3" />
+            <TheCoach :scale="0.2" :poseNumber="3" :chNumber="8" class="!-bottom-2/3 !left-1/3 xl:!left-1/3" />
         </div>
     </section>
 </template>
