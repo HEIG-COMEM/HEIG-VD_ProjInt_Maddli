@@ -5,15 +5,15 @@ const props = defineProps<{
 </script>
 
 <template>
-    <div class="ml-16 mt-8 flex flex-col gap-6 font-baloo xl:ml-32 xl:mt-16">
+    <div class="ml-4 mt-4 flex flex-col gap-1 font-baloo lg:ml-8 lg:mt-8 lg:gap-4 xl:ml-24 xl:mt-16 xl:gap-6">
         <!-- Insight label -->
-        <p class="text-left text-xl text-white">Insight</p>
+        <p class="text-left text-xs text-white md:text-sm lg:text-base xl:text-lg">Insight</p>
 
         <!-- Title -->
-        <h2 class="text-left text-6xl font-bold text-[#FFA500]">{{ props.title }}</h2>
+        <h2 class="text-left text-xl font-bold text-[#FFA500] md:text-2xl lg:text-4xl xl:text-6xl">{{ props.title }}</h2>
 
         <!-- Slot for main content -->
-        <div class="max-w-prose space-y-4 text-left text-xl text-white">
+        <div class="max-w-prose space-y-2 text-left text-sm text-white md:text-base lg:space-y-4 lg:text-lg xl:text-xl">
             <slot></slot>
         </div>
     </div>
