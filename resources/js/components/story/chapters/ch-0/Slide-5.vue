@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TheCoach from '@/components/story/characters/TheCoach.vue';
+import Character from '@/components/story/characters/Character.vue';
 import DialogBubble from '@/components/story/ui/DialogBubble.vue';
 import { storyStore } from '@/stores/storyStore';
 import { Timer } from 'lucide-vue-next';
@@ -24,7 +24,7 @@ import { Timer } from 'lucide-vue-next';
                     tailPosition="left"
                     class="!-top-1/2 !left-2/3 object-contain md:!-top-full md:!left-[60%] xl:!-top-1/4 xl:!left-1/2"
                 />
-                <TheCoach :scale="0.2" :poseNumber="5" :chNumber="0" class="!-bottom-[350%] !left-1/2 xl:!-bottom-full" />
+                <Character type="coach" :scale="0.2" :poseNumber="5" :chNumber="0" class="!-bottom-[350%] !left-1/2 xl:!-bottom-full" />
             </div>
         </div>
     </section>

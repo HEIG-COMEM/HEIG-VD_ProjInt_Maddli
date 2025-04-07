@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TheCoach from '@/components/story/characters/TheCoach.vue';
+import Character from '@/components/story/characters/Character.vue';
 </script>
 
 <template>
@@ -9,7 +9,8 @@ import TheCoach from '@/components/story/characters/TheCoach.vue';
                 <h1 class="max-w-sm text-left text-xl font-bold sm:text-2xl md:text-3xl lg:text-6xl">Hello Coach Simulation</h1>
                 <div data-id="lead" class="text-left text-lg sm:text-xl md:text-2xl lg:text-3xl">Great job coach!</div>
             </div>
-            <TheCoach
+            <Character
+                type="coach"
                 :scale="0.2"
                 :poseNumber="4"
                 :chNumber="8"

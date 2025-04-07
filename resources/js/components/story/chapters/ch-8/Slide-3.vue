@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TheCoach from '@/components/story/characters/TheCoach.vue';
+import Character from '@/components/story/characters/Character.vue';
 import DialogBubble from '@/components/story/ui/DialogBubble.vue';
 </script>
 
@@ -15,7 +15,8 @@ import DialogBubble from '@/components/story/ui/DialogBubble.vue';
                 tailPosition="left"
                 class="!left-[40%] !top-[10%] object-contain xl:!left-[35%]"
             />
-            <TheCoach
+            <Character
+                type="coach"
                 :scale="0.2"
                 :poseNumber="3"
                 :chNumber="8"

@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import Character from '@/components/story/characters/Character.vue';
 import DialogBubble from '@/components/story/ui/DialogBubble.vue';
 import { storyStore } from '@/stores/storyStore';
 import { Timer } from 'lucide-vue-next';
-import Character from '../../characters/Character.vue';
 </script>
 
 <template>
