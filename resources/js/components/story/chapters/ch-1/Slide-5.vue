@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import InsightBox from '@/components/story/feedback/InsightBox.vue';
 
-const bgColor = '#504D48';
+const bgColor = '#006565';
 </script>
 
 <template>

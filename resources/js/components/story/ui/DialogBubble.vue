@@ -43,7 +43,7 @@ const unit = computed(() => {
     <!-- Main container for the dialog bubble, positioned absolutely -->
     <div class="absolute m-8" :style="unit">
         <!-- Inner container with styling for the dialog bubble -->
-        <div class="relative mr-4 inline-block max-w-md rounded-3xl border-2 border-black bg-white p-4 md:p-6">
+        <div class="relative mr-4 inline-block rounded-3xl border-2 border-black bg-white p-4 md:p-6">
             <!-- Text content with comfortable reading space -->
             <p class="text-pretty break-words text-left font-comic text-sm font-bold leading-relaxed text-black md:text-lg lg:text-xl xl:text-3xl">
                 {{ props.text }}
