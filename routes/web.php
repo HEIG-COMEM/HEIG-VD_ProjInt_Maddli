@@ -11,9 +11,9 @@ Route::get('/become-a-coach', function () {
     return Inertia::render('BecomeCoach');
 })->name('become-coach');
 
-Route::get('/simulation', function () {
-    return Inertia::render('Simulation');
-})->name('simulation');
+Route::get('/help-starter-pack', function () {
+    return Inertia::render('HelpStarterPack');
+})->name('hsp');
 
 Route::get('dashboard', function () {
     return Route::redirect('club.home');
