@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import FeatureCard from '@/components/FeatureCard.vue';
+import TestimonialCard from '@/components/TestimonialCard.vue';
 import { H2 } from '@/components/typography/headings';
-import { P } from '@/components/typography/texts';
+import { Lead, P } from '@/components/typography/texts';
 import { Button } from '@/components/ui/button';
 import WebLayout from '@/layouts/WebLayout.vue';
 import { Head } from '@inertiajs/vue3';
-import { ArrowRight, Play, PlayCircle } from 'lucide-vue-next';
+import { ArrowRight, ClipboardCheck, Play, PlayCircle, Trophy, Users } from 'lucide-vue-next';
 import { ref } from 'vue';
 
 const isPlaying = ref(false);
@@ -22,18 +24,18 @@ const playVideo = () => {
 
     <WebLayout>
         <div class="relative h-screen w-screen bg-accent p-8 sm:p-16">
-            <div class="absolute inset-0 top-16 z-10 flex h-full w-full flex-col items-center justify-center px-4 text-white sm:px-8">
-                <div class="mb-12 w-full text-center sm:mb-24 sm:text-left">
+            <div class="absolute inset-0 top-16 z-10 flex h-full w-full flex-col items-center justify-center gap-16 px-4 text-white sm:px-8">
+                <div class="w-full text-center sm:mb-24 sm:text-left">
                     <h1 class="text-3xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">Become a coach</h1>
                     <p class="mt-4 text-base sm:text-lg md:text-xl lg:text-2xl">Welcome to the Hello Coach Simulation!</p>
                 </div>
-                <div class="flex w-full flex-col gap-8 sm:flex-row sm:gap-12">
-                    <div class="flex w-full flex-col items-center justify-center gap-4 sm:w-1/2 sm:items-start">
-                        <div class="flex flex-col gap-4 sm:flex-row">
+                <div class="flex w-full flex-col gap-8 sm:gap-12 md:flex-row">
+                    <div class="flex w-full flex-col items-center justify-center gap-4 md:w-1/2 md:items-start">
+                        <div class="flex w-full flex-col gap-4 md:flex-row">
                             <a
                                 href="https://www.nds.baspo.admin.ch/publicArea/cadreEducationStructure/cadre/education-structure/8046830102593708144/schedule?CadreEducationCourse_jsCoursePlan=%7B%22filterDefinition%22:%7B%22cadreEducationCourseType%22:%7B%22value%22:%22-2317626998746428607%22,%22label%22:%22Leiterkurs%22%7D%7D%7D&lang=fr"
                             >
-                                <Button size="lg" class="bg-accent text-accent-foreground hover:text-primary-foreground"
+                                <Button size="lg" class="w-full bg-accent text-accent-foreground hover:text-primary-foreground"
                                     >Register to the C Licence <ArrowRight
                                 /></Button>
                             </a>
@@ -44,11 +46,11 @@ const playVideo = () => {
                             program with career opportunities worldwide.
                         </P>
                     </div>
-                    <div class="h-full w-full rounded-md bg-accent p-4 sm:w-1/2 sm:p-8">
+                    <div class="h-full w-full rounded-md bg-accent p-4 sm:p-8 md:w-1/2">
                         <div class="flex flex-row items-center gap-4">
                             <PlayCircle class="h-10 w-10 sm:h-12 sm:w-12" />
                             <div>
-                                <H2 class="text-lg sm:text-xl">Hello Coach vidéo</H2>
+                                <H2 class="!pb-0 text-lg sm:text-xl">Hello Coach vidéo</H2>
                                 <P class="!mt-0 text-sm sm:text-base">Discover the Hello Coach</P>
                             </div>
                         </div>
@@ -76,6 +78,67 @@ const playVideo = () => {
                 <div class="absolute inset-0 z-0 bg-black opacity-50"></div>
             </div>
         </div>
-        <div class="h-screen w-screen bg-primary"></div>
+        <div class="flex w-screen flex-col gap-32 bg-background p-8 pt-36 text-center text-foreground sm:gap-48 sm:p-16">
+            <div class="flex flex-col items-center justify-center gap-4">
+                <H2>Interactive Coaching Simulation</H2>
+                <Lead class="max-w-2xl">
+                    Test your coaching skills in a real-time decision-making experience. Face challenges, make key choices, and see how your
+                    leadership impacts the game!
+                </Lead>
+                <img class="w-full object-cover shadow-lg sm:w-2/3" src="/assets/images/become-a-coach-poster.png" />
+            </div>
+            <div class="flex flex-col items-center justify-center gap-4">
+                <H2>Personal Growth Through Coaching</H2>
+                <Lead class="max-w-2xl"> Experience real-time decision-making and leadership challenges </Lead>
+                <div class="mt-12 flex flex-col justify-center gap-4 sm:flex-row sm:gap-8">
+                    <FeatureCard title="Building Leadership" description="Develop your ability to inspire and guide a team" :icon="ClipboardCheck" />
+                    <FeatureCard
+                        title="Managing Group Dynamics"
+                        description="Learn how to handle different personalities and maintain team cohesion"
+                        :icon="Users"
+                    />
+                    <FeatureCard
+                        title="Adapting to Challenges"
+                        description="Make key decisions under pressure and navigate unexpected situations"
+                        :icon="Trophy"
+                    />
+                </div>
+            </div>
+            <div class="flex flex-col items-center justify-center gap-4">
+                <H2>Success Stories from Our Coaches</H2>
+                <div class="mt-12 flex flex-col justify-center gap-4 sm:flex-row sm:gap-8">
+                    <TestimonialCard
+                        name="Sarah Johnson"
+                        title="Youth Team Coach"
+                        description="The certification program transformed my approach to coaching. I now lead with confidence and purpose."
+                        profile-img-url="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5"
+                        :rating="4"
+                    />
+                    <TestimonialCard
+                        name="Sarah Johnson"
+                        title="New coach"
+                        description="The mentorship provided were invaluable to my development as a new coach."
+                        profile-img-url="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5"
+                        :rating="5"
+                    />
+                    <TestimonialCard
+                        name="Emma Thompson"
+                        title="Academy Director"
+                        description="This program opened doors I never thought possible. Now I'm leading a successful academy."
+                        profile-img-url="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5"
+                        :rating="4"
+                    />
+                </div>
+            </div>
+        </div>
+        <div class="flex w-screen flex-col gap-32 bg-accent p-8 pt-36 text-center text-accent-foreground sm:gap-48 sm:p-16">
+            <div class="flex flex-col items-center justify-center gap-4">
+                <H2> Ready to Elevate Your Coaching Journey ? </H2>
+                <Lead class="max-w-2xl !text-accent-foreground">
+                    The Club is more than just a network, it's a structured support system for aspiring and beginner coaches. Whether you're just
+                    starting or already coach, you'll be guided every step of the way.
+                </Lead>
+            </div>
+        </div>
     </WebLayout>
 </template>
