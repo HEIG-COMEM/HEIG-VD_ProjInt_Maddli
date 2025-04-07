@@ -1,7 +1,24 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import InsightBox from '@/components/story/feedback/InsightBox.vue';
+</script>
 
 <template>
-    <section>
-        <h1>Chapter 6 - Slide 6</h1>
+    <section data-background-color="#006565" data-auto-animate class="h-full">
+        <div class="flex h-full flex-col">
+            <InsightBox title="Role model">
+                <p>
+                    As a coach, you represent more than just an authority figure on the field. Your players see you as a
+                    <span class="font-bold">role model</span>, not only in your role as a coach, but also in the way you embody their values.
+                </p>
+                <p>
+                    They see you as a <span class="font-bold">trustworthy</span> woman, a good listener, and capable of inspiring them. Sometimes,
+                    they will seek your advice, even outside of the sporting context.
+                </p>
+                <p>
+                    It's in these moments that you must combine teaching, listening, and empathy to guide them while maintaining your role as a coach.
+                </p>
+                <p>Remember that your players see you as a <span class="font-bold">strong and inspiring female figure.</span></p>
+            </InsightBox>
+        </div>
     </section>
 </template>
