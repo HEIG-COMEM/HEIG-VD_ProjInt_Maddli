@@ -25,7 +25,7 @@ import Character from '../../characters/Character.vue';
                     class="!-top-1/2 !left-1/3 sm:!left-[30%] md:!-top-3/4 lg:!-top-1/4 lg:!left-1/4 xl:!-top-1/3 xl:!left-1/4"
                 />
                 <Character
-                    :type="'coach'"
+                    type="coach"
                     :scale="0.2"
                     :poseNumber="2"
                     :chNumber="0"
