@@ -6,7 +6,7 @@ import { Lead, P } from '@/components/typography/texts';
 import { Button } from '@/components/ui/button';
 import WebLayout from '@/layouts/WebLayout.vue';
 import { Head } from '@inertiajs/vue3';
-import { ArrowRight, ClipboardCheck, Play, PlayCircle, Trophy, Users } from 'lucide-vue-next';
+import { ArrowRight, BookOpen, ChartNoAxesColumnIncreasing, ClipboardCheck, KeyRound, Play, PlayCircle, Trophy, Users } from 'lucide-vue-next';
 import { ref } from 'vue';
 
 const isPlaying = ref(false);
@@ -41,12 +41,12 @@ const playVideo = () => {
                             </a>
                             <Button size="lg" variant="secondary">Explore Program</Button>
                         </div>
-                        <P class="rounded-md bg-white/10 p-4 text-center sm:p-8 sm:text-left">
+                        <P class="rounded-lg bg-white/10 p-4 text-center sm:p-8 sm:text-left">
                             Join over 1,000+ certified coaches all around Europe who started their journey with us. FIFA-recognized certification
                             program with career opportunities worldwide.
                         </P>
                     </div>
-                    <div class="h-full w-full rounded-md bg-accent p-4 sm:p-8 md:w-1/2">
+                    <div class="h-full w-full rounded-lg bg-accent p-4 sm:p-8 md:w-1/2">
                         <div class="flex flex-row items-center gap-4">
                             <PlayCircle class="h-10 w-10 sm:h-12 sm:w-12" />
                             <div>
@@ -60,12 +60,12 @@ const playVideo = () => {
                                 poster="/assets/images/home-hero-video-poster.png"
                                 preload="auto"
                                 src="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-                                class="h-auto w-full rounded-md"
+                                class="h-auto w-full rounded-lg"
                                 @play="isPlaying = true"
                                 :controls="isPlaying ? true : false"
                             ></video>
                             <div v-if="!isPlaying" class="absolute inset-0" @click="playVideo()">
-                                <div class="flex h-full w-full items-center justify-center rounded-md bg-black/30">
+                                <div class="flex h-full w-full items-center justify-center rounded-lg bg-black/30">
                                     <Play class="h-12 w-12 cursor-pointer text-white sm:h-16 sm:w-16" />
                                 </div>
                             </div>
@@ -138,6 +138,51 @@ const playVideo = () => {
                     The Club is more than just a network, it's a structured support system for aspiring and beginner coaches. Whether you're just
                     starting or already coach, you'll be guided every step of the way.
                 </Lead>
+            </div>
+        </div>
+        <div class="flex w-screen flex-col items-center gap-12 bg-background p-8 pt-36 text-center text-foreground sm:gap-12 sm:p-16">
+            <div class="flex flex-col items-center justify-center gap-4">
+                <H2> Help Starter Pack (HSP) </H2>
+                <Lead class="max-w-2xl !text-accent-foreground">
+                    Your ultimate guide to kick-start your coaching career! The Help Starter Pack provides essential tools, insights, and strategies
+                    to build a strong foundation in coaching.
+                </Lead>
+            </div>
+            <div
+                class="flex flex-col-reverse items-center justify-center gap-8 rounded-lg bg-secondary/30 p-4 text-secondary-foreground shadow-lg sm:w-2/3 sm:flex-row sm:gap-16 sm:p-8"
+            >
+                <div class="flex w-full flex-col items-start gap-8 sm:w-1/2">
+                    <P class="text-left text-xl font-bold"> What's Included&nbsp;: </P>
+                    <div class="flex flex-col gap-4">
+                        <div class="flex flex-row items-center gap-4">
+                            <BookOpen class="h-8 min-w-8 text-accent sm:h-10 sm:w-10" />
+                            <div class="text-left">
+                                <P class="font-bold">Practical Coaching Tips</P>
+                                <P class="!mt-0">Actionable strategies to improve team management</P>
+                            </div>
+                        </div>
+                        <div class="flex flex-row items-center gap-4">
+                            <KeyRound class="h-8 min-w-8 text-accent sm:h-10 sm:w-10" />
+                            <div class="text-left">
+                                <P class="font-bold">Exclusive Resources</P>
+                                <P class="!mt-0">Access to ambassador and mentorship </P>
+                            </div>
+                        </div>
+                        <div class="flex flex-row items-center gap-4">
+                            <ChartNoAxesColumnIncreasing class="h-8 min-w-8 text-accent sm:h-10 sm:w-10" />
+                            <div class="text-left">
+                                <P class="font-bold">Step-by-Step Guides</P>
+                                <P class="!mt-0">Structured advice to help you</P>
+                            </div>
+                        </div>
+                    </div>
+                    <a :href="route('hsp')" class="w-full sm:w-fit">
+                        <Button size="lg" class="w-full bg-accent text-accent-foreground hover:text-primary-foreground">
+                            Get Started with HSP
+                        </Button>
+                    </a>
+                </div>
+                <img class="w-full rounded-lg object-cover sm:w-1/2" src="/assets/images/HSP-cover.png" />
             </div>
         </div>
     </WebLayout>
