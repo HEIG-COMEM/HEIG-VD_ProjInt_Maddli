@@ -41,7 +41,7 @@ const unit = computed(() => {
     <div class="absolute" :style="unit">
         <!-- Caption styled as a sticky note -->
         <div
-            class="max-w-[400px] break-words rounded bg-[#feffd3] p-2 px-4 text-left font-comic text-sm font-bold leading-relaxed text-[#321c16] shadow-md md:p-4 md:px-6 md:text-xl"
+            class="max-w-[400px] break-words rounded bg-[#feffd3] p-2 px-4 text-left font-comic text-sm font-bold leading-relaxed text-black shadow-md md:p-4 md:px-6 md:text-xl"
         >
             <slot />
         </div>

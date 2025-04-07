@@ -3,7 +3,7 @@ import InsightBox from '@/components/story/feedback/InsightBox.vue';
 </script>
 
 <template>
-    <section data-background-color="#321C16" data-auto-animate class="h-full">
+    <section data-background-color="#006565" data-auto-animate class="h-full">
         <div class="flex h-full flex-col">
             <InsightBox title="Community Actor">
                 <p>

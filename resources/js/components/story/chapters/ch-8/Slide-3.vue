@@ -4,7 +4,7 @@ import DialogBubble from '@/components/story/ui/DialogBubble.vue';
 </script>
 
 <template>
-    <section data-auto-animate data-background-color="#321C16" class="relative h-full">
+    <section data-auto-animate data-background-color="#006565" class="relative h-full">
         <div class="flex h-full flex-col justify-between">
             <div class="flex flex-col items-start justify-center gap-2 font-baloo text-white md:gap-8">
                 <h1 class="max-w-sm text-left text-xl font-bold sm:text-2xl md:text-3xl lg:text-6xl">Hello Coach Simulation</h1>

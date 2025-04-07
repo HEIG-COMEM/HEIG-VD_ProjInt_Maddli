@@ -3,7 +3,7 @@ import Character from '@/components/story/characters/Character.vue';
 </script>
 
 <template>
-    <section data-auto-animate data-background-color="#321C16" class="relative h-full">
+    <section data-auto-animate data-background-color="#006565" class="relative h-full">
         <div class="flex h-full flex-row justify-between">
             <div class="mb-auto flex flex-col items-start justify-center gap-2 font-baloo text-white md:gap-8">
                 <h1 class="max-w-sm text-left text-xl font-bold sm:text-2xl md:text-3xl lg:text-6xl">Hello Coach Simulation</h1>
@@ -25,7 +25,7 @@ import Character from '@/components/story/characters/Character.vue';
                         <!-- TODO: Link to HSP using ziggy route() -->
                         <a
                             href="/"
-                            class="mt-6 w-fit cursor-pointer self-center rounded-md bg-[#321C16] px-2 py-1 text-xs text-white lg:px-4 lg:py-2 lg:text-base"
+                            class="mt-6 w-fit cursor-pointer self-center rounded-md bg-[#006565] px-2 py-1 text-xs text-white lg:px-4 lg:py-2 lg:text-base"
                             >Explore our Help Starter Pack</a
                         >
                     </div>
@@ -37,7 +37,7 @@ import Character from '@/components/story/characters/Character.vue';
                         </p>
                         <a
                             :href="route('club.home')"
-                            class="mt-6 w-fit cursor-pointer self-center rounded-md bg-[#321C16] px-2 py-1 text-xs text-white lg:px-4 lg:py-2 lg:text-base"
+                            class="mt-6 w-fit cursor-pointer self-center rounded-md bg-[#006565] px-2 py-1 text-xs text-white lg:px-4 lg:py-2 lg:text-base"
                             >Join the Hello Coach Club</a
                         >
                     </div>
