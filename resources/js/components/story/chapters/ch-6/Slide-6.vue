@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import InsightBox from '@/components/story/feedback/InsightBox.vue';
+
+const bg = '#006565';
 </script>
 
 <template>
-    <section data-background-color="#006565" data-auto-animate class="h-full">
+    <section data-auto-animate :data-background-color="bg" class="h-full">
         <div class="flex h-full flex-col">
             <InsightBox title="Role model">
                 <p>

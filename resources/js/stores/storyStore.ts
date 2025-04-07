@@ -24,10 +24,11 @@ interface StoryStore {
     getTotalSlides(): number; // Method to retrieve the total number of slides
     getCurrentSlide(): Slide; // Method to retrieve the current slide
     getAllChaptersFolders(): string[]; // Method to retrieve all chapters folders
-    getAllChaptersFoldersNames(): string[]; // Method to retrieve all chapters folders
+    getChapterName(): string[]; // Method to retrieve all chapters folders
     getNumberOfSlidesInChapter(chapter: string): number; // Method to retrieve the number of slides in a chapter
     getNumberOfSlidesInEachChapter(): number[]; // Method to retrieve the number of slides in each chapter
     getDuration(): string; // Add this new method signature
+    getChapterTitle(chapter: string): string; // Add this new method signature
 }
 
 // Create a reactive StoryStore instance
@@ -81,8 +82,8 @@ export const storyStore = reactive<StoryStore>({
         return [...new Set(this.slides.map((slide) => slide.path.split('/').slice(-2, -1)[0]))];
     },
 
-    // Method to retrieve all chapter folder names based on predefined mapping
-    getAllChaptersFoldersNames() {
+    // Method to retrieve all chapter names based on predefined mapping
+    getChapterName() {
         const chapterNames = {
             'ch-0': 'Introduction',
             'ch-1': 'Chapter 1',
@@ -95,6 +96,22 @@ export const storyStore = reactive<StoryStore>({
             'ch-8': 'Conclusion',
         };
         return this.getAllChaptersFolders().map((folder) => chapterNames[folder as keyof typeof chapterNames]);
+    },
+
+    // Method to retrieve the title of a specific chapter
+    getChapterTitle(chapter: string) {
+        const chapterTitles = {
+            'ch-0': 'Welcome',
+            'ch-1': 'Squad call-up',
+            'ch-2': 'Warm-up',
+            'ch-3': 'First half',
+            'ch-4': 'Half time',
+            'ch-5': "Parent's complain",
+            'ch-6': 'Changing room',
+            'ch-7': 'Feedback',
+            'ch-8': "What's next?",
+        };
+        return chapterTitles[chapter as keyof typeof chapterTitles] || '';
     },
 
     // Method to retrieve the number of slides in a specific chapter

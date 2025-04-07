@@ -3,7 +3,7 @@ import QuestionMultipleChoice from '@/components/story/questions/QuestionMultipl
 </script>
 
 <template>
-    <section>
+    <section data-auto-animate class="h-full">
         <QuestionMultipleChoice
             question="How do you handle a player's injury during a match?"
             :answers="[

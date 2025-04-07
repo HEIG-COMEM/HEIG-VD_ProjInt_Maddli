@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import Character from '@/components/story/characters/Character.vue';
 import DialogBubble from '@/components/story/ui/DialogBubble.vue';
+
+const bg = '/assets/story/bg/7.png';
 </script>
 
 <template>
-    <section data-background-image="/assets/story/bg/7.png" data-auto-animate class="h-full">
+    <section data-auto-animate :data-background-image="bg" class="h-full py-16">
         <div class="relative flex h-full flex-col justify-between">
             <Character
                 type="player"

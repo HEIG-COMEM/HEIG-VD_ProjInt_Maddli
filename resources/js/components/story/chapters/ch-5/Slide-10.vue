@@ -4,6 +4,6 @@ const bgColor = '#006565';
 
 <template>
     <section :data-background-color="bgColor" data-auto-animate class="h-full">
-        <h1>Chapter 3 - Slide 8</h1>
+        <h1>Chapter 5 - Slide 10</h1>
     </section>
 </template>

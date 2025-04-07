@@ -1,7 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const bg = '#006565';
+</script>
 
 <template>
-    <section data-background-image="/assets/story/bg/8.png" data-auto-animate>
+    <section data-auto-animate :data-background-color="bg" class="h-full">
         <h1>FEED BACK</h1>
     </section>
 </template>
