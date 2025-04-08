@@ -17,9 +17,7 @@ defineProps<{
 </script>
 
 <template>
-    <div
-        class="flex aspect-video w-full flex-col items-start justify-between gap-8 rounded-lg bg-secondary/30 p-6 text-left text-secondary-foreground shadow-lg"
-    >
+    <div class="flex w-full flex-col items-start justify-between gap-8 rounded-lg bg-secondary/30 p-6 text-left text-secondary-foreground shadow-lg">
         <div class="flex w-full flex-col items-start gap-8">
             <div class="flex flex-row items-center justify-center gap-4">
                 <component :is="icon" class="h-8 w-8 text-accent" />
