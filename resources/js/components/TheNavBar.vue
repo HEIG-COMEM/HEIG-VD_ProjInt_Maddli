@@ -7,6 +7,7 @@ import {
     NavigationMenuList,
     navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
+
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { useAppearance } from '@/composables/useAppearance';
 import { createReusableTemplate, useMediaQuery } from '@vueuse/core';
@@ -74,6 +75,12 @@ const { appearance } = useAppearance();
                                     </Button>
                                 </a>
                             </li>
+                            <li class="border-t border-foreground" aria-hidden="true"></li>
+                            <li>
+                                <a :href="route('club.home')">
+                                    <Button variant="link" size="lg" class="!text-accent"> Login </Button>
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                 </SheetContent>
@@ -85,6 +92,16 @@ const { appearance } = useAppearance();
                     <NavigationMenuItem v-for="item in items" :key="item.name">
                         <NavigationMenuLink :href="route(item.href)" :class="navigationMenuTriggerStyle()" :active="route().current() === item.href">
                             {{ item.name }}
+                        </NavigationMenuLink>
+                    </NavigationMenuItem>
+                    <NavigationMenuItem class="border-l border-foreground" aria-hidden="true">&nbsp;</NavigationMenuItem>
+                    <NavigationMenuItem>
+                        <NavigationMenuLink
+                            :href="route('club.home')"
+                            :class="navigationMenuTriggerStyle()"
+                            class="!bg-accent !text-accent-foreground"
+                        >
+                            Login
                         </NavigationMenuLink>
                     </NavigationMenuItem>
                 </NavigationMenuList>
