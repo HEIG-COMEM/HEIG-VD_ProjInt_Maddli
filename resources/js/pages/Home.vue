@@ -5,7 +5,7 @@ import { H2 } from '@/components/typography/headings';
 import { Lead, P } from '@/components/typography/texts';
 import { Button } from '@/components/ui/button';
 import WebLayout from '@/layouts/WebLayout.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, router } from '@inertiajs/vue3';
 import { ArrowRight, BookOpen, ChartNoAxesColumnIncreasing, ClipboardCheck, KeyRound, Play, PlayCircle, Trophy, Users } from 'lucide-vue-next';
 import { ref } from 'vue';
 
@@ -34,10 +34,12 @@ const playVideo = () => {
                         <div class="flex w-full flex-col gap-4 md:flex-row">
                             <a
                                 href="https://www.nds.baspo.admin.ch/publicArea/cadreEducationStructure/cadre/education-structure/8046830102593708144/schedule?CadreEducationCourse_jsCoursePlan=%7B%22filterDefinition%22:%7B%22cadreEducationCourseType%22:%7B%22value%22:%22-2317626998746428607%22,%22label%22:%22Leiterkurs%22%7D%7D%7D&lang=fr"
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
-                                <Button size="lg" class="w-full bg-accent text-accent-foreground hover:text-primary-foreground"
-                                    >Register to the C Licence <ArrowRight
-                                /></Button>
+                                <Button size="lg" class="w-full bg-accent text-accent-foreground hover:text-primary-foreground">
+                                    Register to the C Licence <ArrowRight />
+                                </Button>
                             </a>
                             <Button size="lg" variant="secondary">Explore Program</Button>
                         </div>
@@ -78,7 +80,7 @@ const playVideo = () => {
                 <div class="absolute inset-0 z-0 bg-black opacity-50"></div>
             </div>
         </div>
-        <div class="flex w-screen flex-col gap-32 bg-background p-8 pt-36 text-center text-foreground sm:gap-48 sm:p-16">
+        <div class="flex w-screen flex-col gap-32 bg-background px-8 pb-16 pt-52 text-center text-foreground sm:gap-48 sm:p-16">
             <div class="flex flex-col items-center justify-center gap-4">
                 <H2>Interactive Coaching Simulation</H2>
                 <Lead class="max-w-2xl">
@@ -89,7 +91,7 @@ const playVideo = () => {
             </div>
             <div class="flex flex-col items-center justify-center gap-4">
                 <H2>Personal Growth Through Coaching</H2>
-                <Lead class="max-w-2xl"> Experience real-time decision-making and leadership challenges </Lead>
+                <Lead class="max-w-2xl">Experience real-time decision-making and leadership challenges</Lead>
                 <div class="mt-12 flex flex-col justify-center gap-4 sm:flex-row sm:gap-8">
                     <FeatureCard title="Building Leadership" description="Develop your ability to inspire and guide a team" :icon="ClipboardCheck" />
                     <FeatureCard
@@ -131,58 +133,84 @@ const playVideo = () => {
                 </div>
             </div>
         </div>
-        <div class="flex w-screen flex-col gap-32 bg-accent p-8 pt-36 text-center text-accent-foreground sm:gap-48 sm:p-16">
+        <div class="flex w-screen flex-col gap-32 bg-accent px-8 py-16 text-center text-accent-foreground sm:gap-48 sm:p-16">
             <div class="flex flex-col items-center justify-center gap-4">
-                <H2> Ready to Elevate Your Coaching Journey ? </H2>
+                <H2>Ready to Elevate Your Coaching Journey?</H2>
                 <Lead class="max-w-2xl !text-accent-foreground">
                     The Club is more than just a network, it's a structured support system for aspiring and beginner coaches. Whether you're just
                     starting or already coach, you'll be guided every step of the way.
                 </Lead>
             </div>
         </div>
-        <div class="flex w-screen flex-col items-center gap-12 bg-background p-8 pt-36 text-center text-foreground sm:gap-12 sm:p-16">
-            <div class="flex flex-col items-center justify-center gap-4">
-                <H2> Help Starter Pack (HSP) </H2>
-                <Lead class="max-w-2xl !text-accent-foreground">
-                    Your ultimate guide to kick-start your coaching career! The Help Starter Pack provides essential tools, insights, and strategies
-                    to build a strong foundation in coaching.
-                </Lead>
-            </div>
-            <div
-                class="flex flex-col-reverse items-center justify-center gap-8 rounded-lg bg-secondary/30 p-4 text-secondary-foreground shadow-lg sm:w-2/3 sm:flex-row sm:gap-16 sm:p-8"
-            >
-                <div class="flex w-full flex-col items-start gap-8 sm:w-1/2">
-                    <P class="text-left text-xl font-bold"> What's Included&nbsp;: </P>
-                    <div class="flex flex-col gap-4">
-                        <div class="flex flex-row items-center gap-4">
-                            <BookOpen class="h-8 min-w-8 text-accent sm:h-10 sm:w-10" />
-                            <div class="text-left">
-                                <P class="font-bold">Practical Coaching Tips</P>
-                                <P class="!mt-0">Actionable strategies to improve team management</P>
-                            </div>
-                        </div>
-                        <div class="flex flex-row items-center gap-4">
-                            <KeyRound class="h-8 min-w-8 text-accent sm:h-10 sm:w-10" />
-                            <div class="text-left">
-                                <P class="font-bold">Exclusive Resources</P>
-                                <P class="!mt-0">Access to ambassador and mentorship </P>
-                            </div>
-                        </div>
-                        <div class="flex flex-row items-center gap-4">
-                            <ChartNoAxesColumnIncreasing class="h-8 min-w-8 text-accent sm:h-10 sm:w-10" />
-                            <div class="text-left">
-                                <P class="font-bold">Step-by-Step Guides</P>
-                                <P class="!mt-0">Structured advice to help you</P>
-                            </div>
-                        </div>
-                    </div>
-                    <a :href="route('hsp')" class="w-full sm:w-fit">
-                        <Button size="lg" class="w-full bg-accent text-accent-foreground hover:text-primary-foreground">
-                            Get Started with HSP
-                        </Button>
-                    </a>
+        <div class="flex w-screen flex-col items-center gap-12 bg-background px-8 py-16 text-center text-foreground sm:gap-12 sm:p-16">
+            <div class="flex flex-col items-center justify-center gap-16">
+                <div>
+                    <H2>Help Starter Pack (HSP)</H2>
+                    <Lead class="mt-4 max-w-2xl !text-accent-foreground">
+                        Your ultimate guide to kick-start your coaching career! The Help Starter Pack provides essential tools, insights, and
+                        strategies to build a strong foundation in coaching.
+                    </Lead>
                 </div>
-                <img class="w-full rounded-lg object-cover sm:w-1/2" src="/assets/images/HSP-cover.png" />
+                <div class="flex flex-col gap-8 md:flex-row">
+                    <div
+                        class="flex aspect-video w-full flex-col justify-between gap-4 rounded-lg bg-secondary/30 p-6 text-center text-secondary-foreground shadow-lg sm:w-1/4"
+                    >
+                        <P class="text-xl font-bold">Existing Members</P>
+                        <P class="text-lg">Access your club dashboard and chat with your mentors</P>
+                        <Button size="lg" variant="secondary" @click="router.visit(route('club.home'))">Acess The Club</Button>
+                    </div>
+                    <div
+                        class="flex aspect-video w-full flex-col justify-between gap-4 rounded-lg bg-secondary/30 p-6 text-center text-secondary-foreground shadow-lg sm:w-1/4"
+                    >
+                        <P class="text-xl font-bold">The official licence</P>
+                        <P class="text-lg">Apply directly for the C licence to become a football coach</P>
+                        <a
+                            href="https://www.nds.baspo.admin.ch/publicArea/cadreEducationStructure/cadre/education-structure/8046830102593708144/schedule?CadreEducationCourse_jsCoursePlan=%7B%22filterDefinition%22:%7B%22cadreEducationCourseType%22:%7B%22value%22:%22-2317626998746428607%22,%22label%22:%22Leiterkurs%22%7D%7D%7D&lang=fr"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <Button size="lg" class="w-full bg-accent text-accent-foreground hover:text-primary-foreground">
+                                Register to the C Licence <ArrowRight />
+                            </Button>
+                        </a>
+                    </div>
+                </div>
+                <div
+                    class="flex flex-col-reverse items-center justify-center gap-8 rounded-lg bg-secondary/30 p-4 text-secondary-foreground shadow-lg sm:w-2/3 sm:flex-row sm:gap-16 sm:p-8"
+                >
+                    <div class="flex w-full flex-col items-start gap-8 sm:w-1/2">
+                        <P class="text-left text-xl font-bold">What's Included:</P>
+                        <div class="flex flex-col gap-4">
+                            <div class="flex flex-row items-center gap-4">
+                                <BookOpen class="h-8 min-w-8 text-accent sm:h-10 sm:w-10" />
+                                <div class="text-left">
+                                    <P class="font-bold">Practical Coaching Tips</P>
+                                    <P class="!mt-0">Actionable strategies to improve team management</P>
+                                </div>
+                            </div>
+                            <div class="flex flex-row items-center gap-4">
+                                <KeyRound class="h-8 min-w-8 text-accent sm:h-10 sm:w-10" />
+                                <div class="text-left">
+                                    <P class="font-bold">Exclusive Resources</P>
+                                    <P class="!mt-0">Access to ambassador and mentorship</P>
+                                </div>
+                            </div>
+                            <div class="flex flex-row items-center gap-4">
+                                <ChartNoAxesColumnIncreasing class="h-8 min-w-8 text-accent sm:h-10 sm:w-10" />
+                                <div class="text-left">
+                                    <P class="font-bold">Step-by-Step Guides</P>
+                                    <P class="!mt-0">Structured advice to help you</P>
+                                </div>
+                            </div>
+                        </div>
+                        <a :href="route('hsp')" class="w-full sm:w-fit">
+                            <Button size="lg" class="w-full bg-accent text-accent-foreground hover:text-primary-foreground">
+                                Get Started with HSP
+                            </Button>
+                        </a>
+                    </div>
+                    <img class="w-full rounded-lg object-cover sm:w-1/2" src="/assets/images/HSP-cover.png" />
+                </div>
             </div>
         </div>
     </WebLayout>
