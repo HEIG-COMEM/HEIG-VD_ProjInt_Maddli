@@ -22,7 +22,7 @@ const steps = [
     {
         step: 4,
         title: 'Start Your Journey',
-        description: 'Begin accessing resources and connecting with your support network',
+        description: 'Connect with your Ambassador or Mentor with a direct chat',
     },
 ];
 </script>

@@ -7,7 +7,7 @@ import { Lead } from '@/components/typography/texts';
 import { Button } from '@/components/ui/button';
 import WebLayout from '@/layouts/WebLayout.vue';
 import { Head, router } from '@inertiajs/vue3';
-import { BookOpen, GraduationCap, HeartHandshake, KeyRound, Link, Share2 } from 'lucide-vue-next';
+import { GraduationCap, HeartHandshake, KeyRound, Link, Share2 } from 'lucide-vue-next';
 </script>
 
 <template>
@@ -41,12 +41,7 @@ import { BookOpen, GraduationCap, HeartHandshake, KeyRound, Link, Share2 } from 
                     <PlanCard
                         title="Future Coaches"
                         description="Perfect for those who haven't obtained their UEFA C License yet. Get paired with an Ambassador who will guide you through your first steps."
-                        :features="[
-                            'Personal Ambassador support',
-                            'Initial coaching guidance',
-                            'License preparation help',
-                            'Networking opportunities',
-                        ]"
+                        :features="['Personal Ambassador support', 'Initial coaching support', 'Networking opportunities']"
                         button-text="Connect with an Ambassador"
                         button-route="club.home"
                         :icon="HeartHandshake"
@@ -54,12 +49,7 @@ import { BookOpen, GraduationCap, HeartHandshake, KeyRound, Link, Share2 } from 
                     <PlanCard
                         title="Licensed Coaches"
                         description="For coaches with a UEFA C License. Get matched with a Marraine (Mentor) for professional guidance and support."
-                        :features="[
-                            'Experienced Mentor matching',
-                            'Advanced coaching support',
-                            'Professional development',
-                            'Networking opportunities',
-                        ]"
+                        :features="['Experienced Mentor matching', 'Possibility to guide futur coaches', 'Networking opportunities']"
                         button-text="Find Your Mentor"
                         button-route="club.home"
                         :icon="KeyRound"
@@ -69,13 +59,7 @@ import { BookOpen, GraduationCap, HeartHandshake, KeyRound, Link, Share2 } from 
             <div class="flex flex-col items-center gap-6">
                 <H2>Why Join the Club?</H2>
                 <div class="flex flex-col justify-center gap-6 md:flex-row md:gap-8 lg:w-2/3">
-                    <FeatureCard
-                        class="!w-full md:!w-1/4"
-                        title="Strong Community"
-                        description="Connect with fellow coaches sharing similar goals"
-                        :icon="Share2"
-                    />
-                    <FeatureCard class="!w-full md:!w-1/4" title="Exclusive Resources" description="Access specialized advice" :icon="BookOpen" />
+                    <FeatureCard class="!w-full md:!w-1/4" title="Strong Community" description="Connect with Ambassador or Mentor" :icon="Share2" />
                     <FeatureCard
                         class="!w-full md:!w-1/4"
                         title="Professional Growth"
