@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import FeatureNumberCard from '@/components/FeatureNumberCard.vue';
+import HSPSection from '@/components/HSPSection.vue';
 import SectionLayout from '@/components/SectionLayout.vue';
 import { H2 } from '@/components/typography/headings';
 import { Blockquote, P, Small } from '@/components/typography/texts';
+import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import WebLayout from '@/layouts/WebLayout.vue';
 import { Head } from '@inertiajs/vue3';
+import { ExternalLink, GraduationCap, MessageCircleQuestion, Share2 } from 'lucide-vue-next';
 </script>
 
 <template>
@@ -105,10 +108,48 @@ import { Head } from '@inertiajs/vue3';
                     available to you.
                 </P>
                 <div class="mt-12 flex flex-col justify-center gap-6 md:flex-row md:gap-8">
-                    <FeatureNumberCard title="Your local club" description="Which can often cover part of the training costs" :number="1" />
-                    <FeatureNumberCard title="Jeunesse+Sport (J+S)" description="Learn more about the J+S program" :number="2" />
-                    <FeatureNumberCard title="Your town or canton" description="Via sports or equality services" :number="3" />
+                    <FeatureNumberCard title="Your local club" :number="1">
+                        <template #description>
+                            <P class="!mt-0 text-lg">Which can often cover part of the training costs</P>
+                        </template>
+                    </FeatureNumberCard>
+                    <FeatureNumberCard title="Jeunesse+Sport (J+S)" :number="2">
+                        <template #description>
+                            <a href="https://www.jugendundsport.ch/fr/" target="_blank" rel="noopener noreferrer" class="break-words">
+                                <Button variant="link" class="!mt-0 whitespace-normal p-0 text-left text-lg font-normal">
+                                    Learn more about the J+S program <ExternalLink class="ml-1 h-4 w-4" />
+                                </Button>
+                            </a>
+                        </template>
+                    </FeatureNumberCard>
+                    <FeatureNumberCard title="Your town or canton" :number="3">
+                        <template #description>
+                            <P class="!mt-0 text-lg">Via sports or equality services</P>
+                        </template>
+                    </FeatureNumberCard>
                 </div>
+            </div>
+        </SectionLayout>
+
+        <SectionLayout>
+            <div class="flex flex-col items-center justify-center gap-6">
+                <H2>Want To Go Further?</H2>
+                <HSPSection
+                    class="mt-12"
+                    title="Join The Hello Coach Club"
+                    :features="[
+                        { icon: Share2, title: 'Strong Community', description: 'You are part of the community ' },
+                        { icon: GraduationCap, title: 'Ambassadors and mentors to support you', description: 'Get help from an active coach' },
+                        {
+                            icon: MessageCircleQuestion,
+                            title: 'Ask them your questions directly',
+                            description: 'Feedback adapted to your questions ',
+                        },
+                    ]"
+                    buttonText="Join The Hello Coach Club"
+                    :buttonLink="route('club.home')"
+                    imageSrc="/assets/images/HSP-cover-2.png"
+                />
             </div>
         </SectionLayout>
     </WebLayout>

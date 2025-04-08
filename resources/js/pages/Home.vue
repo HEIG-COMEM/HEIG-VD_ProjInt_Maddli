@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import FeatureCard from '@/components/FeatureCard.vue';
+import HSPSection from '@/components/HSPSection.vue';
 import SectionLayout from '@/components/SectionLayout.vue';
 import TestimonialCard from '@/components/TestimonialCard.vue';
 import { H2 } from '@/components/typography/headings';
@@ -187,49 +188,18 @@ const playVideo = () => {
         </SectionLayout>
 
         <SectionLayout>
-            <div class="flex flex-col items-center justify-center gap-6">
-                <H2>Help Starter Pack (HSP)</H2>
-                <Lead class="text-center !text-foreground">
-                    Your ultimate guide to kick-start your coaching career! The Help Starter Pack provides essential tools, insights, and strategies
-                    to build a strong foundation in coaching.
-                </Lead>
-                <div
-                    class="mt-12 flex flex-col-reverse items-center justify-center gap-8 rounded-lg bg-secondary/30 p-4 text-secondary-foreground shadow-lg sm:gap-16 sm:p-8 lg:flex-row"
-                >
-                    <div class="flex w-full flex-col items-start gap-8 lg:w-1/2">
-                        <P class="text-left text-xl font-bold">What's Included:</P>
-                        <div class="flex flex-col gap-4">
-                            <div class="flex flex-row items-center gap-4">
-                                <BookOpen class="h-8 min-w-8 text-accent sm:h-10 sm:min-w-10" />
-                                <div class="text-left">
-                                    <P class="font-bold">Practical Coaching Tips</P>
-                                    <P class="!mt-0">Actionable strategies to improve team management</P>
-                                </div>
-                            </div>
-                            <div class="flex flex-row items-center gap-4">
-                                <KeyRound class="h-8 min-w-8 text-accent sm:h-10 sm:min-w-10" />
-                                <div class="text-left">
-                                    <P class="font-bold">Exclusive Resources</P>
-                                    <P class="!mt-0">Access to ambassador and mentorship</P>
-                                </div>
-                            </div>
-                            <div class="flex flex-row items-center gap-4">
-                                <ChartNoAxesColumnIncreasing class="h-8 min-w-8 text-accent sm:h-10 sm:min-w-10" />
-                                <div class="text-left">
-                                    <P class="font-bold">Step-by-Step Guides</P>
-                                    <P class="!mt-0">Structured advice to help you</P>
-                                </div>
-                            </div>
-                        </div>
-                        <a :href="route('hsp')" class="w-full sm:w-fit">
-                            <Button size="lg" class="w-full bg-accent text-accent-foreground hover:text-primary-foreground">
-                                Get Started with HSP
-                            </Button>
-                        </a>
-                    </div>
-                    <img class="h-full w-full rounded-lg object-cover lg:w-1/2" src="/assets/images/HSP-cover.png" />
-                </div>
-            </div>
+            <HSPSection
+                class="mt-12"
+                title="What's Included:"
+                :features="[
+                    { icon: BookOpen, title: 'Practical Coaching Tips', description: 'Actionable strategies to improve team management' },
+                    { icon: KeyRound, title: 'Exclusive Resources', description: 'Access to ambassador and mentorship' },
+                    { icon: ChartNoAxesColumnIncreasing, title: 'Step-by-Step Guides', description: 'Structured advice to help you' },
+                ]"
+                buttonText="Get Started with HSP"
+                :buttonLink="route('hsp')"
+                imageSrc="/assets/images/HSP-cover.png"
+            />
         </SectionLayout>
     </WebLayout>
 </template>

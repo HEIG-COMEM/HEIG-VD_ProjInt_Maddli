@@ -3,7 +3,6 @@ import { P } from '@/components/typography/texts';
 
 defineProps<{
     title: string;
-    description: string;
     number: number;
 }>();
 </script>
@@ -14,7 +13,9 @@ defineProps<{
             <P class="text-4xl font-bold text-accent">{{ number }}</P>
             <P class="text-xl font-bold">{{ title }}</P>
         </div>
-        <P class="!mt-0 text-lg">{{ description }}</P>
+        <slot name="description">
+            <P class="!mt-0 text-lg">Default description</P>
+        </slot>
     </div>
 </template>
 
