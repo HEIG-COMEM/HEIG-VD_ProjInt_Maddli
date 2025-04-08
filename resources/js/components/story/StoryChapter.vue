@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { storyStore } from '@/stores/storyStore';
+import { storyUtils } from '@/stores/storyUtils';
 import Reveal from 'reveal.js';
 import { onMounted, ref } from 'vue';
 import '/node_modules/reveal.js/dist/reveal.css';
@@ -7,7 +7,7 @@ import '/node_modules/reveal.js/dist/reveal.css';
 const deck = ref<any>(null); // Reactive reference to hold the Reveal.js instance
 
 onMounted(() => {
-    storyStore.initializeSlides(); // Initialize slides in the storyStore
+    storyUtils.initializeSlides(); // Initialize slides in the storyUtils
 
     deck.value = new Reveal({
         plugins: [], // No plugins are used in this Reveal.js instance
@@ -15,7 +15,7 @@ onMounted(() => {
     });
     deck.value.initialize({ width: '100%', height: '100%' }); // Initialize Reveal.js with full width and height
     deck.value.on('slidechanged', (event: any) => {
-        storyStore.updateCurrentSlideIndex(event.indexh); // Update current slide index in storyStore when slide changes
+        storyUtils.updateCurrentSlideIndex(event.indexh); // Update current slide index in storyUtils when slide changes
     });
 });
 </script>
@@ -23,8 +23,8 @@ onMounted(() => {
 <template>
     <div class="reveal">
         <div class="slides h-screen w-screen">
-            <!-- Dynamically render components for each slide in storyStore -->
-            <component v-for="slide in storyStore.slides" :key="slide.path" :is="slide.component" />
+            <!-- Dynamically render components for each slide in storyUtils -->
+            <component v-for="slide in storyUtils.slides" :key="slide.path" :is="slide.component" />
         </div>
     </div>
 </template>

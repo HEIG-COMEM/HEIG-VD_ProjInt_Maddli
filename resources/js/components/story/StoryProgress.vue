@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { storyStore } from '@/stores/storyStore';
+import { storyUtils } from '@/stores/storyUtils';
 import { computed } from 'vue';
 
-const totalSlides = computed(() => storyStore.getTotalSlides());
-const currentProgress = computed(() => storyStore.getCurrentSlideProgress());
-const chapters = computed(() => storyStore.getAllChaptersFolders());
-const chaptersNames = computed(() => storyStore.getChapterName());
-const numberOfSlidesInEachChapter = computed(() => storyStore.getNumberOfSlidesInEachChapter());
+const totalSlides = computed(() => storyUtils.getTotalSlides());
+const currentProgress = computed(() => storyUtils.getCurrentSlideProgress());
+const chapters = computed(() => storyUtils.getAllChaptersFolders());
+const chaptersNames = computed(() => storyUtils.getChapterName());
+const numberOfSlidesInEachChapter = computed(() => storyUtils.getNumberOfSlidesInEachChapter());
 </script>
 
 <template>

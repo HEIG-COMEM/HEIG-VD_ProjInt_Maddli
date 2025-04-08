@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { storyStore } from '@/stores/storyStore';
+import { storyUtils } from '@/stores/storyUtils';
 import { ref } from 'vue';
 
 const props = defineProps<{
@@ -12,7 +12,7 @@ const selectedAnswer = ref<string | null>(null);
 function handleChoice(answer: string) {
     if (selectedAnswer.value === null) {
         selectedAnswer.value = answer;
-        storyStore.addChoice(answer);
+        storyUtils.addChoice(answer);
     }
 }
 </script>

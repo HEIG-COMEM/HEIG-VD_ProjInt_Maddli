@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { storyStore } from '@/stores/storyStore';
+import { storyUtils } from '@/stores/storyUtils';
 import { GripHorizontal } from 'lucide-vue-next';
 import { createSwapy } from 'swapy';
 import { onMounted, ref } from 'vue';
@@ -31,7 +31,7 @@ onMounted(() => {
         // Collecting the ordered choices and storing them
         const choices = Array.from(container.querySelectorAll('[data-swapy-item]')).map((item) => item.textContent?.trim() || '');
         choices.forEach((choice) => {
-            storyStore.addChoice(choice); // Adding each choice to the storyStore
+            storyUtils.addChoice(choice); // Adding each choice to the storyUtils
         });
     };
 });

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Character from '@/components/story/characters/Character.vue';
 import DialogBubble from '@/components/story/ui/DialogBubble.vue';
-import { storyStore } from '@/stores/storyStore';
+import { storyUtils } from '@/stores/storyUtils';
 import { Timer } from 'lucide-vue-next';
 </script>
 
@@ -14,7 +14,7 @@ import { Timer } from 'lucide-vue-next';
                     How to become a coach?
                     <div class="mt-1 flex items-center text-sm sm:text-lg md:mt-4 md:text-xl lg:text-2xl">
                         <Timer class="mr-2" />
-                        Duration: {{ storyStore.getDuration() }}
+                        Duration: {{ storyUtils.getDuration() }}
                     </div>
                 </div>
             </div>

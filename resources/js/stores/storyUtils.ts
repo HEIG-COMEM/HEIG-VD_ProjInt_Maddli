@@ -6,8 +6,8 @@ interface Slide {
     component: ReturnType<typeof shallowRef>;
 }
 
-// Define the structure of the StoryStore with its properties and methods
-interface StoryStore {
+// Define the structure of the storyUtils with its properties and methods
+interface storyUtils {
     subStories: Record<string, any>; // Holds sub-stories, indexed by a string key
     story: any[];
     choices: any[];
@@ -31,8 +31,8 @@ interface StoryStore {
     getChapterTitle(chapter: string): string; // Add this new method signature
 }
 
-// Create a reactive StoryStore instance
-export const storyStore = reactive<StoryStore>({
+// Create a reactive storyUtils instance
+export const storyUtils = reactive<storyUtils>({
     subStories: {},
     story: [],
     choices: [],
