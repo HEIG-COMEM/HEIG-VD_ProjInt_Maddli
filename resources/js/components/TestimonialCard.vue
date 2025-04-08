@@ -17,9 +17,7 @@ const ratings = computed(() => {
 </script>
 
 <template>
-    <div
-        class="flex aspect-video w-full flex-col justify-between gap-4 rounded-lg bg-secondary/30 p-6 text-left text-secondary-foreground shadow-lg sm:w-1/4"
-    >
+    <div class="flex aspect-video w-full flex-col justify-between gap-4 rounded-lg bg-secondary/30 p-6 text-left text-secondary-foreground shadow-lg">
         <div class="flex flex-col items-center gap-4 lg:items-start">
             <div class="flex flex-col items-center gap-4 lg:flex-row">
                 <img :src="profileImgUrl" class="h-12 w-12 rounded-full object-cover" />

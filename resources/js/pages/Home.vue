@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import FeatureCard from '@/components/FeatureCard.vue';
+import SectionLayout from '@/components/SectionLayout.vue';
 import TestimonialCard from '@/components/TestimonialCard.vue';
 import { H2 } from '@/components/typography/headings';
 import { Lead, P } from '@/components/typography/texts';
@@ -24,10 +25,10 @@ const playVideo = () => {
 
     <WebLayout>
         <div
-            class="flex w-screen flex-col justify-center bg-accent p-8 sm:p-16"
+            class="flex w-screen flex-col items-center justify-center bg-accent p-8 sm:p-16"
             style="background: url('/assets/images/home-hero-bg.png') center/cover no-repeat"
         >
-            <div class="flex flex-col items-center justify-center gap-12 px-4 text-white sm:px-8">
+            <div class="flex max-w-screen-lg flex-col items-center justify-center gap-12 px-4 text-white sm:px-8">
                 <div class="w-full text-center sm:mb-16 sm:text-left">
                     <h1 class="text-3xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">Become a coach</h1>
                     <p class="mt-4 text-base sm:text-lg md:text-xl lg:text-2xl">Welcome to the Hello Coach Simulation!</p>
@@ -80,14 +81,15 @@ const playVideo = () => {
                 </div>
             </div>
         </div>
-        <div class="flex w-screen flex-col gap-24 bg-background px-8 pb-16 pt-48 text-center text-foreground sm:gap-36 sm:p-16">
+
+        <SectionLayout>
             <div class="flex flex-col items-center justify-center gap-6">
                 <H2>Interactive Coaching Simulation</H2>
-                <Lead class="max-w-2xl">
+                <Lead class="text-center">
                     Test your coaching skills in a real-time decision-making experience. Face challenges, make key choices, and see how your
                     leadership impacts the game!
                 </Lead>
-                <div class="relative w-full rounded-lg object-cover shadow-lg sm:w-2/3">
+                <div class="relative w-full rounded-lg object-cover shadow-lg">
                     <img class="w-full rounded-lg object-cover shadow-lg" src="/assets/images/become-a-coach-poster.png" />
                     <Button
                         variant="default"
@@ -99,10 +101,13 @@ const playVideo = () => {
                     </Button>
                 </div>
             </div>
+        </SectionLayout>
+
+        <SectionLayout>
             <div class="flex flex-col items-center justify-center gap-6">
                 <H2>Personal Growth Through Coaching</H2>
-                <Lead class="max-w-2xl">Experience real-time decision-making and leadership challenges</Lead>
-                <div class="mt-12 flex flex-col justify-center gap-6 sm:flex-row sm:gap-8">
+                <Lead class="text-center">Experience real-time decision-making and leadership challenges</Lead>
+                <div class="mt-12 flex w-full flex-col justify-center gap-6 sm:flex-row sm:gap-8">
                     <FeatureCard title="Building Leadership" description="Develop your ability to inspire and guide a team" :icon="ClipboardCheck" />
                     <FeatureCard
                         title="Managing Group Dynamics"
@@ -116,6 +121,9 @@ const playVideo = () => {
                     />
                 </div>
             </div>
+        </SectionLayout>
+
+        <SectionLayout>
             <div class="flex flex-col items-center justify-center gap-6">
                 <H2>Success Stories from Our Coaches</H2>
                 <div class="mt-12 flex flex-col justify-center gap-6 sm:flex-row sm:gap-8">
@@ -142,35 +150,25 @@ const playVideo = () => {
                     />
                 </div>
             </div>
-        </div>
-        <div class="flex w-screen flex-col gap-24 bg-accent px-8 py-16 text-center text-accent-foreground sm:gap-36 sm:p-16">
+        </SectionLayout>
+
+        <SectionLayout background="bg-accent" textColor="text-accent-foreground" gap="gap-24 sm:gap-36" padding="px-8 py-16 sm:p-16">
             <div class="flex flex-col items-center justify-center gap-6">
                 <H2>Ready to Elevate Your Coaching Journey?</H2>
-                <Lead class="max-w-2xl !text-accent-foreground">
+                <Lead class="text-center !text-accent-foreground">
                     The Club is more than just a network, it's a structured support system for aspiring and beginner coaches. Whether you're just
                     starting or already coach, you'll be guided every step of the way.
                 </Lead>
-            </div>
-        </div>
-        <div class="flex w-screen flex-col items-center gap-12 bg-background px-8 py-16 text-center text-foreground sm:gap-12 sm:p-16">
-            <div class="flex flex-col items-center justify-center gap-16">
-                <div>
-                    <H2>Help Starter Pack (HSP)</H2>
-                    <Lead class="mt-4 max-w-2xl !text-foreground">
-                        Your ultimate guide to kick-start your coaching career! The Help Starter Pack provides essential tools, insights, and
-                        strategies to build a strong foundation in coaching.
-                    </Lead>
-                </div>
-                <div class="flex w-full flex-col justify-center gap-8 sm:flex-row lg:w-2/3">
+                <div class="mt-12 flex w-full flex-col justify-center gap-8 sm:flex-row">
                     <div
-                        class="flex aspect-video w-full flex-col justify-between gap-4 rounded-lg bg-secondary/30 p-6 text-center text-secondary-foreground shadow-lg lg:w-1/2"
+                        class="flex aspect-video w-full flex-col justify-between gap-4 rounded-lg bg-background p-6 text-center text-secondary-foreground shadow-lg lg:w-1/2"
                     >
                         <P class="text-xl font-bold">Existing Members</P>
                         <P class="text-lg">Access your club dashboard and chat with your mentors</P>
                         <Button size="lg" variant="secondary" @click="router.visit(route('club.home'))">Acess The Club</Button>
                     </div>
                     <div
-                        class="flex aspect-video w-full flex-col justify-between gap-4 rounded-lg bg-secondary/30 p-6 text-center text-secondary-foreground shadow-lg lg:w-1/2"
+                        class="flex aspect-video w-full flex-col justify-between gap-4 rounded-lg bg-background p-6 text-center text-secondary-foreground shadow-lg lg:w-1/2"
                     >
                         <P class="text-xl font-bold">The official licence</P>
                         <P class="text-lg">Apply directly for the C licence to become a football coach</P>
@@ -185,8 +183,18 @@ const playVideo = () => {
                         </a>
                     </div>
                 </div>
+            </div>
+        </SectionLayout>
+
+        <SectionLayout>
+            <div class="flex flex-col items-center justify-center gap-6">
+                <H2>Help Starter Pack (HSP)</H2>
+                <Lead class="text-center !text-foreground">
+                    Your ultimate guide to kick-start your coaching career! The Help Starter Pack provides essential tools, insights, and strategies
+                    to build a strong foundation in coaching.
+                </Lead>
                 <div
-                    class="flex flex-col-reverse items-center justify-center gap-8 rounded-lg bg-secondary/30 p-4 text-secondary-foreground shadow-lg sm:gap-16 sm:p-8 lg:w-2/3 lg:flex-row"
+                    class="mt-12 flex flex-col-reverse items-center justify-center gap-8 rounded-lg bg-secondary/30 p-4 text-secondary-foreground shadow-lg sm:gap-16 sm:p-8 lg:flex-row"
                 >
                     <div class="flex w-full flex-col items-start gap-8 lg:w-1/2">
                         <P class="text-left text-xl font-bold">What's Included:</P>
@@ -222,6 +230,6 @@ const playVideo = () => {
                     <img class="h-full w-full rounded-lg object-cover lg:w-1/2" src="/assets/images/HSP-cover.png" />
                 </div>
             </div>
-        </div>
+        </SectionLayout>
     </WebLayout>
 </template>
