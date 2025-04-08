@@ -8,7 +8,7 @@ import {
     NavigationMenuList,
     navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
-import { Sheet, SheetContent, SheetHeader, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { createReusableTemplate, useMediaQuery } from '@vueuse/core';
 import { Menu } from 'lucide-vue-next';
 import { reactive } from 'vue';
@@ -17,15 +17,15 @@ const isDesktop = useMediaQuery('(min-width: 768px)');
 const items = reactive([
     {
         name: 'Simulation',
-        href: route('become-coach'),
+        href: 'become-coach',
     },
     {
         name: 'Help Starter Pack',
-        href: '/docs/introduction',
+        href: 'hsp',
     },
     {
         name: 'Club',
-        href: route('club.infos'),
+        href: 'club.infos',
     },
 ]);
 
@@ -51,13 +51,15 @@ const [UseTemplate, HomeLink] = createReusableTemplate();
                 </SheetTrigger>
                 <SheetContent>
                     <SheetHeader>
+                        <SheetTitle class="sr-only">Menu</SheetTitle>
+                        <SheetDescription class="sr-only">Navigation menu</SheetDescription>
                         <HomeLink />
                     </SheetHeader>
                     <nav class="mt-12">
                         <ul class="space-y-4">
                             <li v-for="item in items" :key="item.name">
-                                <a :href="item.href">
-                                    <Button variant="link" size="lg">
+                                <a :href="route(item.href)">
+                                    <Button variant="link" size="lg" :class="route().current() === item.href ? '!text-accent' : ''">
                                         {{ item.name }}
                                     </Button>
                                 </a>
@@ -71,7 +73,9 @@ const [UseTemplate, HomeLink] = createReusableTemplate();
             <NavigationMenu>
                 <NavigationMenuList>
                     <NavigationMenuItem v-for="item in items" :key="item.name">
-                        <NavigationMenuLink :href="item.href" :class="navigationMenuTriggerStyle()"> {{ item.name }} </NavigationMenuLink>
+                        <NavigationMenuLink :href="route(item.href)" :class="navigationMenuTriggerStyle()" :active="route().current() === item.href">
+                            {{ item.name }}
+                        </NavigationMenuLink>
                     </NavigationMenuItem>
                 </NavigationMenuList>
             </NavigationMenu>
