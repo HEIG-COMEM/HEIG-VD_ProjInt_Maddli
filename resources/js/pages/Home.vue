@@ -87,7 +87,17 @@ const playVideo = () => {
                     Test your coaching skills in a real-time decision-making experience. Face challenges, make key choices, and see how your
                     leadership impacts the game!
                 </Lead>
-                <img class="w-full object-cover shadow-lg sm:w-2/3" src="/assets/images/become-a-coach-poster.png" />
+                <div class="relative w-full rounded-lg object-cover shadow-lg sm:w-2/3">
+                    <img class="w-full rounded-lg object-cover shadow-lg" src="/assets/images/become-a-coach-poster.png" />
+                    <Button
+                        variant="default"
+                        size="lg"
+                        class="absolute bottom-8 left-1/2 -translate-x-1/2 translate-y-1/2 sm:bottom-12"
+                        @click="router.visit(route('become-coach'))"
+                    >
+                        Play now !
+                    </Button>
+                </div>
             </div>
             <div class="flex flex-col items-center justify-center gap-6">
                 <H2>Personal Growth Through Coaching</H2>
@@ -146,21 +156,21 @@ const playVideo = () => {
             <div class="flex flex-col items-center justify-center gap-16">
                 <div>
                     <H2>Help Starter Pack (HSP)</H2>
-                    <Lead class="mt-4 max-w-2xl !text-accent-foreground">
+                    <Lead class="mt-4 max-w-2xl !text-foreground">
                         Your ultimate guide to kick-start your coaching career! The Help Starter Pack provides essential tools, insights, and
                         strategies to build a strong foundation in coaching.
                     </Lead>
                 </div>
-                <div class="flex w-full flex-col justify-center gap-8 md:flex-row">
+                <div class="flex w-full flex-col justify-center gap-8 sm:flex-row lg:w-2/3">
                     <div
-                        class="flex aspect-video w-full flex-col justify-between gap-4 rounded-lg bg-secondary/30 p-6 text-center text-secondary-foreground shadow-lg sm:w-1/4"
+                        class="flex aspect-video w-full flex-col justify-between gap-4 rounded-lg bg-secondary/30 p-6 text-center text-secondary-foreground shadow-lg lg:w-1/2"
                     >
                         <P class="text-xl font-bold">Existing Members</P>
                         <P class="text-lg">Access your club dashboard and chat with your mentors</P>
                         <Button size="lg" variant="secondary" @click="router.visit(route('club.home'))">Acess The Club</Button>
                     </div>
                     <div
-                        class="flex aspect-video w-full flex-col justify-between gap-4 rounded-lg bg-secondary/30 p-6 text-center text-secondary-foreground shadow-lg sm:w-1/4"
+                        class="flex aspect-video w-full flex-col justify-between gap-4 rounded-lg bg-secondary/30 p-6 text-center text-secondary-foreground shadow-lg lg:w-1/2"
                     >
                         <P class="text-xl font-bold">The official licence</P>
                         <P class="text-lg">Apply directly for the C licence to become a football coach</P>
@@ -176,9 +186,9 @@ const playVideo = () => {
                     </div>
                 </div>
                 <div
-                    class="flex flex-col-reverse items-center justify-center gap-8 rounded-lg bg-secondary/30 p-4 text-secondary-foreground shadow-lg sm:w-2/3 sm:flex-row sm:gap-16 sm:p-8"
+                    class="flex flex-col-reverse items-center justify-center gap-8 rounded-lg bg-secondary/30 p-4 text-secondary-foreground shadow-lg sm:gap-16 sm:p-8 lg:w-2/3 lg:flex-row"
                 >
-                    <div class="flex w-full flex-col items-start gap-8 sm:w-1/2">
+                    <div class="flex w-full flex-col items-start gap-8 lg:w-1/2">
                         <P class="text-left text-xl font-bold">What's Included:</P>
                         <div class="flex flex-col gap-4">
                             <div class="flex flex-row items-center gap-4">
@@ -209,7 +219,7 @@ const playVideo = () => {
                             </Button>
                         </a>
                     </div>
-                    <img class="w-full rounded-lg object-cover sm:w-1/2" src="/assets/images/HSP-cover.png" />
+                    <img class="h-full w-full rounded-lg object-cover lg:w-1/2" src="/assets/images/HSP-cover.png" />
                 </div>
             </div>
         </div>

@@ -68,7 +68,7 @@ import { BookOpen, GraduationCap, HeartHandshake, KeyRound, Link, Share2 } from 
             </div>
             <div class="flex flex-col items-center gap-6">
                 <H2>Why Join the Club?</H2>
-                <div class="flex flex-col justify-center gap-8 md:flex-row md:gap-12 lg:w-2/3">
+                <div class="flex flex-col justify-center gap-6 md:flex-row md:gap-8 lg:w-2/3">
                     <FeatureCard
                         class="!w-full md:!w-1/4"
                         title="Strong Community"
