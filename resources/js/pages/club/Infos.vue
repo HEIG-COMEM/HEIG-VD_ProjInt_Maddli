@@ -13,8 +13,8 @@ import { BookOpen, GraduationCap, HeartHandshake, KeyRound, Link, Share2 } from 
 <template>
     <Head title="Club"></Head>
     <WebLayout>
-        <div class="relative h-[33dvh] w-screen bg-accent p-8 md:h-screen md:p-16">
-            <div class="absolute inset-0 top-16 z-10 flex flex-col items-center justify-center gap-12 px-4 text-white md:items-start md:px-8">
+        <div class="w-screen bg-accent p-8 md:h-screen md:p-16" style="background: url('/assets/images/home-hero-bg.png') center/cover no-repeat">
+            <div class="flex flex-col items-center justify-center gap-12 px-4 text-white md:items-start md:px-8">
                 <div class="flex flex-col items-center gap-4 text-center md:mb-16 md:items-start md:text-left">
                     <h1 class="text-3xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">Join The Club and the community</h1>
                     <p class="mt-4 text-base sm:text-lg md:text-xl lg:text-2xl">Join the community of female coaches transforming women's football</p>
@@ -28,8 +28,6 @@ import { BookOpen, GraduationCap, HeartHandshake, KeyRound, Link, Share2 } from 
                     </Button>
                 </div>
             </div>
-            <img src="/assets/images/home-hero-bg.png" alt="Background" class="absolute inset-0 h-full w-full object-cover" />
-            <div class="absolute inset-0 z-0 bg-black opacity-50"></div>
         </div>
         <div class="flex w-screen flex-col gap-24 bg-background px-8 py-16 text-center text-foreground md:gap-36 md:p-16">
             <div class="flex flex-col items-center justify-center gap-6">
