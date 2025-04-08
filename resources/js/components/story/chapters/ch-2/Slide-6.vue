@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const bg = '/assets/story/bg/2.png';
+const bg = '/assets/story/bg/2-4.png';
 
 // TODO : Slide Feedback
 </script>

@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import InsightBox from '@/components/story/feedback/InsightBox.vue';
 
-const bgColor = '#006565';
+const bg = '#006565';
 </script>
 
 <template>
-    <section :data-background-color="bgColor" data-auto-animate class="h-full py-16">
+    <section :data-background-color="bg" data-auto-animate class="h-full py-16">
         <div class="flex h-full w-full flex-col">
             <InsightBox title="Group management">
                 <p>

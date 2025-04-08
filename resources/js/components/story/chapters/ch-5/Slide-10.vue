@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const bgColor = '#006565';
+const bg = '/assets/story/bg/5-6.png';
 </script>
 
 <template>
-    <section :data-background-color="bgColor" data-auto-animate class="h-full">
+    <section data-auto-animate :data-background-image="bg" class="h-full">
         <h1>Chapter 5 - Slide 10</h1>
     </section>
 </template>

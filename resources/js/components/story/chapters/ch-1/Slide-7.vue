@@ -3,7 +3,7 @@ import Character from '@/components/story/characters/Character.vue';
 import DialogBubble from '@/components/story/ui/DialogBubble.vue';
 import Smartphone from '@/components/story/ui/Smartphone.vue';
 
-const bg = '/assets/story/bg/1.png';
+const bg = '/assets/story/bg/1-1.png';
 </script>
 
 <template>

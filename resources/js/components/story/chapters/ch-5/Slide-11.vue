@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const bg = '/assets/story/bg/5.png';
+const bg = '/assets/story/bg/5-6.png';
 </script>
 
 <template>

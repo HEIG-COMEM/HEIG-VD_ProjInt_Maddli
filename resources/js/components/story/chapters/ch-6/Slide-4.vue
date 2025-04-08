@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import QuestionMultipleChoice from '@/components/story/questions/QuestionMultipleChoice.vue';
 
-const bg = '/assets/story/bg/7.png';
+const bg = '/assets/story/bg/6-1.png';
 </script>
 
 <template>

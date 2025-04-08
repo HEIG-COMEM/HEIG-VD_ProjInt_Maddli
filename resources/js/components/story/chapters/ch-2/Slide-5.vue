@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import QuestionMultipleChoice from '@/components/story/questions/QuestionMultipleChoice.vue';
+
+const bg = '/assets/story/bg/2-4.png';
 </script>
 
 <template>
-    <section data-auto-animate class="relative h-full">
+    <section :data-background-image="bg" data-auto-animate class="relative h-full">
         <QuestionMultipleChoice
             question="You see the players joking around before the warm-up. How do you get them to refocus?"
             :answers="[

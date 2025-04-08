@@ -2,7 +2,7 @@
 import Character from '@/components/story/characters/Character.vue';
 import DialogBubble from '@/components/story/ui/DialogBubble.vue';
 
-const bg = '/assets/story/bg/2.png';
+const bg = '/assets/story/bg/2-2.png';
 </script>
 
 <template>

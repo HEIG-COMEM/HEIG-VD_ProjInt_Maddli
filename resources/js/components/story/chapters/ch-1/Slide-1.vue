@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Caption from '@/components/story/ui/Caption.vue';
 
-const bg = '/assets/story/bg/1.png';
+const bg = '/assets/story/bg/1-1.png';
 </script>
 
 <template>

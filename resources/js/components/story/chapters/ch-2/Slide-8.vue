@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Character from '@/components/story/characters/Character.vue';
 
-const bg = '/assets/story/bg/2.png';
+const bg = '/assets/story/bg/2-3.png';
 const ball = '/assets/story/ch-2/elements/ball.svg';
 </script>
 
