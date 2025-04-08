@@ -31,7 +31,7 @@ const playVideo = () => {
         >
             <div class="flex max-w-screen-lg flex-col items-center justify-center gap-12 px-4 text-white sm:px-8">
                 <div class="w-full text-center sm:mb-16 sm:text-left">
-                    <h1 class="text-3xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">Become a coach</h1>
+                    <h1 class="text-5xl font-bold sm:text-7xl md:text-8xl lg:text-9xl">Become a coach</h1>
                     <p class="mt-4 text-base sm:text-lg md:text-xl lg:text-2xl">Welcome to the Hello Coach Simulation!</p>
                 </div>
                 <div class="flex w-full flex-col gap-8 sm:gap-12 md:flex-row">
