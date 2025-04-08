@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Lead } from '@/components/typography/texts';
 import { Button } from '@/components/ui/button';
 import {
     NavigationMenu,
@@ -9,6 +8,7 @@ import {
     navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { useAppearance } from '@/composables/useAppearance';
 import { createReusableTemplate, useMediaQuery } from '@vueuse/core';
 import { Menu } from 'lucide-vue-next';
 import { reactive } from 'vue';
@@ -30,14 +30,13 @@ const items = reactive([
 ]);
 
 const [UseTemplate, HomeLink] = createReusableTemplate();
+const { appearance } = useAppearance();
 </script>
 
 <template>
     <UseTemplate>
-        <a :href="route('home')" class="flex items-center space-x-2">
-            <img src="/images/logo.png" alt="Logo" class="h-8 w-8" />
-            <!-- TODO: Set logo-->
-            <Lead class="font-bold text-accent">Hello Coach</Lead>
+        <a :href="route('home')" class="flex h-full cursor-pointer items-center space-x-2">
+            <img :src="appearance === 'light' ? '/assets/icons/logo.svg' : '/assets/icons/logo-dark.svg'" alt="Logo" class="h-3/4" />
         </a>
     </UseTemplate>
 
