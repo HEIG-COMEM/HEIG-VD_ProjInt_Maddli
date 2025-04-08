@@ -25,7 +25,7 @@ const items = reactive([
     },
     {
         name: 'Club',
-        href: route('club.home'),
+        href: route('club.infos'),
     },
 ]);
 
