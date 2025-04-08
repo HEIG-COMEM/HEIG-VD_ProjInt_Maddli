@@ -7,11 +7,10 @@ import {
     NavigationMenuList,
     navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
-
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { useAppearance } from '@/composables/useAppearance';
 import { createReusableTemplate, useMediaQuery } from '@vueuse/core';
-import { Menu } from 'lucide-vue-next';
+import { Menu, Moon, Sun } from 'lucide-vue-next';
 import { reactive } from 'vue';
 
 const isDesktop = useMediaQuery('(min-width: 768px)');
@@ -31,7 +30,10 @@ const items = reactive([
 ]);
 
 const [UseTemplate, HomeLink] = createReusableTemplate();
-const { appearance } = useAppearance();
+const [UseThemeToggle, ThemeToggle] = createReusableTemplate();
+const { appearance, updateAppearance } = useAppearance();
+
+const handleToggleAppearance = () => updateAppearance(appearance.value === 'light' ? 'dark' : 'light');
 </script>
 
 <template>
@@ -46,45 +48,58 @@ const { appearance } = useAppearance();
         </a>
     </UseTemplate>
 
+    <UseThemeToggle>
+        <Button variant="ghost" size="icon" @click="handleToggleAppearance()">
+            <Moon class="rotate-0 scale-100 transition-all duration-500 dark:-rotate-90 dark:scale-0" />
+            <Sun class="absolute rotate-90 scale-0 transition-all duration-500 dark:rotate-0 dark:scale-100" />
+            <span class="sr-only">Toggle theme</span>
+        </Button>
+    </UseThemeToggle>
+
     <div class="flex h-16 items-center justify-between px-4">
         <HomeLink />
 
         <template v-if="!isDesktop">
-            <Sheet>
-                <SheetTrigger>
-                    <Menu class="h-8 w-8 cursor-pointer" />
-                </SheetTrigger>
-                <SheetContent>
-                    <SheetHeader class="h-12">
-                        <SheetTitle class="sr-only">Menu</SheetTitle>
-                        <SheetDescription class="sr-only">Navigation menu</SheetDescription>
-                    </SheetHeader>
-                    <nav class="mt-6">
-                        <ul class="space-y-4">
-                            <li>
-                                <a :href="route('home')">
-                                    <Button variant="link" size="lg" :class="route().current() === 'home' ? '!text-accent underline' : ''">
-                                        Home
-                                    </Button>
-                                </a>
-                            </li>
-                            <li v-for="item in items" :key="item.name">
-                                <a :href="route(item.href)">
-                                    <Button variant="link" size="lg" :class="route().current() === item.href ? '!text-accent underline' : ''">
-                                        {{ item.name }}
-                                    </Button>
-                                </a>
-                            </li>
-                            <li class="border-t border-foreground" aria-hidden="true"></li>
-                            <li>
-                                <a :href="route('club.home')">
-                                    <Button variant="link" size="lg" class="!text-accent"> Login </Button>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </SheetContent>
-            </Sheet>
+            <div class="flex flex-row items-center gap-4">
+                <ThemeToggle />
+                <Sheet>
+                    <SheetTrigger>
+                        <Button variant="ghost" size="icon">
+                            <Menu />
+                        </Button>
+                    </SheetTrigger>
+                    <SheetContent>
+                        <SheetHeader class="h-12">
+                            <SheetTitle class="sr-only">Menu</SheetTitle>
+                            <SheetDescription class="sr-only">Navigation menu</SheetDescription>
+                        </SheetHeader>
+                        <nav class="mt-6">
+                            <ul class="space-y-4">
+                                <li>
+                                    <a :href="route('home')">
+                                        <Button variant="link" size="lg" :class="route().current() === 'home' ? '!text-accent underline' : ''">
+                                            Home
+                                        </Button>
+                                    </a>
+                                </li>
+                                <li v-for="item in items" :key="item.name">
+                                    <a :href="route(item.href)">
+                                        <Button variant="link" size="lg" :class="route().current() === item.href ? '!text-accent underline' : ''">
+                                            {{ item.name }}
+                                        </Button>
+                                    </a>
+                                </li>
+                                <li class="border-t border-foreground" aria-hidden="true"></li>
+                                <li>
+                                    <a :href="route('club.home')">
+                                        <Button variant="link" size="lg" class="!text-accent"> Login </Button>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </SheetContent>
+                </Sheet>
+            </div>
         </template>
         <template v-else>
             <NavigationMenu>
@@ -103,6 +118,10 @@ const { appearance } = useAppearance();
                         >
                             Login
                         </NavigationMenuLink>
+                    </NavigationMenuItem>
+                    <NavigationMenuItem class="border-l border-foreground" aria-hidden="true">&nbsp;</NavigationMenuItem>
+                    <NavigationMenuItem>
+                        <ThemeToggle />
                     </NavigationMenuItem>
                 </NavigationMenuList>
             </NavigationMenu>
