@@ -24,13 +24,13 @@ const playVideo = () => {
 
     <WebLayout>
         <div class="relative h-screen w-screen bg-accent p-8 sm:p-16">
-            <div class="absolute inset-0 top-16 z-10 flex h-full w-full flex-col items-center justify-center gap-16 px-4 text-white sm:px-8">
-                <div class="w-full text-center sm:mb-24 sm:text-left">
+            <div class="absolute inset-0 top-16 z-10 flex h-full w-full flex-col items-center justify-center gap-12 px-4 text-white sm:px-8">
+                <div class="w-full text-center sm:mb-16 sm:text-left">
                     <h1 class="text-3xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">Become a coach</h1>
                     <p class="mt-4 text-base sm:text-lg md:text-xl lg:text-2xl">Welcome to the Hello Coach Simulation!</p>
                 </div>
                 <div class="flex w-full flex-col gap-8 sm:gap-12 md:flex-row">
-                    <div class="flex w-full flex-col items-center justify-center gap-4 md:w-1/2 md:items-start">
+                    <div class="flex w-full flex-col items-center justify-center gap-6 md:w-1/2 md:items-start">
                         <div class="flex w-full flex-col gap-4 md:flex-row">
                             <a
                                 href="https://www.nds.baspo.admin.ch/publicArea/cadreEducationStructure/cadre/education-structure/8046830102593708144/schedule?CadreEducationCourse_jsCoursePlan=%7B%22filterDefinition%22:%7B%22cadreEducationCourseType%22:%7B%22value%22:%22-2317626998746428607%22,%22label%22:%22Leiterkurs%22%7D%7D%7D&lang=fr"
@@ -80,8 +80,8 @@ const playVideo = () => {
                 <div class="absolute inset-0 z-0 bg-black opacity-50"></div>
             </div>
         </div>
-        <div class="flex w-screen flex-col gap-32 bg-background px-8 pb-16 pt-52 text-center text-foreground sm:gap-48 sm:p-16">
-            <div class="flex flex-col items-center justify-center gap-4">
+        <div class="flex w-screen flex-col gap-24 bg-background px-8 pb-16 pt-48 text-center text-foreground sm:gap-36 sm:p-16">
+            <div class="flex flex-col items-center justify-center gap-6">
                 <H2>Interactive Coaching Simulation</H2>
                 <Lead class="max-w-2xl">
                     Test your coaching skills in a real-time decision-making experience. Face challenges, make key choices, and see how your
@@ -89,10 +89,10 @@ const playVideo = () => {
                 </Lead>
                 <img class="w-full object-cover shadow-lg sm:w-2/3" src="/assets/images/become-a-coach-poster.png" />
             </div>
-            <div class="flex flex-col items-center justify-center gap-4">
+            <div class="flex flex-col items-center justify-center gap-6">
                 <H2>Personal Growth Through Coaching</H2>
                 <Lead class="max-w-2xl">Experience real-time decision-making and leadership challenges</Lead>
-                <div class="mt-12 flex flex-col justify-center gap-4 sm:flex-row sm:gap-8">
+                <div class="mt-12 flex flex-col justify-center gap-6 sm:flex-row sm:gap-8">
                     <FeatureCard title="Building Leadership" description="Develop your ability to inspire and guide a team" :icon="ClipboardCheck" />
                     <FeatureCard
                         title="Managing Group Dynamics"
@@ -106,9 +106,9 @@ const playVideo = () => {
                     />
                 </div>
             </div>
-            <div class="flex flex-col items-center justify-center gap-4">
+            <div class="flex flex-col items-center justify-center gap-6">
                 <H2>Success Stories from Our Coaches</H2>
-                <div class="mt-12 flex flex-col justify-center gap-4 sm:flex-row sm:gap-8">
+                <div class="mt-12 flex flex-col justify-center gap-6 sm:flex-row sm:gap-8">
                     <TestimonialCard
                         name="Sarah Johnson"
                         title="Youth Team Coach"
@@ -133,8 +133,8 @@ const playVideo = () => {
                 </div>
             </div>
         </div>
-        <div class="flex w-screen flex-col gap-32 bg-accent px-8 py-16 text-center text-accent-foreground sm:gap-48 sm:p-16">
-            <div class="flex flex-col items-center justify-center gap-4">
+        <div class="flex w-screen flex-col gap-24 bg-accent px-8 py-16 text-center text-accent-foreground sm:gap-36 sm:p-16">
+            <div class="flex flex-col items-center justify-center gap-6">
                 <H2>Ready to Elevate Your Coaching Journey?</H2>
                 <Lead class="max-w-2xl !text-accent-foreground">
                     The Club is more than just a network, it's a structured support system for aspiring and beginner coaches. Whether you're just
@@ -151,7 +151,7 @@ const playVideo = () => {
                         strategies to build a strong foundation in coaching.
                     </Lead>
                 </div>
-                <div class="flex flex-col gap-8 md:flex-row">
+                <div class="flex w-full flex-col justify-center gap-8 md:flex-row">
                     <div
                         class="flex aspect-video w-full flex-col justify-between gap-4 rounded-lg bg-secondary/30 p-6 text-center text-secondary-foreground shadow-lg sm:w-1/4"
                     >
@@ -182,21 +182,21 @@ const playVideo = () => {
                         <P class="text-left text-xl font-bold">What's Included:</P>
                         <div class="flex flex-col gap-4">
                             <div class="flex flex-row items-center gap-4">
-                                <BookOpen class="h-8 min-w-8 text-accent sm:h-10 sm:w-10" />
+                                <BookOpen class="h-8 min-w-8 text-accent sm:h-10 sm:min-w-10" />
                                 <div class="text-left">
                                     <P class="font-bold">Practical Coaching Tips</P>
                                     <P class="!mt-0">Actionable strategies to improve team management</P>
                                 </div>
                             </div>
                             <div class="flex flex-row items-center gap-4">
-                                <KeyRound class="h-8 min-w-8 text-accent sm:h-10 sm:w-10" />
+                                <KeyRound class="h-8 min-w-8 text-accent sm:h-10 sm:min-w-10" />
                                 <div class="text-left">
                                     <P class="font-bold">Exclusive Resources</P>
                                     <P class="!mt-0">Access to ambassador and mentorship</P>
                                 </div>
                             </div>
                             <div class="flex flex-row items-center gap-4">
-                                <ChartNoAxesColumnIncreasing class="h-8 min-w-8 text-accent sm:h-10 sm:w-10" />
+                                <ChartNoAxesColumnIncreasing class="h-8 min-w-8 text-accent sm:h-10 sm:min-w-10" />
                                 <div class="text-left">
                                     <P class="font-bold">Step-by-Step Guides</P>
                                     <P class="!mt-0">Structured advice to help you</P>
