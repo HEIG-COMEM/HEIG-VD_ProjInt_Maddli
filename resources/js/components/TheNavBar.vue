@@ -36,7 +36,12 @@ const { appearance } = useAppearance();
 <template>
     <UseTemplate>
         <a :href="route('home')" class="flex h-full cursor-pointer items-center space-x-2">
-            <img :src="appearance === 'light' ? '/assets/icons/logo.svg' : '/assets/icons/logo-dark.svg'" alt="Logo" class="h-3/4" />
+            <img :src="appearance === 'light' ? '/assets/icons/logo.svg' : '/assets/icons/logo-dark.svg'" alt="Logo" class="hidden h-3/4 sm:block" />
+            <img
+                :src="appearance === 'light' ? '/assets/icons/logo-icon.svg' : '/assets/icons/logo-icon-dark.svg'"
+                alt="Logo"
+                class="block h-1/2 sm:hidden"
+            />
         </a>
     </UseTemplate>
 
@@ -49,16 +54,22 @@ const { appearance } = useAppearance();
                     <Menu class="h-8 w-8 cursor-pointer" />
                 </SheetTrigger>
                 <SheetContent>
-                    <SheetHeader>
+                    <SheetHeader class="h-12">
                         <SheetTitle class="sr-only">Menu</SheetTitle>
                         <SheetDescription class="sr-only">Navigation menu</SheetDescription>
-                        <HomeLink />
                     </SheetHeader>
-                    <nav class="mt-12">
+                    <nav class="mt-6">
                         <ul class="space-y-4">
+                            <li>
+                                <a :href="route('home')">
+                                    <Button variant="link" size="lg" :class="route().current() === 'home' ? '!text-accent underline' : ''">
+                                        Home
+                                    </Button>
+                                </a>
+                            </li>
                             <li v-for="item in items" :key="item.name">
                                 <a :href="route(item.href)">
-                                    <Button variant="link" size="lg" :class="route().current() === item.href ? '!text-accent' : ''">
+                                    <Button variant="link" size="lg" :class="route().current() === item.href ? '!text-accent underline' : ''">
                                         {{ item.name }}
                                     </Button>
                                 </a>
