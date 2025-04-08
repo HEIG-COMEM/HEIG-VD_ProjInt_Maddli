@@ -52,7 +52,7 @@ const playVideo = () => {
                             program with career opportunities worldwide.
                         </P>
                     </div>
-                    <div class="h-full w-full rounded-lg bg-accent p-4 sm:p-8 md:w-1/2">
+                    <div class="h-full w-full rounded-lg bg-accent p-4 text-accent-foreground sm:p-8 md:w-1/2">
                         <div class="flex flex-row items-center gap-4">
                             <PlayCircle class="h-10 w-10 sm:h-12 sm:w-12" />
                             <div>
