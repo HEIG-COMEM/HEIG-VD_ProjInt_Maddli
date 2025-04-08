@@ -1,9 +1,15 @@
 <script setup lang="ts">
-const bgColor = '#006565';
+import Caption from '@/components/story/ui/Caption.vue';
+
+const bg = '/assets/story/bg/4.png';
 </script>
 
 <template>
-    <section :data-background-color="bgColor" data-auto-animate class="h-full">
-        <h1>Chapter 3 - Slide 8</h1>
+    <section :data-background-image="bg" data-auto-animate class="h-full">
+        <div class="absolute bottom-[10%] right-[5%] flex flex-col items-end">
+            <Caption class="!static">
+                <p class="text-left">The coach is watching the team's practice</p>
+            </Caption>
+        </div>
     </section>
 </template>

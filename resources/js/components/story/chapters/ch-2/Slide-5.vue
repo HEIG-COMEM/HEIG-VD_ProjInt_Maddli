@@ -5,11 +5,11 @@ import QuestionMultipleChoice from '@/components/story/questions/QuestionMultipl
 <template>
     <section data-auto-animate class="relative h-full">
         <QuestionMultipleChoice
-            question="How do you handle a player's injury during a match?"
+            question="You see the players joking around before the warm-up. How do you get them to refocus?"
             :answers="[
-                'I ignore the injury and tell the team to keep playing.',
-                'I take her off right away, and she’s done for the rest of the match.',
-                'I check on her and ask if she can still play.',
+                'I remind them of the importance of proper preparation to enter the game in the best conditions.',
+                'I let them continue, hoping they will focus on their own by kickoff.',
+                'I shout at them to stop immediately and line up.',
             ]"
         />
     </section>

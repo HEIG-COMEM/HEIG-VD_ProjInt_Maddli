@@ -17,6 +17,7 @@ const props = withDefaults(
 const { width, height } = useWindowSize();
 
 // Compute the adjusted scale based on screen size
+// TODO : Remove logs
 const adjustedScale = computed(() => {
     const isLandscape = width.value > height.value;
     if (width.value <= 640) {

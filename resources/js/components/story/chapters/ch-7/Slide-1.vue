@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import Caption from '@/components/story/ui/Caption.vue';
 
-const bg = '/assets/story/bg/3-blurry.png';
+const bg = '/assets/story/bg/7.png';
 </script>
 
 <template>
-    <section data-auto-animate :data-background-image="bg" class="h-full">
-        <div class="flex h-full flex-col items-end justify-end">
+    <section :data-background-image="bg" data-auto-animate class="h-full">
+        <div class="absolute bottom-[10%] right-[5%] flex flex-col items-end">
             <Caption class="!static">
-                <p>Parents are waiting for their kids to finish showering after the game.</p>
+                <p class="text-left">The coach is watching the team's practice</p>
             </Caption>
         </div>
     </section>
