@@ -25,7 +25,7 @@ defineProps<{
                 <component :is="icon" class="h-8 w-8 text-accent" />
                 <P class="!mt-0 text-xl font-bold">{{ title }}</P>
             </div>
-            <P class="!mt-0 text-base text-secondary-foreground">
+            <P class="!mt-0 text-pretty text-base text-secondary-foreground">
                 {{ description }}
             </P>
         </div>

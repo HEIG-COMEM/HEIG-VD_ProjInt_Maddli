@@ -13,7 +13,10 @@ import { BookOpen, GraduationCap, HeartHandshake, KeyRound, Link, Share2 } from 
 <template>
     <Head title="Club"></Head>
     <WebLayout>
-        <div class="w-screen bg-accent p-8 md:h-screen md:p-16" style="background: url('/assets/images/home-hero-bg.png') center/cover no-repeat">
+        <div
+            class="flex w-screen flex-col justify-center bg-accent p-8 md:h-screen md:p-16"
+            style="background: url('/assets/images/home-hero-bg.png') center/cover no-repeat"
+        >
             <div class="flex flex-col items-center justify-center gap-12 px-4 text-white md:items-start md:px-8">
                 <div class="flex flex-col items-center gap-4 text-center md:mb-16 md:items-start md:text-left">
                     <h1 class="text-3xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">Join The Club and the community</h1>
@@ -32,7 +35,9 @@ import { BookOpen, GraduationCap, HeartHandshake, KeyRound, Link, Share2 } from 
         <div class="flex w-screen flex-col gap-24 bg-background px-8 py-16 text-center text-foreground md:gap-36 md:p-16">
             <div class="flex flex-col items-center justify-center gap-6">
                 <H2>Choose Your Path</H2>
-                <Lead class="max-w-2xl"> Whether you're just starting or already licensed, we have the perfect support system for you. </Lead>
+                <Lead class="max-w-2xl text-pretty">
+                    Whether you're just starting or already licensed, we have the perfect support system for you.
+                </Lead>
                 <div class="flex flex-col justify-center gap-6 md:gap-8 lg:w-2/3 lg:flex-row">
                     <PlanCard
                         title="Future Coaches"
@@ -89,6 +94,15 @@ import { BookOpen, GraduationCap, HeartHandshake, KeyRound, Link, Share2 } from 
             <div class="flex flex-col items-center justify-center gap-6">
                 <H2>How to Join the Club</H2>
                 <JoinClubSteps class="w-fit" />
+            </div>
+        </div>
+        <div class="flex w-screen flex-col gap-24 bg-accent px-8 py-16 text-center text-accent-foreground sm:gap-36 sm:p-16">
+            <div class="flex flex-col items-center justify-center gap-6">
+                <H2>Ready to Start Your Coaching Journey?</H2>
+                <Lead class="max-w-2xl text-pretty !text-accent-foreground">
+                    Join our community of coaches and take the first step towards your coaching career.
+                </Lead>
+                <Button @click="router.visit(route('club.home'))"> Join the Club Now </Button>
             </div>
         </div>
     </WebLayout>
