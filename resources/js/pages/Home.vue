@@ -23,25 +23,29 @@ const playVideo = () => {
     <Head title="Home"></Head>
 
     <WebLayout>
-        <div class="relative h-screen w-screen bg-accent p-8 sm:p-16">
-            <div class="absolute inset-0 top-16 z-10 flex h-full w-full flex-col items-center justify-center gap-12 px-4 text-white sm:px-8">
+        <div
+            class="flex w-screen flex-col justify-center bg-accent p-8 sm:p-16"
+            style="background: url('/assets/images/home-hero-bg.png') center/cover no-repeat"
+        >
+            <div class="flex flex-col items-center justify-center gap-12 px-4 text-white sm:px-8">
                 <div class="w-full text-center sm:mb-16 sm:text-left">
                     <h1 class="text-3xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">Become a coach</h1>
                     <p class="mt-4 text-base sm:text-lg md:text-xl lg:text-2xl">Welcome to the Hello Coach Simulation!</p>
                 </div>
                 <div class="flex w-full flex-col gap-8 sm:gap-12 md:flex-row">
                     <div class="flex w-full flex-col items-center justify-center gap-6 md:w-1/2 md:items-start">
-                        <div class="flex w-full flex-col gap-4 md:flex-row">
+                        <div class="flex w-full flex-col flex-wrap gap-4 md:flex-row">
                             <a
                                 href="https://www.nds.baspo.admin.ch/publicArea/cadreEducationStructure/cadre/education-structure/8046830102593708144/schedule?CadreEducationCourse_jsCoursePlan=%7B%22filterDefinition%22:%7B%22cadreEducationCourseType%22:%7B%22value%22:%22-2317626998746428607%22,%22label%22:%22Leiterkurs%22%7D%7D%7D&lang=fr"
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                class="w-full lg:w-auto"
                             >
                                 <Button size="lg" class="w-full bg-accent text-accent-foreground hover:text-primary-foreground">
                                     Register to the C Licence <ArrowRight />
                                 </Button>
                             </a>
-                            <Button size="lg" variant="secondary">Explore Program</Button>
+                            <Button size="lg" variant="secondary" class="w-full lg:w-auto">Explore Program</Button>
                         </div>
                         <P class="rounded-lg bg-white/10 p-4 text-center sm:p-8 sm:text-left">
                             Join over 1,000+ certified coaches all around Europe who started their journey with us. FIFA-recognized certification
@@ -74,10 +78,6 @@ const playVideo = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="absolute inset-0 h-full w-full">
-                <img src="/assets/images/home-hero-bg.png" alt="Background" class="h-full w-full object-cover" />
-                <div class="absolute inset-0 z-0 bg-black opacity-50"></div>
             </div>
         </div>
         <div class="flex w-screen flex-col gap-24 bg-background px-8 pb-16 pt-48 text-center text-foreground sm:gap-36 sm:p-16">
