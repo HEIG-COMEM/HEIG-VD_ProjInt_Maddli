@@ -123,7 +123,7 @@ const playVideo = () => {
                         :rating="4"
                     />
                     <TestimonialCard
-                        name="Sarah Johnson"
+                        name="Zoé Maître"
                         title="New coach"
                         description="My Mentor has been invaluable to my development as a new coach."
                         profile-img-url="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5"
