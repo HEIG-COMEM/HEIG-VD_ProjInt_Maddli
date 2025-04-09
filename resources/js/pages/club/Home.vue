@@ -5,6 +5,7 @@ import { Lead, P } from '@/components/typography/texts';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { type BreadcrumbItem } from '@/types';
 import { Head } from '@inertiajs/vue3';
+import { Building, HandHelping, HeartHandshake } from 'lucide-vue-next';
 
 defineProps<{
     user: any;
@@ -32,17 +33,17 @@ const breadcrumbs: BreadcrumbItem[] = [
             <div class="grid auto-rows-min gap-4 md:grid-cols-3">
                 <AppOnBoardingCard title="Contact your federation" :href="route('club.lists', { federation: true })">
                     <template #icon>
-                        <img src="/assets/icons/Football_Suisse_federation.svg" alt="Talk to ASF" class="h-16" />
+                        <Building :size="64" :stroke-width="1" />
                     </template>
                 </AppOnBoardingCard>
                 <AppOnBoardingCard title="Talk to ambassadors" :href="route('club.lists', { ambassadors: true })">
                     <template #icon>
-                        <img src="/assets/icons/ambassadors.png" alt="Talk to ambassadors" class="h-16" />
+                        <HandHelping :size="64" :stroke-width="1" />
                     </template>
                 </AppOnBoardingCard>
                 <AppOnBoardingCard title="Talk to mentors" :href="route('club.lists', { mentors: true })">
                     <template #icon>
-                        <img src="/assets/icons/coaches.png" alt="Talk to mentors" class="h-16" />
+                        <HeartHandshake :size="64" :stroke-width="1" />
                     </template>
                 </AppOnBoardingCard>
             </div>
