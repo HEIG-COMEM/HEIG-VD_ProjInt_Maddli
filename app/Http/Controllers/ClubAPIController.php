@@ -48,8 +48,8 @@ class ClubAPIController extends Controller
     public function findRepresentative(Request $request, string $role = 'ambassador')
     {
         $request->validate([
-            'countryCode' => 'string|exists:nations,code',
-            'clubId' => 'integer|exists:clubs,id',
+            'countryCode' => 'nullable|string|exists:nations,code',
+            'clubId' => 'nullable|integer|exists:clubs,id',
         ]);
 
         $countryCode = $request->input('countryCode');
