@@ -39,9 +39,9 @@ const handleToggleAppearance = () => updateAppearance(appearance.value === 'ligh
 <template>
     <UseTemplate>
         <a :href="route('home')" class="flex h-full cursor-pointer items-center space-x-2">
-            <img :src="appearance === 'light' ? '/assets/icons/logo.svg' : '/assets/icons/logo-dark.svg'" alt="Logo" class="hidden h-3/4 sm:block" />
+            <img :src="appearance === 'dark' ? '/assets/icons/logo-dark.svg' : '/assets/icons/logo.svg'" alt="Logo" class="hidden h-3/4 sm:block" />
             <img
-                :src="appearance === 'light' ? '/assets/icons/logo-icon.svg' : '/assets/icons/logo-icon-dark.svg'"
+                :src="appearance === 'dark' ? '/assets/icons/logo-icon-dark.svg' : '/assets/icons/logo-icon.svg'"
                 alt="Logo"
                 class="block h-1/2 sm:hidden"
             />
