@@ -77,6 +77,15 @@ export function useOnboarding() {
                         if (popover && popover.dataset.state === 'open') {
                             onBoardingStore.nextStep();
                             driverObj.moveNext();
+                        } else {
+                            const button: HTMLElement | null = document.querySelector('div[role="alert"] button');
+                            if (button) {
+                                button.click();
+                            }
+                            setTimeout(() => {
+                                onBoardingStore.nextStep();
+                                driverObj.moveNext();
+                            }, 100);
                         }
                     },
                 },
@@ -86,6 +95,16 @@ export function useOnboarding() {
                 popover: {
                     title: 'Find your ambassador',
                     description: 'In here fill the form so we can find your best match ambassador.',
+                },
+                onHighlightStarted: () => {
+                    window.addEventListener(
+                        'click',
+                        () => {
+                            onBoardingStore.nextStep();
+                            driverObj.moveNext();
+                        },
+                        { once: true },
+                    );
                 },
             },
         ],
