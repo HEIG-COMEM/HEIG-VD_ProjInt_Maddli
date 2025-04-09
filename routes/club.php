@@ -47,6 +47,7 @@ Route::prefix('club')->group(function () {
             })->name('club.admin');
             Route::get('/users', [AdminController::class, 'users'])->name('club.admin.users');
             Route::get('/users/{id}', [AdminController::class, 'user'])->name('club.admin.user');
+            Route::post('/users/{id}/licence', [AdminController::class, 'userLicence'])->name('club.admin.user.licence');
             Route::get('/clubs', [AdminController::class, 'clubs'])->name('club.admin.clubs');
             Route::get('/clubs/{id}', [AdminController::class, 'club'])->name('club.admin.club');
             Route::delete('/club/{clubId}/coaches/{userId}', [AdminController::class, 'deleteClubCoach'])->name('club.admin.club.coaches');
@@ -59,6 +60,7 @@ Route::prefix('club')->group(function () {
             Route::prefix('api')->group(function () {
                 Route::get('/available-coaches', [AdminAPIController::class, 'availableCoaches'])->name('club.admin.api.available-coaches');
                 Route::get('/available-managers', [AdminAPIController::class, 'availableManagers'])->name('club.admin.api.available-managers');
+                Route::get('/available-licences', [AdminAPIController::class, 'availableLicences'])->name('club.admin.api.available-licences');
                 Route::get('/leagues', [AdminAPIController::class, 'leagues'])->name('club.admin.api.leagues');
                 Route::get('/clubs/{id}/available-leagues', [AdminAPIController::class, 'availableLeagues'])->name('club.admin.api.available-leagues');
             });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ClubLeague;
 use App\Models\League;
+use App\Models\Licence;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -45,6 +46,14 @@ class AdminAPIController extends Controller
 
         return response()->json([
             'leagues' => $leagues,
+        ]);
+    }
+
+    public function availableLicences(Request $request)
+    {
+        $licences = Licence::all(['id', 'name']);
+        return response()->json([
+            'licences' => $licences,
         ]);
     }
 

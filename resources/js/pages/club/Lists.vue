@@ -21,7 +21,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-defineProps<{
+const props = defineProps<{
     contacts: {
         federations: any[] | null;
         ambassadors: any[] | null;
@@ -33,6 +33,9 @@ defineProps<{
 
 const page = usePage<SharedData>();
 const isNewUser = computed(() => !page.props.auth.roles.length);
+const requireMentor = computed(() => {
+    return !!(page.props.auth.user.licence_id && (!props.contacts.mentors || !props.contacts.mentors.length));
+});
 </script>
 
 <template>
@@ -41,6 +44,43 @@ const isNewUser = computed(() => !page.props.auth.roles.length);
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
             <div class="relative min-h-[100vh] flex-1 rounded-xl border border-sidebar-border/70 p-4 dark:border-sidebar-border md:min-h-min">
+                <template v-if="isNewUser && !requireMentor">
+                    <Alert class="mb-8">
+                        <Rocket class="h-4 w-4" />
+                        <AlertTitle>Welcome to <span class="text-accent"> The Club</span></AlertTitle>
+                        <AlertDescription>
+                            <div>Let's get started and find an ambassador !</div>
+                            <AppFindRepresentative
+                                title="Find an ambassador"
+                                description="We will find a ambassador for you. Please fill out the form so we can determine the best match."
+                                save-label="Find an ambassador"
+                            >
+                                <template #trigger>
+                                    <Button variant="outline" class="mt-4">Find an ambassador</Button>
+                                </template>
+                            </AppFindRepresentative>
+                        </AlertDescription>
+                    </Alert>
+                </template>
+                <template v-if="requireMentor">
+                    <Alert class="mb-8">
+                        <Rocket class="h-4 w-4" />
+                        <AlertTitle>Well done for your coaching <span class="text-accent">licence</span></AlertTitle>
+                        <AlertDescription>
+                            <div>Let's get started and find a mentor !</div>
+                            <AppFindRepresentative
+                                title="Find a mentor"
+                                description="We will find a mentor for you. Please fill out the form so we can determine the best match."
+                                save-label="Find a mentor"
+                                role="mentor"
+                            >
+                                <template #trigger>
+                                    <Button variant="outline" class="mt-4">Find a mentor</Button>
+                                </template>
+                            </AppFindRepresentative>
+                        </AlertDescription>
+                    </Alert>
+                </template>
                 <H1 class="mb-12">Contact list</H1>
                 <AppContactSection
                     v-if="contacts.federations"
@@ -77,24 +117,6 @@ const isNewUser = computed(() => !page.props.auth.roles.length);
                     :contacts="contacts.mentees"
                     key-prefix="mentee"
                 />
-                <template v-if="isNewUser">
-                    <Alert>
-                        <Rocket class="h-4 w-4" />
-                        <AlertTitle>Welcome to <span class="text-accent"> The Club</span></AlertTitle>
-                        <AlertDescription>
-                            <div>Let's get started and find a mentor !</div>
-                            <AppFindRepresentative
-                                title="Find an ambassador"
-                                description="We will find a ambassador for you. Please fill out the form so we can determine the best match."
-                                save-label="Find an ambassador"
-                            >
-                                <template #trigger>
-                                    <Button variant="outline" class="mt-4">Find an ambassador</Button>
-                                </template>
-                            </AppFindRepresentative>
-                        </AlertDescription>
-                    </Alert>
-                </template>
             </div>
         </div>
     </AppLayout>

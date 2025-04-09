@@ -17,20 +17,22 @@ import {
 } from '@/components/ui/drawer';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { formatRoles } from '@/composables/useFormat';
+import { formatRoles, ucFirst } from '@/composables/useFormat';
 import { useForm } from '@inertiajs/vue3';
 import { createReusableTemplate, useAsyncState, useFetch, useMediaQuery } from '@vueuse/core';
 import { Loader2 } from 'lucide-vue-next';
 import { ref, watchEffect } from 'vue';
 
-withDefaults(
+const props = withDefaults(
     defineProps<{
         title: string;
         description: string;
         saveLabel?: string;
+        role?: string;
     }>(),
     {
         saveLabel: 'Save changes',
+        role: 'ambassador',
     },
 );
 
@@ -78,11 +80,14 @@ const submit = async () => {
     form.clubId = form.clubId === 'other' ? '' : form.clubId;
 
     try {
-        const response = await fetch(route('club.api.find-representative', { countryCode: form.countryCode, clubId: form.clubId }), {
-            headers: {
-                'Content-Type': 'application/json',
+        const response = await fetch(
+            route('club.api.find-representative', { countryCode: form.countryCode, clubId: form.clubId, role: props.role }),
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
             },
-        });
+        );
         const data = await response.json();
         representativeData.value = data;
     } catch (error) {
@@ -179,7 +184,7 @@ const isOpen = ref(false);
             <AppContactCard
                 :user-id="representativeData.representative.id"
                 :name="representativeData.representative.name"
-                :role="formatRoles(representativeData.representative?.roles || []) || 'Ambassador'"
+                :role="formatRoles(representativeData.representative?.roles || []) || ucFirst(props.role)"
                 :email="representativeData.representative.email"
             ></AppContactCard>
         </div>

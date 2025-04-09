@@ -40,6 +40,27 @@ class AdminController extends Controller
         return Inertia::render('club/admin/Users')->with(['data' => $data, 'filters' => $request->all()]);
     }
 
+    public function userLicence(Request $request, int $id)
+    {
+        $request->validate([
+            'licence' => 'required',
+        ]);
+
+        $licence = $request->input('licence');
+        $user = User::find($id);
+        if (!$user) abort(404);
+
+        if ($licence < 0) {
+            $user->licence()->delete();
+        } else {
+            $request->validate([
+                'licence' => 'required|exists:licences,id',
+            ]);
+            $user->licence()->associate($licence);
+            $user->save();
+        }
+    }
+
     public function clubs(Request $request)
     {
         $query = Club::orderBy('name', 'asc')
