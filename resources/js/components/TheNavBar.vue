@@ -10,7 +10,7 @@ import {
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { useAppearance } from '@/composables/useAppearance';
 import { createReusableTemplate, useMediaQuery } from '@vueuse/core';
-import { Menu, Moon, Sun } from 'lucide-vue-next';
+import { Dot, Menu, Moon, Sun } from 'lucide-vue-next';
 import { reactive } from 'vue';
 
 const isDesktop = useMediaQuery('(min-width: 768px)');
@@ -92,7 +92,7 @@ const handleToggleAppearance = () => updateAppearance(appearance.value === 'ligh
                                 <li class="border-t border-foreground" aria-hidden="true"></li>
                                 <li>
                                     <a :href="route('club.home')">
-                                        <Button variant="link" size="lg" class="!text-accent"> Login </Button>
+                                        <Button variant="link" size="lg" class="!text-accent"> Log In / Register </Button>
                                     </a>
                                 </li>
                             </ul>
@@ -104,10 +104,18 @@ const handleToggleAppearance = () => updateAppearance(appearance.value === 'ligh
         <template v-else>
             <NavigationMenu>
                 <NavigationMenuList>
-                    <NavigationMenuItem v-for="item in items" :key="item.name">
+                    <NavigationMenuItem v-for="(item, index) in items" :key="item.name" class="flex items-center">
                         <NavigationMenuLink :href="route(item.href)" :class="navigationMenuTriggerStyle()" :active="route().current() === item.href">
                             {{ item.name }}
                         </NavigationMenuLink>
+                        <Dot class="mx-2 h-1 w-1 rounded-full bg-foreground" v-if="index < items.length - 1" />
+                    </NavigationMenuItem>
+                </NavigationMenuList>
+            </NavigationMenu>
+            <NavigationMenu>
+                <NavigationMenuList>
+                    <NavigationMenuItem>
+                        <ThemeToggle />
                     </NavigationMenuItem>
                     <NavigationMenuItem class="border-l border-foreground" aria-hidden="true">&nbsp;</NavigationMenuItem>
                     <NavigationMenuItem>
@@ -116,12 +124,8 @@ const handleToggleAppearance = () => updateAppearance(appearance.value === 'ligh
                             :class="navigationMenuTriggerStyle()"
                             class="!bg-accent !text-accent-foreground"
                         >
-                            Login
+                            Log In / Register
                         </NavigationMenuLink>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem class="border-l border-foreground" aria-hidden="true">&nbsp;</NavigationMenuItem>
-                    <NavigationMenuItem>
-                        <ThemeToggle />
                     </NavigationMenuItem>
                 </NavigationMenuList>
             </NavigationMenu>
