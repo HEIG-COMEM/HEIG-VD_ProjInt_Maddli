@@ -179,7 +179,7 @@ const isOpen = ref(false);
             <AppContactCard
                 :user-id="representativeData.representative.id"
                 :name="representativeData.representative.name"
-                :role="formatRoles(representativeData.representative.roles)"
+                :role="formatRoles(representativeData.representative?.roles || []) || 'Ambassador'"
                 :email="representativeData.representative.email"
             ></AppContactCard>
         </div>
