@@ -4,14 +4,19 @@ import { usePage } from '@inertiajs/vue3';
 import { driver } from 'driver.js';
 import 'driver.js/dist/driver.css';
 import { computed } from 'vue';
+import { toast } from 'vue-sonner';
 
-export function useOnboarding() {
+export function useOnboarding(isMobile: boolean) {
     const page = usePage<SharedData>();
     const isNewUser = computed(() => !page.props.auth.roles.length);
 
     const driverObj = driver({
         showProgress: true,
         allowClose: false,
+        popoverClass: 'theme',
+        nextBtnText: 'Next',
+        prevBtnText: 'Back',
+        doneBtnText: 'Finish',
         onNextClick: () => {
             onBoardingStore.nextStep();
             driverObj.moveNext();
@@ -21,7 +26,32 @@ export function useOnboarding() {
             driverObj.movePrevious();
         },
         steps: [
-            { popover: { title: 'Welcome to the CLUB', description: 'Discover how to use the platform to its fullest!' } },
+            {
+                popover: {
+                    title: 'Welcome to the CLUB',
+                    description: 'Discover how to use the platform to its fullest!',
+                    onNextClick: () => {
+                        if (!isMobile) {
+                            onBoardingStore.nextStep();
+                            driverObj.moveNext();
+                            return;
+                        }
+
+                        const button: HTMLElement | null = document.querySelector('button[data-sidebar="trigger"]');
+                        if (!button) {
+                            driverObj.destroy();
+                            toast.error('Something went wrong...');
+                            return;
+                        }
+
+                        button.click();
+                        setTimeout(() => {
+                            onBoardingStore.nextStep();
+                            driverObj.moveNext();
+                        }, 100);
+                    },
+                },
+            },
             {
                 element: 'div[data-sidebar="sidebar"] ul:nth-child(2)',
                 popover: {
@@ -77,6 +107,15 @@ export function useOnboarding() {
                         if (popover && popover.dataset.state === 'open') {
                             onBoardingStore.nextStep();
                             driverObj.moveNext();
+                        } else {
+                            const button: HTMLElement | null = document.querySelector('div[role="alert"] button');
+                            if (button) {
+                                button.click();
+                            }
+                            setTimeout(() => {
+                                onBoardingStore.nextStep();
+                                driverObj.moveNext();
+                            }, 100);
                         }
                     },
                 },
@@ -86,6 +125,16 @@ export function useOnboarding() {
                 popover: {
                     title: 'Find your ambassador',
                     description: 'In here fill the form so we can find your best match ambassador.',
+                },
+                onHighlightStarted: () => {
+                    window.addEventListener(
+                        'click',
+                        () => {
+                            onBoardingStore.nextStep();
+                            driverObj.moveNext();
+                        },
+                        { once: true },
+                    );
                 },
             },
         ],

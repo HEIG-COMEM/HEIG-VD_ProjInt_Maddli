@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import AppUserSheet from '@/components/admin/AppUserSheet.vue';
 import AppPagination from '@/components/AppPagination.vue';
 import { H1 } from '@/components/typography/headings';
 import { Lead } from '@/components/typography/texts';
@@ -11,6 +12,7 @@ import AppLayout from '@/layouts/AppLayout.vue';
 import { debounce } from '@/lib/utils';
 import { type BreadcrumbItem } from '@/types';
 import { Head, router } from '@inertiajs/vue3';
+import { Shield } from 'lucide-vue-next';
 import { defineProps, onMounted, ref, useTemplateRef, watch } from 'vue';
 
 const props = defineProps<{
@@ -115,7 +117,13 @@ onMounted(() => {
                                         {{ club.name }}<span v-if="index != user.clubs.length - 1">,</span>
                                     </p>
                                 </TableCell>
-                                <TableCell class="text-right"><Button>⚡️</Button></TableCell>
+                                <TableCell class="text-right">
+                                    <AppUserSheet :user-id="user.id" :title="`User ${user.name}`" :description="`Manage ${user.name} profile`">
+                                        <template #trigger>
+                                            <Button variant="secondary"> <Shield class="h-4 w-4" /> </Button>
+                                        </template>
+                                    </AppUserSheet>
+                                </TableCell>
                             </TableRow>
                         </TableBody>
                     </Table>

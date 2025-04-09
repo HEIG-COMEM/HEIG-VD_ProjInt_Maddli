@@ -198,4 +198,39 @@ html {
     body {
         @apply bg-background text-foreground;
     }
+
+    .driver-popover.theme {
+        @apply bg-background text-popover-foreground;
+    }
+
+    .driver-popover.theme button {
+        all: unset;
+        @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0;
+        @apply h-8 rounded-md px-3 text-xs;
+    }
+
+    .driver-popover.theme button.driver-popover-prev-btn {
+        @apply bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80;
+        margin-right: 1rem;
+    }
+
+    .driver-popover.theme button.driver-popover-next-btn {
+        @apply bg-primary text-primary-foreground shadow hover:bg-primary/90;
+    }
+
+    .driver-popover.theme .driver-popover-arrow-side-left.driver-popover-arrow {
+        @apply border-l-background;
+    }
+
+    .driver-popover.theme .driver-popover-arrow-side-right.driver-popover-arrow {
+        @apply border-r-background;
+    }
+
+    .driver-popover.theme .driver-popover-arrow-side-top.driver-popover-arrow {
+        @apply border-t-background;
+    }
+
+    .driver-popover.theme .driver-popover-arrow-side-bottom.driver-popover-arrow {
+        @apply border-b-background;
+    }
 }

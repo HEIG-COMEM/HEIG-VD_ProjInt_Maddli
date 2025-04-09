@@ -3,6 +3,7 @@ import { Toaster } from '@/components/ui/sonner';
 import { useOnboarding } from '@/composables/useOnboarding';
 import AppLayout from '@/layouts/app/AppSidebarLayout.vue';
 import type { BreadcrumbItemType } from '@/types';
+import { useMediaQuery } from '@vueuse/core';
 import { onMounted } from 'vue';
 
 interface Props {
@@ -12,8 +13,8 @@ interface Props {
 withDefaults(defineProps<Props>(), {
     breadcrumbs: () => [],
 });
-
-const { startOnboarding } = useOnboarding();
+const isMobile = useMediaQuery('(max-width: 768px)');
+const { startOnboarding } = useOnboarding(isMobile.value);
 
 onMounted(() => {
     startOnboarding();

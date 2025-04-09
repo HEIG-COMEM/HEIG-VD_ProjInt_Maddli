@@ -72,7 +72,7 @@ const submit = async () => {
     form.errors.countryCode = !form.countryCode ? 'Country is required' : '';
     form.errors.clubId = !form.clubId ? 'Club is required' : '';
 
-    if (!form.countryCode || !form.clubId) return;
+    if (!form.countryCode || !form.clubId) return (isLoading.value = false);
 
     form.countryCode = form.countryCode === 'other' ? '' : form.countryCode;
     form.clubId = form.clubId === 'other' ? '' : form.clubId;
@@ -137,10 +137,10 @@ const isOpen = ref(false);
                         <SelectItem v-if="countriesIsFetching" value="loading" disabled>Loading...</SelectItem>
                         <SelectItem v-if="countriesError" value="error" disabled>Error loading countries</SelectItem>
                         <SelectItem v-if="!countriesResponse.countries.length" value="empty" disabled>No countries found</SelectItem>
+                        <SelectItem value="other">Other</SelectItem>
                         <SelectItem v-for="country in countriesResponse.countries" :key="country.id" :value="country.code">
                             {{ country.name }}
                         </SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
                     </SelectContent>
                 </Select>
                 <InputError :message="form.errors.countryCode" />
@@ -155,10 +155,10 @@ const isOpen = ref(false);
                         <SelectItem v-if="clubsIsFetching" value="loading" disabled>Loading...</SelectItem>
                         <SelectItem v-if="clubsError" value="error" disabled>Error loading clubs</SelectItem>
                         <SelectItem v-if="!clubsResponse.clubs.length" value="empty" disabled>No clubs found</SelectItem>
+                        <SelectItem value="other">Other</SelectItem>
                         <SelectItem v-for="club in clubsResponse.clubs" :key="club.id" :value="club.id">
                             {{ club.name }}
                         </SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
                     </SelectContent>
                 </Select>
                 <InputError :message="form.errors.clubId" />
@@ -179,7 +179,7 @@ const isOpen = ref(false);
             <AppContactCard
                 :user-id="representativeData.representative.id"
                 :name="representativeData.representative.name"
-                :role="formatRoles(representativeData.representative.roles)"
+                :role="formatRoles(representativeData.representative?.roles || []) || 'Ambassador'"
                 :email="representativeData.representative.email"
             ></AppContactCard>
         </div>
