@@ -29,7 +29,7 @@ const playVideo = () => {
             class="flex w-screen flex-col items-center justify-center bg-accent p-8 sm:p-16"
             style="background: url('/assets/images/home-hero-bg.png') center/cover no-repeat"
         >
-            <div class="flex max-w-screen-lg flex-col items-center justify-center gap-12 px-4 text-white sm:px-8">
+            <div class="flex max-w-screen-lg flex-col items-center justify-center gap-12 px-4 text-white sm:px-0">
                 <div class="w-full text-center sm:mb-16 sm:text-left">
                     <h1 class="text-5xl font-bold sm:text-7xl md:text-8xl lg:text-9xl">Become a coach</h1>
                     <p class="mt-4 text-base sm:text-lg md:text-xl lg:text-2xl">Welcome to the Hello Coach Simulation!</p>

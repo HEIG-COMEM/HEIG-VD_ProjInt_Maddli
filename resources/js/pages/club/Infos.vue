@@ -18,7 +18,7 @@ import { GraduationCap, HeartHandshake, KeyRound, Share2, Users } from 'lucide-v
             class="flex w-screen flex-col items-center justify-center bg-accent p-8 md:h-screen md:p-16"
             style="background: url('/assets/images/club-hero-bg.png') center/cover no-repeat"
         >
-            <div class="flex max-w-screen-xl flex-col items-center justify-center gap-8 px-4 text-white md:items-start md:px-8">
+            <div class="flex max-w-screen-lg flex-col items-center justify-center gap-8 px-4 text-white md:items-start md:px-0">
                 <div class="flex flex-col items-center gap-4 text-center md:mb-16 md:items-start md:text-left">
                     <h1 class="text-5xl font-bold sm:text-7xl md:text-8xl lg:text-9xl">The Hello Coach Club</h1>
                     <p class="mt-4 text-base sm:text-lg md:text-xl lg:text-2xl">Join the community of female coaches transforming women's football</p>
