@@ -22,13 +22,7 @@ class AdminController extends Controller
             return response()->json($user);
         }
 
-        //TODO: Remove this debug code
-        echo "<pre>";
-        print_r($user);
-        echo "</pre>";
-        die();
-
-        // return Inertia::render('club/admin/User', ['user' => $user]); //TODO: Implement the User component
+        abort(404);
     }
 
     public function users(Request $request)
