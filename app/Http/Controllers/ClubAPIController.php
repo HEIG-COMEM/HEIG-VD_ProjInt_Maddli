@@ -50,10 +50,12 @@ class ClubAPIController extends Controller
         $request->validate([
             'countryCode' => 'nullable|string|exists:nations,code',
             'clubId' => 'nullable|integer|exists:clubs,id',
+            'role' => 'nullable|string|exists:roles,name',
         ]);
 
         $countryCode = $request->input('countryCode');
         $clubId = $request->input('clubId');
+        $role = $request->input('role', $role);
 
         $club = null;
         $representative = null;
@@ -119,7 +121,7 @@ class ClubAPIController extends Controller
         }
 
         // If no representative is found, find a random user with the same role
-        $representative = User::whereHas('roles', function ($query) use ($role) {
+        $representative = User::with('roles')->whereHas('roles', function ($query) use ($role) {
             $query->where('name', $role);
         })
             ->inRandomOrder()
