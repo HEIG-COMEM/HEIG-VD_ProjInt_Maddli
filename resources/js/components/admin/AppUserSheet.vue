@@ -104,9 +104,6 @@ watchEffect(() => {
                                 </Button>
                             </div>
                         </div>
-                        <div class="flex flex-col gap-4">
-                            <H3>Adjust the roles</H3>
-                        </div>
                     </div>
                 </div>
             </SheetHeader>
