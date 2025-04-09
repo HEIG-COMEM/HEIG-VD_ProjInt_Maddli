@@ -76,6 +76,7 @@ import { ExternalLink, GraduationCap, MessageCircleQuestion, Share2 } from 'luci
                     <TableCaption>Official Coaching Licences</TableCaption>
                     <TableHeader>
                         <TableRow>
+                            <TableHead></TableHead>
                             <TableHead>Licence</TableHead>
                             <TableHead>Minimum age</TableHead>
                             <TableHead>Duration</TableHead>
@@ -84,12 +85,30 @@ import { ExternalLink, GraduationCap, MessageCircleQuestion, Share2 } from 'luci
                     </TableHeader>
                     <TableBody class="text-left">
                         <TableRow>
+                            <TableCell width="1">
+                                <a
+                                    href="https://www.nds.baspo.admin.ch/publicArea/cadreEducationStructure/cadre/education-structure/8046830102593708144/schedule?CadreEducationCourse_jsCoursePlan=%7B%22filterDefinition%22:%7B%22cadreEducationCourseType%22:%7B%22value%22:%22-2317626998746428607%22,%22label%22:%22Leiterkurs%22%7D%7D%7D&lang=fr"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <Button size="icon" variant="ghost">
+                                        <ExternalLink class="h-4 w-4" />
+                                    </Button>
+                                </a>
+                            </TableCell>
                             <TableCell>ASF C Basic</TableCell>
                             <TableCell>17 Y/o</TableCell>
                             <TableCell>6 days (2 x 3d)</TableCell>
                             <TableCell>none</TableCell>
                         </TableRow>
                         <TableRow>
+                            <TableCell width="1">
+                                <a href="https://fr.uefa.com/development/coaches/uefa-coaching-licences/" target="_blank" rel="noopener noreferrer">
+                                    <Button size="icon" variant="ghost">
+                                        <ExternalLink class="h-4 w-4" />
+                                    </Button>
+                                </a>
+                            </TableCell>
                             <TableCell>UEFA C</TableCell>
                             <TableCell>18 Y/o</TableCell>
                             <TableCell>6 days (2 x 3d)</TableCell>
