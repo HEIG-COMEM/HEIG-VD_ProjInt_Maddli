@@ -10,6 +10,7 @@ import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { debounce } from '@/lib/utils';
+import { availableLicence } from '@/stores/admin/availableLicenceStore';
 import { type BreadcrumbItem } from '@/types';
 import { Head, router } from '@inertiajs/vue3';
 import { Shield } from 'lucide-vue-next';
@@ -19,6 +20,8 @@ const props = defineProps<{
     data: any;
     filters: any;
 }>();
+
+availableLicence.fetchAvailableLicences();
 
 const users = ref(props.data.data);
 const path = ref(props.data.path);
