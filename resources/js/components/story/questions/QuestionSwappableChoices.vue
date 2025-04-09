@@ -7,6 +7,7 @@ import { onMounted, ref } from 'vue';
 const props = defineProps<{
     question: string;
     choices: string[];
+    questionId: number;
 }>();
 
 const isButtonDisabled = ref(false);
@@ -29,10 +30,7 @@ onMounted(() => {
         swapy.enable(false); // Disable swapy interactions
 
         // Collecting the ordered choices and storing them
-        const choices = Array.from(container.querySelectorAll('[data-swapy-item]')).map((item) => item.textContent?.trim() || '');
-        choices.forEach((choice) => {
-            storyUtils.addChoice(choice); // Adding each choice to the storyUtils
-        });
+        storyUtils.addChoice({ questionId: props.questionId, isCorrect: true });
     };
 });
 </script>
@@ -55,7 +53,7 @@ onMounted(() => {
                     :data-swapy-slot="index"
                 >
                     <div
-                        class="flex cursor-grab items-center justify-between rounded-md border border-gray-200 bg-white p-1 text-xs font-medium hover:border-blue-300 hover:bg-blue-50 active:cursor-grabbing md:rounded-lg md:px-2 lg:rounded-2xl lg:p-3 lg:text-lg xl:text-xl"
+                        class="flex cursor-grab items-center justify-between rounded-md border border-gray-200 bg-white p-1 text-xs font-medium hover:border-[#006565] hover:bg-[#CFDCDD] active:cursor-grabbing md:rounded-lg md:px-2 lg:rounded-2xl lg:p-3 lg:text-lg xl:text-xl"
                         :data-swapy-item="index"
                         data-swapy-handle
                     >
@@ -70,9 +68,12 @@ onMounted(() => {
                 :disabled="isButtonDisabled"
                 @click="validateOrder"
                 :class="[
-                    'rounded-lg border-2 border-gray-200 bg-black px-2 py-1 text-center font-medium text-white transition-all duration-200',
+                    'rounded-lg border-2 border-[#006565] bg-[#006565] px-2 py-1 text-center font-medium text-white transition-all duration-200',
                     'text-xs lg:px-3 lg:text-lg xl:text-xl',
-                    { 'cursor-not-allowed opacity-50': isButtonDisabled, 'hover:border-blue-300 hover:bg-blue-50': !isButtonDisabled },
+                    {
+                        'cursor-not-allowed opacity-50': isButtonDisabled,
+                        'hover:border-[#005959] hover:bg-[#005959]': !isButtonDisabled,
+                    },
                 ]"
             >
                 Validate

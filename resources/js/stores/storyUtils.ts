@@ -10,13 +10,17 @@ interface Slide {
 interface storyUtils {
     subStories: Record<string, any>; // Holds sub-stories, indexed by a string key
     story: any[];
-    choices: any[];
+    choices: {
+        questionId: number;
+        isCorrect: boolean;
+    }[];
     slides: Slide[];
     currentSlideIndex: number;
     duration: string;
 
     addChoice(choice: any): void; // Method to add a choice to the choices array
     getChoices(): any[]; // Method to retrieve all choices
+    getChoicesByQuestionId(questionId: number): any[]; // Method to retrieve all choices by question id
     initializeSlides(): void; // Method to initialize slide components
     getCurrentSlideIndex(): number; // Method to retrieve the current slide index
     updateCurrentSlideIndex(index: number): void; // Method to update the current slide index
@@ -41,15 +45,19 @@ export const storyUtils = reactive<storyUtils>({
     duration: '',
 
     // Method to add a choice to the choices array
-    addChoice(choice: any) {
+    addChoice(choice: { questionId: number; isCorrect: boolean }) {
         this.choices.push(choice);
         console.log(`Added to store: ${choice}`);
-        console.log(`Choices: ${this.choices}`);
+        console.log(`Choices:`, this.choices);
     },
 
     // Method to retrieve all choices
     getChoices() {
         return this.choices;
+    },
+
+    getChoicesByQuestionId(questionId: number) {
+        return this.choices.filter((choice) => choice.questionId === questionId);
     },
 
     // Method to retrieve the current slide index

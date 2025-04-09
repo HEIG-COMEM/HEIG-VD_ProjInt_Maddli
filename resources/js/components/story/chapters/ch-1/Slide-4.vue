@@ -8,6 +8,6 @@ const choices = ['Team spirit', 'Equal playing time', 'Regular training attendan
 
 <template>
     <section :data-background-image="bg" data-auto-animate class="relative h-full">
-        <QuestionSwappableChoices question="Define the order of importance of your selection criteria." :choices="choices" />
+        <QuestionSwappableChoices :question-id="14" question="Define the order of importance of your selection criteria." :choices="choices" />
     </section>
 </template>

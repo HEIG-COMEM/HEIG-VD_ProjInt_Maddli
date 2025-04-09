@@ -7,12 +7,14 @@ const bg = '/assets/story/bg/3-3.png';
 <template>
     <section :data-background-image="bg" data-auto-animate class="h-full">
         <QuestionMultipleChoice
+            :question-id="35"
             question="How do you handle a player's injury during a match?"
             :answers="[
-                'I ignore the injury and tell the team to keep playing.',
-                'I take her off right away, and she’s done for the rest of the match.',
-                'I check on her and ask if she can still play.',
+                { id: 1, q: 'I ignore the injury and tell the team to keep playing.' },
+                { id: 2, q: 'I take her off right away, and she’s done for the rest of the match.' },
+                { id: 3, q: 'I check on her and ask if she can still play.' },
             ]"
+            :correctAnswer="1"
         />
     </section>
 </template>

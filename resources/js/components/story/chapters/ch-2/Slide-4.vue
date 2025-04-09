@@ -10,14 +10,14 @@ const bg = '/assets/story/bg/2-4.png';
         <Character
             type="player"
             :scale="0.1"
-            :poseNumber="1"
+            :poseNumber="3"
             :chNumber="2"
             class="!-top-[60%] !left-0 md:!-top-[60%] md:!left-[5%] xl:!left-[10%] xl:!top-[5%] 2xl:!left-[15%]"
         />
         <Character
             type="player"
             :scale="0.1"
-            :poseNumber="2"
+            :poseNumber="4"
             :chNumber="2"
             class="!-top-[60%] !left-[15%] md:!-top-[60%] md:!left-[15%] xl:!left-[25%] xl:!top-[5%] 2xl:!left-[30%]"
         />
