@@ -80,11 +80,11 @@ const isNewUser = computed(() => !page.props.auth.roles.length);
                 <template v-if="isNewUser">
                     <Alert>
                         <Rocket class="h-4 w-4" />
-                        <AlertTitle>Welcome to the <span class="uppercase text-accent-foreground">club</span></AlertTitle>
+                        <AlertTitle>Welcome to <span class="text-accent"> The Club</span></AlertTitle>
                         <AlertDescription>
                             <div>Let's get started and find a mentor !</div>
                             <AppFindRepresentative
-                                title="Find a ambassador"
+                                title="Find an ambassador"
                                 description="We will find a ambassador for you. Please fill out the form so we can determine the best match."
                                 save-label="Find an ambassador"
                             >
