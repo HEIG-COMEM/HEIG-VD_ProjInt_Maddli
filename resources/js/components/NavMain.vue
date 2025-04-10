@@ -26,6 +26,7 @@ defineProps<{
         items?: {
             title: string;
             href: string;
+            isActive?: boolean;
             badge?: string;
         }[];
     }[];
@@ -48,7 +49,7 @@ defineProps<{
                         <CollapsibleContent>
                             <SidebarMenuSub v-if="item.items.length">
                                 <SidebarMenuSubItem v-for="subItem in item.items" :key="subItem.title">
-                                    <SidebarMenuSubButton as-child>
+                                    <SidebarMenuSubButton as-child :is-active="subItem.isActive ?? false">
                                         <a :href="subItem.href">
                                             {{ subItem.title }}
                                             <Badge v-if="subItem.badge">
@@ -63,7 +64,7 @@ defineProps<{
                     </SidebarMenuItem>
                 </Collapsible>
                 <SidebarMenuItem v-else>
-                    <SidebarMenuButton as-child>
+                    <SidebarMenuButton as-child :is-active="item.isActive">
                         <Link :href="item.href">
                             <component :is="item.icon" />
                             <span>{{ item.title }}</span>

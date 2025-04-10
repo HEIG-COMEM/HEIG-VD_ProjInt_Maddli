@@ -10,7 +10,7 @@ import AppLogo from './AppLogo.vue';
 import NavMain from './NavMain.vue';
 import NavSidebarGroup from './NavSidebarGroup.vue';
 
-const conversations = reactive<{ title: string; href: string; badge: string }[]>([]);
+const conversations = reactive<{ title: string; href: string; isActive: boolean; badge: string }[]>([]);
 
 onMounted(async () => {
     const response = await fetch(`/club/conversations?json`);
@@ -19,6 +19,7 @@ onMounted(async () => {
         return {
             title: `${item.user.name}`,
             href: `/club/conversations/${item.id}`,
+            isActive: route().current('club.conversations', { id: item.id }),
             ...(item.unreadMessagesCount ? { badge: `${item.unreadMessagesCount}` } : {}),
         };
     });
@@ -31,13 +32,13 @@ const mainNavItems = ref<CollapsibleNavItem[]>([
         title: 'Home',
         href: '/club/',
         icon: House,
-        isActive: true,
+        isActive: route().current('club.home'),
     },
     {
         title: 'Lists',
         href: '/club/lists',
         icon: List,
-        isActive: true,
+        isActive: route().current('club.lists'),
     },
     {
         title: 'Conversations',
@@ -53,11 +54,13 @@ const adminNavItems: NavItem[] = [
         title: 'Clubs',
         href: '/club/admin/clubs',
         icon: Building2,
+        isActive: route().current('club.admin.clubs'),
     },
     {
         title: 'Users',
         href: '/club/admin/users',
         icon: Users,
+        isActive: route().current('club.admin.users'),
     },
 ];
 
