@@ -166,7 +166,7 @@ import { ExternalLink, GraduationCap, MessageCircleQuestion, Share2 } from 'luci
                         },
                     ]"
                     buttonText="Join The Hello Coach Club"
-                    :buttonLink="route('club.home')"
+                    :buttonLink="route('club.infos')"
                     imageSrc="/assets/images/HSP-cover-2.png"
                 />
             </div>
