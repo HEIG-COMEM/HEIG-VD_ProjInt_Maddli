@@ -17,7 +17,7 @@ const isDesktop = useMediaQuery('(min-width: 768px)');
 const items = reactive([
     {
         name: 'Simulation',
-        href: 'become-coach',
+        href: 'simulation',
     },
     {
         name: 'Help Starter Pack',

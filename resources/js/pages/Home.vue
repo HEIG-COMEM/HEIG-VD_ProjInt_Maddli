@@ -87,7 +87,7 @@ const playVideo = () => {
                         variant="default"
                         size="lg"
                         class="absolute bottom-8 left-1/2 -translate-x-1/2 translate-y-1/2 sm:bottom-12"
-                        @click="router.visit(route('become-coach'))"
+                        @click="router.visit(route('simulation'))"
                     >
                         Play now !
                     </Button>

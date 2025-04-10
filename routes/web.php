@@ -7,11 +7,11 @@ Route::get('/', function () {
     return Inertia::render('Home');
 })->name('home');
 
-Route::get('/become-a-coach', function () {
+Route::get('/simulation', function () {
     return Inertia::render('BecomeCoach');
-})->name('become-coach');
+})->name('simulation');
 
-Route::get('/help-starter-pack', function () {
+Route::get('/become-a-coach', function () {
     return Inertia::render('HelpStarterPack');
 })->name('hsp');
 
