@@ -44,7 +44,7 @@ function validateChoice() {
                         'w-full rounded-lg border-2 border-gray-200 bg-white p-2 text-center text-xs font-medium transition-all duration-200 md:rounded-xl md:p-3 md:text-sm lg:rounded-2xl lg:p-4 lg:text-lg',
                         {
                             'cursor-pointer hover:border-[#006565] hover:bg-[#00656533]': !isButtonDisabled || selectedAnswer?.id === answer.id,
-                            'border-2 !border-[#006565] bg-[#00656533]': selectedAnswer?.id === answer.id,
+                            'border-2 !border-[#006565] !bg-[#00656533]': selectedAnswer?.id === answer.id,
                             'cursor-not-allowed opacity-50': isButtonDisabled && selectedAnswer?.id !== answer.id,
                         },
                     ]"
