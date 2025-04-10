@@ -7,15 +7,14 @@ const bg = '#006565';
 <template>
     <section data-auto-animate :data-background-color="bg" class="h-full">
         <div class="flex h-full flex-col">
-            <InsightBox title="Community Actor">
+            <InsightBox title="Community Leader">
                 <p>
-                    You are a <span class="font-bold">key actor</span> in your club and your community. Parents rely on you and see you as the
-                    essential link between them and their children. The <span class="font-bold">feedback</span> you provide is invaluable, and your
-                    work is appreciated and valued.
+                    You play a key role in your club and your community. Parents rely on you and see you as a vital link between them and their
+                    children. The feedback you provide is invaluable, and your work is both appreciated and highly valued.
                 </p>
                 <p>
-                    In addition, you have the opportunity to share and transmit your passion for football. This passion inspires not only your
-                    players, but also the parents, which can strengthen commitment within the club.
+                    In addition, you have the opportunity to share and transmit your <span class="font-bold">passion</span> for football. This passion
+                    inspires not only your players, but also the parents, which can strengthen commitment within the club.
                 </p>
             </InsightBox>
         </div>

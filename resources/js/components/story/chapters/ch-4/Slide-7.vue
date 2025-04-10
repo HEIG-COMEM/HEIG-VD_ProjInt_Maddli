@@ -7,19 +7,18 @@ const bg = '#006565';
 <template>
     <section :data-background-color="bg" data-auto-animate class="h-full py-16">
         <div class="flex h-full w-full flex-col">
-            <InsightBox title="Group management">
+            <InsightBox title="Leadership">
                 <p>
-                    Your squad is made up of players with diverse backgrounds, expectations, and behaviors. Your role is to create a
-                    <span class="font-bold">balanced environment</span> where everyone finds their place and
-                    <span class="font-bold">progresses together</span>.
+                    A good <span class="font-bold">leader</span> inspires, motivates, and provides clear direction to their team. Your ability to
+                    unite and mobilize around a <span class="font-bold">common goal</span> makes all the difference.
                 </p>
                 <p>
-                    Effective team management requires establishing <span class="font-bold">clear rules</span>, maintaining focus, and the ability to
-                    refocus when necessary.
+                    The players listen to you and count on you for <span class="font-bold">guidance</span>. Your words have a direct
+                    <span class="font-bold">impact</span> on their state of mind.
                 </p>
                 <p>
-                    The <span class="font-bold">warm-up</span> perfectly illustrates this challenge: a well-established framework from the start
-                    promotes concentration and mentally prepares the team before entering the match.
+                    Half time is a key moment where your <span class="font-bold">message</span> must be both strategic and psychological: boost energy
+                    if necessary, calm tempers in case of tension, and refocus the team on its strengths to tackle the second half.
                 </p>
             </InsightBox>
         </div>

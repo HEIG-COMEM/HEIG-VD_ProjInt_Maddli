@@ -7,20 +7,16 @@ const bg = '#006565';
 <template>
     <section :data-background-color="bg" data-auto-animate class="h-full py-16">
         <div class="flex h-full w-full flex-col">
-            <InsightBox title="Group management">
+            <InsightBox title="Conflict management">
                 <p>
-                    Your squad is made up of players with diverse backgrounds, expectations, and behaviors. Your role is to create a
-                    <span class="font-bold">balanced environment</span> where everyone finds their place and
-                    <span class="font-bold">progresses together</span>.
+                    There will be times when your choices are <span class="font-bold">questioned</span>, whether by parents, players, or other
+                    stakeholders.
                 </p>
                 <p>
-                    Effective team management requires establishing <span class="font-bold">clear rules</span>, maintaining focus, and the ability to
-                    refocus when necessary.
+                    Conflicts can also arise between your players, with the opponent, the referee, or even the fans. In these moments, it's essential
+                    that you handle these situations <span class="font-bold">constructively</span>.
                 </p>
-                <p>
-                    The <span class="font-bold">warm-up</span> perfectly illustrates this challenge: a well-established framework from the start
-                    promotes concentration and mentally prepares the team before entering the match.
-                </p>
+                <p>As a coach, you must know how to channel tensions, calm tempers, and sometimes take responsibility for your decisions.</p>
             </InsightBox>
         </div>
     </section>
