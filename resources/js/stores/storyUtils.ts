@@ -47,8 +47,6 @@ export const storyUtils = reactive<storyUtils>({
     // Method to add a choice to the choices array
     addChoice(choice: { questionId: number; isCorrect: boolean }) {
         this.choices.push(choice);
-        console.log(`Added to store: ${choice}`);
-        console.log(`Choices:`, this.choices);
     },
 
     // Method to retrieve all choices
