@@ -173,7 +173,7 @@ const isOpen = ref(false);
                 {{ isLoading ? 'Loading...' : saveLabel }}
             </Button>
         </form>
-        <div v-else>
+        <div v-else class="px-4">
             <div class="mb-4">
                 <H3>Great news !</H3>
                 <P class="!mt-0"
