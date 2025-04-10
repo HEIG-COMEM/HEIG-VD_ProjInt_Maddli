@@ -16,7 +16,7 @@ Route::get('/become-a-coach', function () {
 })->name('hsp');
 
 Route::get('dashboard', function () {
-    return Route::redirect('club.home');
+    return redirect()->route('club.home');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__ . '/club.php';
