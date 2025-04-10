@@ -51,7 +51,8 @@ class AdminController extends Controller
         if (!$user) abort(404);
 
         if ($licence < 0) {
-            $user->licence()->delete();
+            $user->licence()->dissociate();
+            $user->save();
         } else {
             $request->validate([
                 'licence' => 'required|exists:licences,id',
