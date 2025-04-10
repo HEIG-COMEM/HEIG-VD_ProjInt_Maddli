@@ -13,7 +13,7 @@ const bg = '/assets/story/bg/3-1_4-1_5-1.png';
         />
         <div class="absolute bottom-[10%] right-[5%] flex flex-col items-end">
             <Caption class="!static">
-                <p class="text-left">The coach is watching the team's practice</p>
+                <p class="text-left">It’s half time.</p>
             </Caption>
         </div>
     </section>
