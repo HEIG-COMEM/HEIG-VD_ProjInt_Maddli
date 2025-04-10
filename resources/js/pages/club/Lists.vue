@@ -44,12 +44,13 @@ const requireMentor = computed(() => {
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
             <div class="relative min-h-[100vh] flex-1 rounded-xl border border-sidebar-border/70 p-4 dark:border-sidebar-border md:min-h-min">
+                <H1 class="mb-12">Contact list</H1>
                 <template v-if="isNewUser && !requireMentor">
                     <Alert class="mb-8">
                         <Rocket class="h-4 w-4" />
                         <AlertTitle>Welcome to <span class="text-accent"> The Club</span></AlertTitle>
                         <AlertDescription>
-                            <div>Let's get started and find an ambassador !</div>
+                            <div class="text-pretty">Let's get started and find an ambassador !</div>
                             <AppFindRepresentative
                                 title="Find an ambassador"
                                 description="We will find a ambassador for you. Please fill out the form so we can determine the best match."
@@ -67,7 +68,7 @@ const requireMentor = computed(() => {
                         <Rocket class="h-4 w-4" />
                         <AlertTitle>Well done for your coaching <span class="text-accent">licence</span></AlertTitle>
                         <AlertDescription>
-                            <div>Let's get started and find a mentor !</div>
+                            <div class="text-pretty">Let's get started and find a mentor !</div>
                             <AppFindRepresentative
                                 title="Find a mentor"
                                 description="We will find a mentor for you. Please fill out the form so we can determine the best match."
@@ -81,7 +82,6 @@ const requireMentor = computed(() => {
                         </AlertDescription>
                     </Alert>
                 </template>
-                <H1 class="mb-12">Contact list</H1>
                 <AppContactSection
                     v-if="contacts.federations"
                     title="Federations"
