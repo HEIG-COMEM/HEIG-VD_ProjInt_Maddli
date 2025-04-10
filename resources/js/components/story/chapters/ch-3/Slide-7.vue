@@ -7,19 +7,14 @@ const bg = '#006565';
 <template>
     <section :data-background-color="bg" data-auto-animate class="h-full py-16">
         <div class="flex h-full w-full flex-col">
-            <InsightBox title="Group management">
+            <InsightBox title="Unexpected situation">
                 <p>
-                    Your squad is made up of players with diverse backgrounds, expectations, and behaviors. Your role is to create a
-                    <span class="font-bold">balanced environment</span> where everyone finds their place and
-                    <span class="font-bold">progresses together</span>.
+                    The unexpected is an integral part of being a coach, it's essential to be ready to
+                    <span class="font-bold">react quickly and adapt</span> to unexpected situations.
                 </p>
                 <p>
-                    Effective team management requires establishing <span class="font-bold">clear rules</span>, maintaining focus, and the ability to
-                    refocus when necessary.
-                </p>
-                <p>
-                    The <span class="font-bold">warm-up</span> perfectly illustrates this challenge: a well-established framework from the start
-                    promotes concentration and mentally prepares the team before entering the match.
+                    Whether it's an injury, a change in weather conditions, a last-minute absence, or even forgetting equipment, your ability to
+                    <span class="font-bold">find solutions</span> on the spot is important for maintaining the continuity and balance of your team.
                 </p>
             </InsightBox>
         </div>
