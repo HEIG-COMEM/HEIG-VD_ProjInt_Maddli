@@ -21,7 +21,7 @@ const bg = '/assets/story/bg/3-3.png';
             class="!left-[40%] !top-[5%] md:!left-[50%] xl:!left-[70%] xl:!top-[15%]"
         />
         <img
-            src="/assets/story/ch-3/elements/2.svg"
+            src="/assets/story/ch-3/elements/dialogBubble-2.svg"
             class="absolute !left-[48%] !top-[58%] z-[1001] h-24 md:!left-[54%] md:!top-[52%] md:!h-28 xl:!left-[48%] xl:!top-[35%] xl:!h-56 2xl:!left-[52%] 2xl:!top-[40%]"
         />
     </section>

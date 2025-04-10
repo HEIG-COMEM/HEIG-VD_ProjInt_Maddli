@@ -13,6 +13,6 @@ const bg = '/assets/story/bg/3-3.png';
             :chNumber="3"
             class="!-top-[20%] !left-[10%] md:!-top-[20%] md:!left-[15%] xl:!left-[30%] xl:!top-[30%] 2xl:!left-[25%]"
         />
-        <img src="/assets/story/ch-3/elements/1.svg" class="absolute !right-0 !top-[30%] h-24 md:!h-32 xl:!h-56" />
+        <img src="/assets/story/ch-3/elements/dialogBubble-1.svg" class="absolute !right-0 !top-[30%] h-24 md:!h-32 xl:!h-56" />
     </section>
 </template>
