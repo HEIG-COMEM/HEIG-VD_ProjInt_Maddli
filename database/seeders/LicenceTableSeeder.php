@@ -24,7 +24,7 @@ class licenceTableSeeder extends Seeder
             'C4',
         ];
 
-        Licence::truncate();
+        // Licence::truncate();
 
         foreach ($licences as $licence) {
             Licence::firstOrCreate([

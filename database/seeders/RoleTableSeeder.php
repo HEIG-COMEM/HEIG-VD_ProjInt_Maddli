@@ -29,10 +29,10 @@ class RoleTableSeeder extends Seeder
             'mentee',
         ];
 
-        Role::truncate();
+        // Role::truncate();
 
         foreach ($roles as $role) {
-            Role::create([
+            Role::firstOrCreate([
                 'name' => $role,
             ]);
         }
