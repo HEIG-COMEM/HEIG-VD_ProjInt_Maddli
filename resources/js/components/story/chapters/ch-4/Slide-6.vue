@@ -21,10 +21,10 @@ const feedback = computed(() => {
     const isCorrect = previousChoices.isCorrect ?? false;
     return {
         isCorrect,
-        title: isCorrect ? 'Awesome! That was the right call.' : 'Almost there, but not quite the right choice.',
+        title: isCorrect ? 'Fantastic! You made a great decision.' : 'It could work, but...',
         text: isCorrect
-            ? 'Well done! By reacting quickly and taking care of your players, you kept the team stable and focused, ready to face any challenge.'
-            : "Ignoring the injury disrupted the team's balance. Taking care of your players would have ensured stability and kept everyone focused.",
+            ? 'However, focusing too much on positivity might overlook deeper issues that need to be addressed directly.'
+            : 'If the team lacks experience or is feeling low, this could lead to more confusion than clarity.',
     };
 });
 </script>
