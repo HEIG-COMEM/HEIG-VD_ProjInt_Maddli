@@ -6,20 +6,18 @@ const bg = '/assets/story/bg/6-1.png';
 </script>
 
 <template>
-    <section data-auto-animate :data-background-image="bg" class="h-full">
-        <div class="relative flex h-full flex-col justify-between">
-            <Character
-                type="player"
-                :scale="0.2"
-                :poseNumber="1"
-                :chNumber="6"
-                class="!-top-1/2 !left-[70%] md:!-top-1/3 md:!left-[70%] lg:!left-[70%] lg:!top-[30%] lg:!scale-[0.7] xl:!scale-[0.8]"
-            />
-            <DialogBubble
-                class="!-top-[0%] !left-[30%] md:!left-[35%] lg:!left-[45%] lg:!top-[20%] xl:!left-[45%] 2xl:!left-[45%]"
-                text="I don’t want to shower."
-                tail-position="right"
-            />
-        </div>
+    <section data-auto-animate :data-background-image="bg" class="relative h-full">
+        <Character
+            type="player"
+            :scale="0.2"
+            :poseNumber="1"
+            :chNumber="6"
+            class="!-top-1/2 !left-[70%] md:!-top-1/3 md:!left-[75%] xl:!left-[85%] xl:!top-[20%] 2xl:!left-[85%]"
+        />
+        <DialogBubble
+            class="!left-[40%] !top-0 md:!left-[43%] md:!top-[5%] xl:!left-[48%] xl:!top-[15%] 2xl:!left-[55%] 2xl:!top-[20%]"
+            text="I don’t want to shower."
+            tail-position="right"
+        />
     </section>
 </template>
