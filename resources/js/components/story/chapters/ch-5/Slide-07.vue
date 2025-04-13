@@ -17,7 +17,7 @@ const bg = '/assets/story/bg/5-5.png';
                 },
                 { id: 3, q: 'I dismiss the complaint and end the conversation quickly to avoid further conflict.' },
             ]"
-            :correctAnswer="1"
+            :correctAnswer="2"
         />
     </section>
 </template>

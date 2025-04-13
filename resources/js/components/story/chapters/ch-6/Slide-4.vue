@@ -15,7 +15,7 @@ const bg = '/assets/story/bg/6-1.png';
                     { id: 2, q: 'I listen carefully, offer advice from my experience, and support her with empathy.' },
                     { id: 3, q: 'I avoid the conversation, unsure how to balance personal issues with my role as a coach.' },
                 ]"
-                :correctAnswer="1"
+                :correctAnswer="2"
             />
         </div>
     </section>

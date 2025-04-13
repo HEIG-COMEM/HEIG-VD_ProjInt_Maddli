@@ -12,13 +12,14 @@ interface storyUtils {
     story: any[];
     choices: {
         questionId: number;
+        answerId: number;
         isCorrect: boolean;
     }[];
     slides: Slide[];
     currentSlideIndex: number;
     duration: string;
 
-    addChoice(choice: any): void; // Method to add a choice to the choices array
+    addChoice(choice: { questionId: number; answerId: number; isCorrect: boolean }): void; // Method to add a choice to the choices array
     getChoices(): any[]; // Method to retrieve all choices
     getChoicesByQuestionId(questionId: number): any[]; // Method to retrieve all choices by question id
     initializeSlides(): void; // Method to initialize slide components
@@ -45,7 +46,7 @@ export const storyUtils = reactive<storyUtils>({
     duration: '',
 
     // Method to add a choice to the choices array
-    addChoice(choice: { questionId: number; isCorrect: boolean }) {
+    addChoice(choice: { questionId: number; answerId: number; isCorrect: boolean }) {
         this.choices.push(choice);
     },
 

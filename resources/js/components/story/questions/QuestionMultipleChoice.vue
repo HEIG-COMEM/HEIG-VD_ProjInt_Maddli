@@ -22,7 +22,11 @@ function handleChoice(answer: { id: number; q: string }) {
 function validateChoice() {
     if (selectedAnswer.value) {
         isButtonDisabled.value = true;
-        storyUtils.addChoice({ questionId: props.questionId, isCorrect: selectedAnswer.value.id === props.correctAnswer });
+        storyUtils.addChoice({
+            questionId: props.questionId,
+            answerId: selectedAnswer.value.id,
+            isCorrect: selectedAnswer.value.id === props.correctAnswer,
+        });
     }
 }
 </script>

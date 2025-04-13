@@ -14,7 +14,6 @@ const bg = '/assets/story/bg/4-4.png';
                 { id: 2, q: 'I ask the players to reflect on what\'s not working and suggest their own solutions.' },
                 { id: 3, q: 'I shout at them to wake them up and light a fire under them.' },
             ]"
-            :correctAnswer="1"
         />
     </section>
 </template>

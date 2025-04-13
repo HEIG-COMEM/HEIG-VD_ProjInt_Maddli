@@ -14,7 +14,7 @@ const bg = '/assets/story/bg/3-3.png';
                 { id: 2, q: 'I take her off right away, and she’s done for the rest of the match.' },
                 { id: 3, q: 'I check on her and ask if she can still play.' },
             ]"
-            :correctAnswer="1"
+            :correctAnswer="3"
         />
     </section>
 </template>

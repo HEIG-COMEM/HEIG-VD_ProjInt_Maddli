@@ -11,11 +11,11 @@ const bg = '/assets/story/bg/7-2.png';
                 :question-id="74"
                 question="What would you like to highlight in your feedback?"
                 :answers="[
-                    { id: 1, q: 'The player\' improvements and dedication.' },
-                    { id: 2, q: 'The players\' areas for improvement. ' },
-                    { id: 3, q: 'The player\' weaknesses.' },
+                    { id: 1, q: 'The player\'s improvements and dedication.' },
+                    { id: 2, q: 'The player\'s areas for improvement. ' },
+                    { id: 3, q: 'The player\'s weaknesses.' },
                 ]"
-                :correctAnswer="1"
+                :correctAnswer="3"
             />
         </div>
     </section>
