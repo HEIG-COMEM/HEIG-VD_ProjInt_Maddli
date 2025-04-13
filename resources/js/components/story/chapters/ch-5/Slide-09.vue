@@ -5,7 +5,7 @@ const bg = '#006565';
 </script>
 
 <template>
-    <section :data-background-color="bg" data-auto-animate class="h-full py-16">
+    <section :data-background-color="bg" data-auto-animate class="h-full py-12">
         <div class="flex h-full w-full flex-col">
             <InsightBox title="Conflict management">
                 <p>

@@ -5,7 +5,7 @@ const bg = '#006565';
 </script>
 
 <template>
-    <section data-auto-animate :data-background-color="bg" class="h-full">
+    <section data-auto-animate :data-background-color="bg" class="h-full py-12">
         <div class="flex h-full flex-col">
             <InsightBox title="Role model">
                 <p>
