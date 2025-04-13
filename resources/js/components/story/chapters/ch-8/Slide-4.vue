@@ -16,7 +16,7 @@ const bg = '#006565';
                 :scale="0.2"
                 :poseNumber="4"
                 :chNumber="8"
-                class="!-bottom-[170%] !left-1/4 md:!-bottom-[150%] md:!left-1/4 xl:!-bottom-2/3 2xl:!-bottom-2/3 2xl:!left-1/3"
+                class="!-top-[20%] !left-[20%] md:!left-[28%] xl:!left-[35%] xl:!top-[40%] 2xl:!left-[40%] 2xl:!top-[35%]"
             />
             <div class="flex h-fit w-1/2 flex-col gap-3 self-center rounded-md bg-white p-3 font-baloo lg:gap-6 lg:p-12">
                 <p class="text-lg font-bold lg:text-3xl">What’s next ?</p>
