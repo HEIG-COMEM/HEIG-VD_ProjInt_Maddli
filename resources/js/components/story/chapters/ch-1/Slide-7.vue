@@ -2,8 +2,30 @@
 import Character from '@/components/story/characters/Character.vue';
 import DialogBubble from '@/components/story/ui/DialogBubble.vue';
 import Smartphone from '@/components/story/ui/Smartphone.vue';
+import { storyUtils } from '@/stores/storyUtils';
+import { onBeforeUnmount, watch } from 'vue';
 
 const bg = '/assets/story/bg/1-1.png';
+const audio = new Audio('/assets/story/ch-1/sfx/s7.mp3');
+
+const slideIndex = 11; // TODO : Update dynamically
+
+watch(
+    () => storyUtils.getCurrentSlideIndex(),
+    (newIndex) => {
+        if (newIndex === slideIndex) {
+            audio.play();
+        } else if (audio.currentTime > 0) {
+            audio.pause();
+            audio.currentTime = 0;
+        }
+    },
+);
+
+onBeforeUnmount(() => {
+    audio.pause();
+    audio.currentTime = 0;
+});
 </script>
 
 <template>

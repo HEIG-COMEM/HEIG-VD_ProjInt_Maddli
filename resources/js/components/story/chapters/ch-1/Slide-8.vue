@@ -1,8 +1,31 @@
 <script setup lang="ts">
 import Character from '@/components/story/characters/Character.vue';
 import Smartphone from '@/components/story/ui/Smartphone.vue';
+import { storyUtils } from '@/stores/storyUtils';
+import { onBeforeUnmount, watch } from 'vue';
 
 const bg = '/assets/story/bg/1-1.png';
+const audio = new Audio('/assets/story/ch-1/sfx/s8.mp3');
+
+const slideIndex = 12; // TODO : Update dynamically
+
+watch(
+    () => storyUtils.getCurrentSlideIndex(),
+    (newIndex) => {
+        if (newIndex === slideIndex) {
+            audio.playbackRate = 1.8;
+            audio.play();
+        } else if (audio.currentTime > 0) {
+            audio.pause();
+            audio.currentTime = 0;
+        }
+    },
+);
+
+onBeforeUnmount(() => {
+    audio.pause();
+    audio.currentTime = 0;
+});
 </script>
 
 <template>

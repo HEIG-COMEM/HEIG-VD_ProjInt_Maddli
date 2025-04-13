@@ -1,7 +1,30 @@
 <script setup lang="ts">
 import Caption from '@/components/story/ui/Caption.vue';
+import { storyUtils } from '@/stores/storyUtils';
+import { onBeforeUnmount, watch } from 'vue';
 
 const bg = '/assets/story/bg/3-1_4-1_5-1.png';
+
+const audio = new Audio('/assets/story/ch-4/sfx/s1.mp3');
+
+const slideIndex = 28; // TODO : Update dynamically
+
+watch(
+    () => storyUtils.getCurrentSlideIndex(),
+    (newIndex) => {
+        if (newIndex === slideIndex) {
+            audio.play();
+        } else if (audio.currentTime > 0) {
+            audio.pause();
+            audio.currentTime = 0;
+        }
+    },
+);
+
+onBeforeUnmount(() => {
+    audio.pause();
+    audio.currentTime = 0;
+});
 </script>
 
 <template>
