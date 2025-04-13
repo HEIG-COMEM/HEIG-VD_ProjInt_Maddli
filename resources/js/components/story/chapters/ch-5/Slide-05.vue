@@ -12,7 +12,7 @@ const bg = '/assets/story/bg/5-4.png';
             :scale="0.2"
             :poseNumber="1"
             :chNumber="5"
-            class="!-top-[15%] !left-[0%] md:!-top-[20%] md:!left-[5%] xl:!left-[10%] xl:!top-[35%] 2xl:!left-[10%]"
+            class="!-top-[15%] !left-[0%] md:!-top-[15%] md:!left-[5%] xl:!left-[10%] xl:!top-[35%] 2xl:!left-[10%]"
         />
         <Character
             type="parent"
@@ -30,7 +30,7 @@ const bg = '/assets/story/bg/5-4.png';
         />
         <DialogBubble
             tailPosition="right"
-            class="!left-[53%] !top-0 !max-w-[10rem] md:!left-[51%] md:!max-w-[16rem] xl:!left-[60%] xl:!top-[3%] xl:!max-w-[16rem] 2xl:!left-[50%] 2xl:!top-[10%] 2xl:!max-w-sm"
+            class="!left-[53%] !top-0 !max-w-[10rem] md:!left-[50%] md:!max-w-[16rem] xl:!left-[60%] xl:!top-[3%] xl:!max-w-[16rem] 2xl:!left-[50%] 2xl:!top-[10%] 2xl:!max-w-sm"
             text="My daughter should get more playing time !!"
         />
     </section>

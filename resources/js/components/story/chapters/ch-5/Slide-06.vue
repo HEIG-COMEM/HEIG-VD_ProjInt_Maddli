@@ -12,25 +12,25 @@ const bg = '/assets/story/bg/5-5.png';
             :scale="0.2"
             :poseNumber="4"
             :chNumber="5"
-            class="!-top-[22%] !left-[30%] md:!-top-[20%] md:!left-[25%] xl:!left-[40%] xl:!top-[30%] 2xl:!left-[40%]"
+            class="!-top-[22%] !left-[15%] md:!left-[25%] xl:!left-[32%] xl:!top-[30%] 2xl:!left-[30%]"
         />
         <Character
             type="parent"
-            :scale="0.2"
+            :scale="0.18"
             :poseNumber="5"
             :chNumber="5"
-            class="!-top-[25%] !left-[57%] md:!-top-[25%] md:!left-[60%] xl:!left-[65%] xl:!top-[25%] 2xl:!left-[70%]"
+            class="!-top-[20%] !left-[60%] md:!left-[65%] xl:!left-[70%] xl:!top-[30%] 2xl:!left-[70%] 2xl:!top-[40%]"
         />
         <Character
             type="parent"
-            :scale="0.2"
+            :scale="0.18"
             :poseNumber="6"
             :chNumber="5"
-            class="!-top-[20%] !left-[80%] md:!-top-[15%] md:!left-[80%] xl:!left-[90%] xl:!top-[35%] 2xl:!left-[90%]"
+            class="!-top-[35%] !left-[75%] md:!left-[78%] xl:!left-[90%] xl:!top-[30%] 2xl:!top-[35%]"
         />
         <DialogBubble
             tailPosition="right"
-            class="!left-[40%] !top-[10%] !max-w-[10rem] md:!left-[43%] md:!top-[5%] md:!max-w-[16rem] xl:!left-[38%] xl:!top-[8%] xl:!max-w-xs 2xl:!left-[47%] 2xl:!top-[10%] 2xl:!max-w-sm"
+            class="!-left-5 !top-0 !max-w-[10rem] md:!max-w-[16rem] xl:!-left-10 xl:!top-[8%] xl:!max-w-xs 2xl:!top-[10%] 2xl:!max-w-sm"
             text="It's always the same players on the field!"
         />
     </section>
