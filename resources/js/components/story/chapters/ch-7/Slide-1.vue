@@ -8,7 +8,7 @@ const bg = '/assets/story/bg/7-1.png';
     <section :data-background-image="bg" data-auto-animate class="h-full">
         <div class="absolute bottom-[10%] right-[5%] flex flex-col items-end">
             <Caption class="!static">
-                <p class="text-left">The coach is watching the team's practice</p>
+                <p class="text-left">Parents are waiting for their kids to finish showering after the game.</p>
             </Caption>
         </div>
     </section>
