@@ -143,7 +143,7 @@ export const storyUtils = reactive<storyUtils>({
             .sort((a, b) => a.path.localeCompare(b.path));
 
         // Calculate the total duration of the slides based on a fixed time per slide and format result
-        const totalSeconds = this.getTotalSlides() * 7;
+        const totalSeconds = this.getTotalSlides() * 8;
         if (totalSeconds < 60) {
             this.duration = `${totalSeconds} seconds`;
         } else if (totalSeconds < 3600) {
