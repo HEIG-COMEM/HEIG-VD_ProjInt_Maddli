@@ -34,6 +34,13 @@ import { GraduationCap, HeartHandshake, KeyRound, Share2, Users } from 'lucide-v
         </div>
 
         <SectionLayout>
+            <div class="flex flex-col items-center gap-6">
+                <H2>How to Join the Club</H2>
+                <JoinClubSteps class="mt-12 w-fit" />
+            </div>
+        </SectionLayout>
+
+        <SectionLayout>
             <div class="flex w-full flex-col items-center gap-6">
                 <H2>Choose Your Path</H2>
                 <Lead class="text-pretty text-center">
@@ -78,13 +85,6 @@ import { GraduationCap, HeartHandshake, KeyRound, Share2, Users } from 'lucide-v
                         :icon="GraduationCap"
                     />
                 </div>
-            </div>
-        </SectionLayout>
-
-        <SectionLayout>
-            <div class="flex flex-col items-center gap-6">
-                <H2>How to Join the Club</H2>
-                <JoinClubSteps class="mt-12 w-fit" />
             </div>
         </SectionLayout>
 
