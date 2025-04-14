@@ -29,6 +29,7 @@ onBeforeUnmount(() => {
 
 <template>
     <section :data-background-image="bg" data-auto-animate class="h-full">
+        <div class="absolute inset-0 -z-10 h-full w-full scale-150 bg-black opacity-30"></div>
         <img
             src="/assets/story/ch-4/elements/scoreboard.svg"
             alt="Scoreboard"
