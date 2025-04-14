@@ -30,7 +30,7 @@ onMounted(() => {
         swapy.enable(false); // Disable swapy interactions
 
         // Collecting the ordered choices and storing them
-        storyUtils.addChoice({ questionId: props.questionId, isCorrect: true });
+        storyUtils.addChoice({ questionId: props.questionId, answerId: 1, isCorrect: true });
     };
 });
 </script>
