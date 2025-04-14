@@ -49,7 +49,7 @@ const playVideo = () => {
                         <div class="flex flex-row items-center gap-4">
                             <PlayCircle class="h-10 w-10 sm:h-12 sm:w-12" />
                             <div>
-                                <H2 class="!pb-0 text-lg sm:text-xl">Hello Coach vidéo</H2>
+                                <H2 class="!pb-0 text-lg sm:text-xl">Hello Coach video</H2>
                                 <P class="!mt-0 text-sm sm:text-base">Discover the Hello Coach</P>
                             </div>
                         </div>
@@ -164,6 +164,13 @@ const playVideo = () => {
         </SectionLayout>
 
         <SectionLayout>
+            <div class="flex flex-col items-center justify-center gap-6">
+                <H2>Help Starter Pack (HSP)</H2>
+                <Lead class="text-center">
+                    Your ultimate guide to kick-start your coaching career! The Help Starter Pack provides essential tools, insights, and strategies
+                    to build a strong foundation in coaching.
+                </Lead>
+            </div>
             <HSPSection
                 class="mt-12"
                 title="What's Included:"

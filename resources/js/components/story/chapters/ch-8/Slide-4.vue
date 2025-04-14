@@ -24,9 +24,8 @@ const bg = '#006565';
                     <div class="flex w-1/2 flex-col justify-around gap-2 lg:gap-4">
                         <p class="text-sm font-bold lg:text-xl">Need help getting started ?</p>
                         <p class="text-xs lg:text-lg">Explore our Help Starter Pack for clear guidance on how to get your coach licence.</p>
-                        <!-- TODO: Link to HSP using ziggy route() -->
                         <a
-                            href="/"
+                            :href="route('hsp')"
                             class="mt-6 w-fit cursor-pointer self-center rounded-md bg-[#006565] px-2 py-1 text-xs text-white lg:px-4 lg:py-2 lg:text-base"
                             >Explore our Help Starter Pack</a
                         >
@@ -38,7 +37,7 @@ const bg = '#006565';
                             Connect with active women coaches, ask your questions, and get inspired inside the Hello Coach Club.
                         </p>
                         <a
-                            :href="route('club.home')"
+                            :href="route('club.infos')"
                             class="mt-6 w-fit cursor-pointer self-center rounded-md bg-[#006565] px-2 py-1 text-xs text-white lg:px-4 lg:py-2 lg:text-base"
                             >Join the Hello Coach Club</a
                         >
