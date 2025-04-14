@@ -21,7 +21,7 @@ import { MoveDown, MoveLeft, MoveRight, MoveUp, Timer } from 'lucide-vue-next';
             <div class="flex flex-col items-end">
                 <div class="flex flex-col items-center justify-center gap-4">
                     <div
-                        class="absolute right-[8%] top-[27%] flex items-center justify-center md:right-[5%] xl:right-[5.5%] xl:top-[44%] 2xl:right-[4.5%] 2xl:top-[58%]"
+                        class="absolute right-[8%] top-[27%] flex items-center justify-center md:right-[5.6%] md:top-[28%] xl:right-[5.5%] xl:top-[44%] 2xl:right-[4.8%] 2xl:top-[59%]"
                     >
                         <div class="relative flex items-center justify-center">
                             <div class="absolute h-12 w-12 animate-ping rounded-full border-2 border-white opacity-50"></div>

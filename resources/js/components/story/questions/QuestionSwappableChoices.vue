@@ -31,6 +31,9 @@ onMounted(() => {
 
         // Collecting the ordered choices and storing them
         storyUtils.addChoice({ questionId: props.questionId, answerId: 1, isCorrect: true });
+
+        // Navigate to the next slide
+        storyUtils.nextSlide();
     };
 });
 </script>

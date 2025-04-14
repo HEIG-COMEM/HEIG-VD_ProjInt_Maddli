@@ -1,3 +1,4 @@
+import Reveal from 'reveal.js';
 import { reactive, shallowRef } from 'vue';
 
 // Define the structure of a Slide with a path and a component reference
@@ -18,6 +19,8 @@ interface storyUtils {
     slides: Slide[];
     currentSlideIndex: number;
     duration: string;
+    deck: any | null; // Add deck property
+    isDeckInitialized: boolean; // Add initialization flag
 
     addChoice(choice: { questionId: number; answerId: number; isCorrect: boolean }): void; // Method to add a choice to the choices array
     getChoices(): any[]; // Method to retrieve all choices
@@ -34,6 +37,13 @@ interface storyUtils {
     getNumberOfSlidesInEachChapter(): number[]; // Method to retrieve the number of slides in each chapter
     getDuration(): string; // Add this new method signature
     getChapterTitle(chapter: string): string; // Add this new method signature
+
+    // Add new deck-related methods
+    initializeDeck(options?: any): void;
+    getDeck(): any | null;
+    nextSlide(): void;
+    previousSlide(): void;
+    goToSlide(indexh: number, indexv?: number): void;
 }
 
 // Create a reactive storyUtils instance
@@ -44,6 +54,8 @@ export const storyUtils = reactive<storyUtils>({
     slides: [],
     currentSlideIndex: 0,
     duration: '',
+    deck: null,
+    isDeckInitialized: false,
 
     // Method to add a choice to the choices array
     addChoice(choice: { questionId: number; answerId: number; isCorrect: boolean }) {
@@ -159,5 +171,40 @@ export const storyUtils = reactive<storyUtils>({
     // Method to retrieve the total duration of the slides
     getDuration() {
         return this.duration;
+    },
+
+    // New deck-related methods
+    initializeDeck(options?: Reveal.Options) {
+        if (this.isDeckInitialized) return;
+
+        this.deck = new Reveal({
+            plugins: [],
+            progress: false,
+            ...options,
+        });
+
+        this.deck.initialize({ width: '100%', height: '100%' });
+        this.isDeckInitialized = true;
+
+        // Add event listener to update currentSlideIndex when slide changes
+        this.deck.on('slidechanged', (event: any) => {
+            this.updateCurrentSlideIndex(event.indexh);
+        });
+    },
+
+    getDeck() {
+        return this.deck;
+    },
+
+    nextSlide() {
+        this.deck?.next();
+    },
+
+    previousSlide() {
+        this.deck?.prev();
+    },
+
+    goToSlide(indexh: number, indexv?: number) {
+        this.deck?.slide(indexh, indexv);
     },
 });

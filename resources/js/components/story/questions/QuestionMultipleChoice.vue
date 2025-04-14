@@ -27,6 +27,7 @@ function validateChoice() {
             answerId: selectedAnswer.value.id,
             isCorrect: selectedAnswer.value.id === props.correctAnswer,
         });
+        storyUtils.nextSlide();
     }
 }
 </script>
