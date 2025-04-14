@@ -20,6 +20,20 @@ import { MoveDown, MoveLeft, MoveRight, MoveUp, Timer } from 'lucide-vue-next';
             </div>
             <div class="flex flex-col items-end">
                 <div class="flex flex-col items-center justify-center gap-4">
+                    <div
+                        class="absolute right-[8%] top-[27%] flex items-center justify-center md:right-[5%] xl:right-[5.5%] xl:top-[44%] 2xl:right-[4.5%] 2xl:top-[58%]"
+                    >
+                        <div class="relative flex items-center justify-center">
+                            <div class="absolute h-12 w-12 animate-ping rounded-full border-2 border-white opacity-50"></div>
+                            <div class="absolute h-4 w-4 rounded-full border-2 border-white opacity-75"></div>
+                            <div class="absolute h-8 w-8 animate-ping rounded-full border-2 border-white opacity-75"></div>
+                        </div>
+                    </div>
+                    <img
+                        src="/assets/story/ch-0/elements/touch.svg"
+                        alt="Touch Icon"
+                        class="absolute -right-[5%] top-[20%] h-24 w-24 -rotate-[30deg] lg:h-32 lg:w-32 xl:top-[40%] xl:h-40 xl:w-40 2xl:-right-[4%] 2xl:top-[55%]"
+                    />
                     <div class="hidden flex-col items-center justify-center gap-4 lg:flex">
                         <div>
                             <MoveUp

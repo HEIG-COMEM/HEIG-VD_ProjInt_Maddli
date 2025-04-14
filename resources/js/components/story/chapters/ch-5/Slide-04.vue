@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Character from '@/components/story/characters/Character.vue';
 
-const bg = '/assets/story/bg/5-4.png';
+const bg = '/assets/story/bg/3-2_4-2_5-2.png';
 </script>
 
 <template>

@@ -23,14 +23,14 @@ const bg = '/assets/story/bg/5-3.png';
             :scale="0.2"
             :poseNumber="1"
             :chNumber="5"
-            class="!-top-[50%] !left-[10%] !scale-[0.3] md:!-top-[40%] md:!left-[20%] md:!scale-[0.4] xl:!left-[28%] xl:!top-[15%] xl:!scale-[0.8] 2xl:!left-[35%] 2xl:!top-[10%]"
+            class="!-top-[50%] !left-[10%] !scale-[0.25] md:!-top-[40%] md:!left-[20%] md:!scale-[0.35] xl:!left-[28%] xl:!top-[15%] xl:!scale-[0.7] 2xl:!left-[35%] 2xl:!top-[10%]"
         />
         <Character
             type="player"
             :scale="0.2"
             :poseNumber="2"
             :chNumber="5"
-            class="!-top-[40%] !left-[50%] !scale-[0.3] md:!-top-[30%] md:!left-[60%] md:!scale-[0.4] xl:!left-[70%] xl:!top-[20%] xl:!scale-[0.8] 2xl:!left-[70%] 2xl:!top-[10%]"
+            class="!-top-[40%] !left-[50%] !scale-[0.28] md:!-top-[30%] md:!left-[60%] md:!scale-[0.35] xl:!left-[70%] xl:!top-[15%] xl:!scale-[0.75] 2xl:!left-[70%] 2xl:!top-[20%]"
         />
     </section>
 </template>
