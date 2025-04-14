@@ -49,7 +49,7 @@ const playVideo = () => {
                         <div class="flex flex-row items-center gap-4">
                             <PlayCircle class="h-10 w-10 sm:h-12 sm:w-12" />
                             <div>
-                                <H2 class="!pb-0 text-lg sm:text-xl">Hello Coach vidéo</H2>
+                                <H2 class="!pb-0 text-lg sm:text-xl">Hello Coach video</H2>
                                 <P class="!mt-0 text-sm sm:text-base">Discover the Hello Coach</P>
                             </div>
                         </div>
