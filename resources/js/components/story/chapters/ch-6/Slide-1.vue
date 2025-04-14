@@ -6,7 +6,7 @@ const bg = '/assets/story/bg/6-1.png';
 
 <template>
     <section data-auto-animate :data-background-image="bg" class="h-full">
-        <div class="flex h-full flex-col items-end justify-end">
+        <div class="absolute bottom-[10%] right-[5%] flex flex-col items-end">
             <Caption class="!static">
                 <p>The girls left to get changed.</p>
             </Caption>
