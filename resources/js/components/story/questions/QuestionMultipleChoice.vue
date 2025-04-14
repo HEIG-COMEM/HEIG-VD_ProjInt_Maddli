@@ -3,16 +3,30 @@ import { storyUtils } from '@/stores/storyUtils';
 import { ref } from 'vue';
 
 const props = defineProps<{
+    questionId: number;
     question: string;
-    answers: string[];
+    answers: { id: number; q: string }[];
+    correctAnswer: number;
 }>();
 
-const selectedAnswer = ref<string | null>(null);
+const selectedAnswer = ref<{ id: number; q: string } | null>(null);
+const isButtonDisabled = ref(false);
 
-function handleChoice(answer: string) {
-    if (selectedAnswer.value === null) {
+function handleChoice(answer: { id: number; q: string }) {
+    // Allow changing the answer until validation
+    if (!isButtonDisabled.value) {
         selectedAnswer.value = answer;
-        storyUtils.addChoice(answer);
+    }
+}
+
+function validateChoice() {
+    if (selectedAnswer.value) {
+        isButtonDisabled.value = true;
+        storyUtils.addChoice({
+            questionId: props.questionId,
+            answerId: selectedAnswer.value.id,
+            isCorrect: selectedAnswer.value.id === props.correctAnswer,
+        });
     }
 }
 </script>
@@ -33,16 +47,33 @@ function handleChoice(answer: string) {
                     :class="[
                         'w-full rounded-lg border-2 border-gray-200 bg-white p-2 text-center text-xs font-medium transition-all duration-200 md:rounded-xl md:p-3 md:text-sm lg:rounded-2xl lg:p-4 lg:text-lg',
                         {
-                            'cursor-pointer hover:border-blue-300 hover:bg-blue-50': !selectedAnswer,
-                            'border-blue-500 bg-blue-100 text-blue-700': selectedAnswer === answer,
-                            'cursor-not-allowed opacity-50': selectedAnswer && selectedAnswer !== answer,
+                            'cursor-pointer hover:border-[#006565] hover:bg-[#00656533]': !isButtonDisabled || selectedAnswer?.id === answer.id,
+                            'border-2 !border-[#006565] !bg-[#00656533]': selectedAnswer?.id === answer.id,
+                            'cursor-not-allowed opacity-50': isButtonDisabled && selectedAnswer?.id !== answer.id,
                         },
                     ]"
-                    :disabled="selectedAnswer !== null"
+                    :style="{ color: selectedAnswer === answer ? 'black' : '' }"
+                    :disabled="isButtonDisabled"
                 >
-                    {{ answer }}
+                    {{ answer.q }}
                 </button>
             </div>
+
+            <!-- Validate Button -->
+            <button
+                @click="validateChoice"
+                :disabled="!selectedAnswer || isButtonDisabled"
+                :class="[
+                    'mt-4 rounded-lg border-2 border-[#006565] bg-[#006565] px-2 py-1 text-center font-medium text-white transition-all duration-200',
+                    'text-xs lg:px-3 lg:text-lg xl:text-xl',
+                    {
+                        'cursor-not-allowed opacity-50': !selectedAnswer || isButtonDisabled,
+                        'hover:border-[#005959] hover:bg-[#005959]': selectedAnswer && !isButtonDisabled,
+                    },
+                ]"
+            >
+                Validate
+            </button>
         </div>
     </div>
 </template>

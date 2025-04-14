@@ -15,14 +15,14 @@ const bg = '#006565';
             <DialogBubble
                 text="Now is the time to transform your goals into action."
                 tailPosition="left"
-                class="!left-[40%] !top-[10%] object-contain xl:!left-[35%]"
+                class="!left-[45%] !top-[10%] md:!max-w-xs xl:!top-[20%] xl:!max-w-md"
             />
             <Character
                 type="coach"
                 :scale="0.2"
                 :poseNumber="3"
                 :chNumber="8"
-                class="!-bottom-[200%] !left-1/4 md:!-bottom-[170%] md:!left-1/4 2xl:!-bottom-2/3 2xl:!left-1/3"
+                class="!-top-[20%] !left-[35%] xl:!left-[40%] xl:!top-[40%] 2xl:!left-[40%] 2xl:!top-[35%]"
             />
         </div>
     </section>

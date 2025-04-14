@@ -10,13 +10,18 @@ interface Slide {
 interface storyUtils {
     subStories: Record<string, any>; // Holds sub-stories, indexed by a string key
     story: any[];
-    choices: any[];
+    choices: {
+        questionId: number;
+        answerId: number;
+        isCorrect: boolean;
+    }[];
     slides: Slide[];
     currentSlideIndex: number;
     duration: string;
 
-    addChoice(choice: any): void; // Method to add a choice to the choices array
+    addChoice(choice: { questionId: number; answerId: number; isCorrect: boolean }): void; // Method to add a choice to the choices array
     getChoices(): any[]; // Method to retrieve all choices
+    getChoicesByQuestionId(questionId: number): any[]; // Method to retrieve all choices by question id
     initializeSlides(): void; // Method to initialize slide components
     getCurrentSlideIndex(): number; // Method to retrieve the current slide index
     updateCurrentSlideIndex(index: number): void; // Method to update the current slide index
@@ -41,15 +46,17 @@ export const storyUtils = reactive<storyUtils>({
     duration: '',
 
     // Method to add a choice to the choices array
-    addChoice(choice: any) {
+    addChoice(choice: { questionId: number; answerId: number; isCorrect: boolean }) {
         this.choices.push(choice);
-        console.log(`Added to store: ${choice}`);
-        console.log(`Choices: ${this.choices}`);
     },
 
     // Method to retrieve all choices
     getChoices() {
         return this.choices;
+    },
+
+    getChoicesByQuestionId(questionId: number) {
+        return this.choices.filter((choice) => choice.questionId === questionId);
     },
 
     // Method to retrieve the current slide index
@@ -136,7 +143,7 @@ export const storyUtils = reactive<storyUtils>({
             .sort((a, b) => a.path.localeCompare(b.path));
 
         // Calculate the total duration of the slides based on a fixed time per slide and format result
-        const totalSeconds = this.getTotalSlides() * 7;
+        const totalSeconds = this.getTotalSlides() * 8;
         if (totalSeconds < 60) {
             this.duration = `${totalSeconds} seconds`;
         } else if (totalSeconds < 3600) {

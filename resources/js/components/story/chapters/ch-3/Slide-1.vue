@@ -1,9 +1,15 @@
 <script setup lang="ts">
-const bg = '/assets/story/bg/3.png';
+import Caption from '@/components/story/ui/Caption.vue';
+
+const bg = '/assets/story/bg/3-1_4-1_5-1.png';
 </script>
 
 <template>
-    <section data-auto-animate :data-background-image="bg" class="h-full">
-        <h1>Chapter 3 - Slide 1</h1>
+    <section :data-background-image="bg" data-auto-animate class="h-full">
+        <div class="absolute bottom-[10%] right-[5%] flex flex-col items-end">
+            <Caption class="!static">
+                <p class="text-left">The first-half has begun.</p>
+            </Caption>
+        </div>
     </section>
 </template>

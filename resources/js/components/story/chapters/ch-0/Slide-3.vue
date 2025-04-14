@@ -18,14 +18,18 @@ import { Timer } from 'lucide-vue-next';
                     </div>
                 </div>
             </div>
-            <div class="relative h-1/2">
-                <DialogBubble
-                    text="I am a ambassador of the Hello Coach program."
-                    tailPosition="left"
-                    class="!-top-1/2 !left-1/2 object-contain sm:!-top-[130%] lg:!-top-1/4 xl:!left-1/3 xl:!top-0"
-                />
-                <Character type="coach" :scale="0.2" :poseNumber="3" :chNumber="0" class="!-bottom-[300%] !left-1/3 lg:!-bottom-[150%]" />
-            </div>
+            <DialogBubble
+                text="I am a ambassador of the Hello Coach program."
+                tailPosition="left"
+                class="!left-[50%] !top-[5%] !max-w-[16rem] md:!left-[50%] md:!top-[5%] md:!max-w-[20rem] xl:!left-[55%] xl:!top-[10%] xl:!max-w-md"
+            />
+            <Character
+                type="coach"
+                :scale="0.2"
+                :poseNumber="3"
+                :chNumber="0"
+                class="!-top-[30%] !left-[35%] md:!-top-[25%] md:!left-[40%] xl:!left-[55%] xl:!top-[20%] 2xl:!left-[50%]"
+            />
         </div>
     </section>
 </template>

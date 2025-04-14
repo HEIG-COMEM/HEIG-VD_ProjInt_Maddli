@@ -15,14 +15,14 @@ const bg = '#006565';
             <DialogBubble
                 text="It’s the first step into the world of football coaching."
                 tailPosition="left"
-                class="!left-[40%] !top-[10%] object-contain 2xl:!left-[40%] 2xl:!top-1/4"
+                class="!left-[45%] !top-[10%] md:!max-w-xs xl:!top-[20%] xl:!max-w-md"
             />
             <Character
                 type="coach"
                 :scale="0.2"
                 :poseNumber="2"
                 :chNumber="8"
-                class="!-bottom-[200%] !left-1/4 md:!-bottom-[170%] md:!left-1/4 2xl:!-bottom-2/3 2xl:!left-1/3"
+                class="!-top-[20%] !left-[30%] xl:!left-[40%] xl:!top-[40%] 2xl:!left-[40%] 2xl:!top-[35%]"
             />
         </div>
     </section>

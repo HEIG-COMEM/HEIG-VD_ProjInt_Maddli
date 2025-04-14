@@ -2,30 +2,49 @@
 import Character from '@/components/story/characters/Character.vue';
 import DialogBubble from '@/components/story/ui/DialogBubble.vue';
 import Smartphone from '@/components/story/ui/Smartphone.vue';
+import { storyUtils } from '@/stores/storyUtils';
+import { onBeforeUnmount, watch } from 'vue';
 
-const bg = '/assets/story/bg/1.png';
+const bg = '/assets/story/bg/1-1.png';
+const audio = new Audio('/assets/story/ch-1/sfx/s7.mp3');
+
+const slideIndex = 11; // TODO : Update dynamically
+
+watch(
+    () => storyUtils.getCurrentSlideIndex(),
+    (newIndex) => {
+        if (newIndex === slideIndex) {
+            audio.play();
+        } else if (audio.currentTime > 0) {
+            audio.pause();
+            audio.currentTime = 0;
+        }
+    },
+);
+
+onBeforeUnmount(() => {
+    audio.pause();
+    audio.currentTime = 0;
+});
 </script>
 
 <template>
     <section :data-background-image="bg" data-auto-animate class="relative h-full">
-        <div class="relative flex h-full w-full flex-row items-center justify-end">
-            <Character
-                type="coach"
-                :scale="0.2"
-                :poseNumber="4"
-                :chNumber="1"
-                class="!-top-1/3 !left-0 md:!-top-1/3 lg:!top-[20%] lg:!scale-[0.7] xl:!scale-[0.8]"
-            />
-            <DialogBubble
-                class="!left-[10%] !top-0 !max-w-[15rem] md:!left-[10%] md:!max-w-xs lg:!left-[15%] lg:!top-[10%] xl:!left-[12%] xl:!max-w-sm 2xl:!left-[10%]"
-                text="And you send a message to your players in the group chat."
-            />
-            <Smartphone
-                :variant="1"
-                :position="{ top: 50, left: 60, unit: '%' }"
-                :scale="0.2"
-                class="md:!scale-[0.35] lg:!scale-[0.45] xl:!right-[8%] xl:!scale-[0.65] 2xl:!right-[12%]"
-            />
-        </div>
+        <Character
+            type="coach"
+            :scale="0.2"
+            :poseNumber="4"
+            :chNumber="1"
+            class="!-top-[20%] !left-0 md:!-top-[10%] xl:!left-[15%] xl:!top-[40%] 2xl:!left-[15%]"
+        />
+        <DialogBubble
+            class="!left-[10%] !top-[15%] !max-w-[16rem] md:!left-[8%] md:!top-[10%] md:!max-w-xs xl:!left-[16%] xl:!top-[25%] xl:!max-w-sm 2xl:!left-[15%]"
+            text="And you send a message to your players in the group chat."
+        />
+        <Smartphone
+            :variant="1"
+            :scale="0.2"
+            class="!-top-[40%] !left-[50%] md:!-top-[55%] xl:!-top-[5%] xl:!scale-[0.75] 2xl:!-top-[12%] 2xl:!scale-[0.70]"
+        />
     </section>
 </template>

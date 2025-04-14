@@ -15,14 +15,14 @@ const bg = '#006565';
             <DialogBubble
                 text="Congratulations for  your first experience as a coach !"
                 tailPosition="left"
-                class="!left-[50%] !top-[10%] object-contain xl:!left-[35%]"
+                class="!left-[50%] !top-[10%] md:!left-[48%] md:!max-w-xs xl:!left-[50%] xl:!top-[20%] xl:!max-w-md 2xl:!left-[55%] 2xl:!top-[20%]"
             />
             <Character
                 type="coach"
                 :scale="0.2"
                 :poseNumber="1"
                 :chNumber="8"
-                class="!-bottom-[200%] !left-1/4 md:!-bottom-[170%] md:!left-1/4 xl:!-bottom-2/3 xl:!left-1/3"
+                class="!-top-[10%] !left-[25%] xl:!left-[35%] xl:!top-[50%] 2xl:!left-[40%] 2xl:!top-[40%]"
             />
         </div>
     </section>

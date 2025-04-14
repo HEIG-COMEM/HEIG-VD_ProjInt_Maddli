@@ -2,7 +2,7 @@
 import { Check, X } from 'lucide-vue-next';
 
 defineProps<{
-    isCorrect: boolean;
+    isCorrect: boolean | null;
     feedbackTitle: string;
     feedbackText: string;
 }>();
@@ -16,6 +16,7 @@ defineProps<{
     <div class="m-2 flex h-full flex-col items-center justify-center gap-2 p-8 md:gap-3 lg:gap-4 xl:gap-5 xl:p-10">
         <!-- Feedback Box -->
         <div
+            v-if="isCorrect !== null"
             class="relative w-full max-w-xl rounded-xl border-2 border-gray-200 bg-white p-4 text-center shadow-lg md:max-w-2xl md:rounded-2xl md:p-6 lg:max-w-3xl lg:rounded-3xl lg:p-8 xl:max-w-4xl xl:p-10"
         >
             <!-- Icon Container -->
@@ -31,7 +32,15 @@ defineProps<{
 
             <!-- Feedback Content -->
             <h2 class="mb-2 text-lg font-bold text-black md:mb-3 md:text-xl lg:mb-4 lg:text-2xl xl:mb-5 xl:text-3xl">{{ feedbackTitle }}</h2>
-            <p class="text-sm text-gray-600 md:text-base lg:text-lg xl:text-xl">{{ feedbackText }}</p>
+            <p class="text-sm text-black md:text-base lg:text-lg xl:text-xl">{{ feedbackText }}</p>
+        </div>
+
+        <!-- No Feedback Box -->
+        <div
+            v-else
+            class="relative w-full max-w-xl rounded-xl border-2 border-gray-200 bg-white p-4 text-center shadow-lg md:max-w-2xl md:rounded-2xl md:p-6 lg:max-w-3xl lg:rounded-3xl lg:p-8 xl:max-w-4xl xl:p-10"
+        >
+            <p class="text-sm text-gray-800 md:text-base lg:text-lg xl:text-2xl">If you want a feedback, answer the previous question!</p>
         </div>
     </div>
 </template>
