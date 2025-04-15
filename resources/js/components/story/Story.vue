@@ -5,16 +5,31 @@ import { onMounted, onUnmounted, ref } from 'vue';
 
 const isLandscape = ref(window.innerWidth > window.innerHeight);
 const isFullscreen = ref(!!document.fullscreenElement);
+const isMobile = ref(false);
+const hasRequestedFullscreen = ref(false);
+
+// Function to detect if device is mobile
+const checkIfMobile = () => {
+    isMobile.value = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+};
+
+// Function to request fullscreen
+const requestFullscreen = async () => {
+    try {
+        await document.documentElement.requestFullscreen();
+        hasRequestedFullscreen.value = true;
+    } catch (err) {
+        console.error(`Error attempting to enable fullscreen: ${err.message}`);
+    }
+};
 
 // Function to handle orientation change
 const handleOrientationChange = () => {
     isLandscape.value = window.innerWidth > window.innerHeight;
 
-    // If we're in landscape, request fullscreen
-    if (isLandscape.value && !document.fullscreenElement) {
-        document.documentElement.requestFullscreen().catch((err) => {
-            console.error(`Error attempting to enable fullscreen: ${err.message}`);
-        });
+    // Only auto-request fullscreen on desktop and if not already requested
+    if (!isMobile.value && isLandscape.value && !document.fullscreenElement) {
+        requestFullscreen();
     }
 };
 
@@ -25,6 +40,7 @@ const handleFullscreenChange = () => {
 
 // Set up event listeners
 onMounted(() => {
+    checkIfMobile();
     window.addEventListener('resize', handleOrientationChange);
     document.addEventListener('fullscreenchange', handleFullscreenChange);
 
@@ -44,6 +60,22 @@ onUnmounted(() => {
         <div>
             <h2 class="mb-2 text-xl font-bold">Please rotate your device</h2>
             <p>This experience requires landscape orientation for the best viewing experience.</p>
+        </div>
+    </div>
+
+    <div
+        v-else-if="isMobile && !isFullscreen && !hasRequestedFullscreen"
+        class="fixed inset-0 flex items-center justify-center bg-black p-4 text-center text-white"
+    >
+        <div class="space-y-4">
+            <h2 class="mb-2 text-xl font-bold">Enter Fullscreen Mode</h2>
+            <p>For the best experience, please enter fullscreen mode.</p>
+            <button
+                @click="requestFullscreen"
+                class="rounded-lg bg-blue-600 px-6 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            >
+                Enter Fullscreen
+            </button>
         </div>
     </div>
 
