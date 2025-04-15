@@ -63,19 +63,6 @@ onUnmounted(() => {
         </div>
     </div>
 
-    <div v-else-if="isMobile && !isFullscreen" class="fixed inset-0 flex items-center justify-center bg-black p-4 text-center text-white">
-        <div class="space-y-4">
-            <h2 class="mb-2 text-xl font-bold">Enter Fullscreen Mode</h2>
-            <p>For the best experience, please enter fullscreen mode.</p>
-            <button
-                @click="requestFullscreen"
-                class="rounded-lg bg-blue-600 px-6 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 active:bg-blue-800"
-            >
-                Enter Fullscreen
-            </button>
-        </div>
-    </div>
-
     <div v-else class="relative h-screen max-h-screen">
         <StoryHeader class="absolute left-0 top-0 z-10 -mt-[10dvh] max-h-[10dvh] w-screen" />
         <StoryChapter class="mt-[10dvh] h-[90dvh] max-h-[90dvh]" />
