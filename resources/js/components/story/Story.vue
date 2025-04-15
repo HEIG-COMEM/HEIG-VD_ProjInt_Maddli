@@ -18,7 +18,7 @@ const requestFullscreen = async () => {
     try {
         await document.documentElement.requestFullscreen();
         hasRequestedFullscreen.value = true;
-    } catch (err) {
+    } catch (err: any) {
         console.error(`Error attempting to enable fullscreen: ${err.message}`);
     }
 };
