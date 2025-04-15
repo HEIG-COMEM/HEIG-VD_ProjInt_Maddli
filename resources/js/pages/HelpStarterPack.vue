@@ -17,9 +17,7 @@ import { ExternalLink, GraduationCap, MessageCircleQuestion, Share2 } from 'luci
     <WebLayout>
         <SectionLayout background="bg-accent" textColor="text-accent-foreground" padding="p-8 md:p-16" class="dark:bg-accent/20 dark:text-foreground">
             <div class="flex flex-col items-center gap-4 text-center md:py-16">
-                <h1 class="text-5xl font-bold sm:text-7xl md:text-8xl lg:text-9xl">
-                    <span class="text-[#FFB700]">H</span>elp <span class="text-[#FFB700]">S</span>tarter <span class="text-[#FFB700]">P</span>ack
-                </h1>
+                <h1 class="text-5xl font-bold sm:text-7xl md:text-8xl lg:text-9xl">Help Starter Pack</h1>
                 <P class="mt-4 text-pretty text-base sm:text-lg md:text-xl lg:text-2xl">Here is how you can start your coaching journey</P>
             </div>
         </SectionLayout>
