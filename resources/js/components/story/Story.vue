@@ -5,15 +5,24 @@ import { onMounted, onUnmounted, ref } from 'vue';
 
 const isLandscape = ref(window.innerWidth > window.innerHeight);
 const isFullscreen = ref(!!document.fullscreenElement);
-const hasUserAcceptedFullscreen = ref(false);
 
-// Function to request fullscreen with user permission
+// Function to check if fullscreen is supported and allowed
+const isFullscreenAvailable = () => {
+    return document.fullscreenEnabled;
+};
+
+// Function to request fullscreen
 const requestFullscreen = async () => {
+    if (!isFullscreenAvailable()) {
+        console.warn('Fullscreen mode is not available');
+        return;
+    }
+
     try {
+        // This will trigger the browser's native permission prompt if needed
         await document.documentElement.requestFullscreen();
-        hasUserAcceptedFullscreen.value = true;
     } catch (err) {
-        console.error(`Error attempting to enable fullscreen: ${err instanceof Error ? err.message : 'Unknown error'}`);
+        console.error(`Fullscreen request failed: ${err instanceof Error ? err.message : 'Unknown error'}`);
     }
 };
 
@@ -52,17 +61,18 @@ onUnmounted(() => {
     </div>
 
     <div
-        v-else-if="!isFullscreen && !hasUserAcceptedFullscreen"
+        v-else-if="!isFullscreen && isFullscreenAvailable()"
         class="fixed inset-0 flex items-center justify-center bg-black p-4 text-center text-white"
     >
         <div class="space-y-4">
-            <h2 class="text-xl font-bold">Enter Fullscreen Mode</h2>
-            <p>For the best experience, this story should be viewed in fullscreen mode.</p>
+            <h2 class="text-xl font-bold">Fullscreen Mode Required</h2>
+            <p>This story requires fullscreen mode. Your browser will ask for permission.</p>
+            <p class="text-sm text-gray-400">Note: You can exit fullscreen at any time by pressing ESC.</p>
             <button
                 @click="requestFullscreen"
                 class="rounded-lg bg-blue-600 px-6 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             >
-                Enter Fullscreen
+                Continue to Story
             </button>
         </div>
     </div>
