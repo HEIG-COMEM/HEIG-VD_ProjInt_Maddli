@@ -6,7 +6,6 @@ import { onMounted, onUnmounted, ref } from 'vue';
 const isLandscape = ref(window.innerWidth > window.innerHeight);
 const isFullscreen = ref(!!document.fullscreenElement);
 const isMobile = ref(false);
-const hasInteracted = ref(false);
 
 // Function to detect if device is mobile
 const checkIfMobile = () => {
@@ -16,14 +15,9 @@ const checkIfMobile = () => {
 // Function to request fullscreen
 const requestFullscreen = async () => {
     try {
-        // Only proceed if we have user interaction
-        if (!hasInteracted.value) {
-            hasInteracted.value = true;
-            return;
-        }
-
-        await document.documentElement.requestFullscreen();
-        isFullscreen.value = true;
+        await document.documentElement.requestFullscreen({
+            navigationUI: 'hide',
+        });
     } catch (err: any) {
         console.error(`Error attempting to enable fullscreen: ${err.message}`);
     }
@@ -33,7 +27,7 @@ const requestFullscreen = async () => {
 const handleOrientationChange = () => {
     isLandscape.value = window.innerWidth > window.innerHeight;
 
-    // Only auto-request fullscreen on desktop
+    // Only auto-request fullscreen on desktop and if not already requested
     if (!isMobile.value && isLandscape.value && !document.fullscreenElement) {
         requestFullscreen();
     }
@@ -77,9 +71,8 @@ onUnmounted(() => {
                 @click="requestFullscreen"
                 class="rounded-lg bg-blue-600 px-6 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 active:bg-blue-800"
             >
-                {{ !hasInteracted ? 'Start Experience' : 'Enter Fullscreen' }}
+                Enter Fullscreen
             </button>
-            <p v-if="hasInteracted" class="text-sm text-gray-400">Tap the button again to enter fullscreen mode</p>
         </div>
     </div>
 
