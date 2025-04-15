@@ -10,9 +10,9 @@ const props = defineProps<{
     questionId: number;
 }>();
 
-const isButtonDisabled = ref(false);
+const isButtonDisabled = ref(storyUtils.getChoicesByQuestionId(props.questionId).length > 0);
 const validateOrder = ref(() => {});
-const isContainerDisabled = ref(false);
+const isContainerDisabled = ref(storyUtils.getChoicesByQuestionId(props.questionId).length > 0);
 
 onMounted(() => {
     const container = document.querySelector('.container') as HTMLElement;

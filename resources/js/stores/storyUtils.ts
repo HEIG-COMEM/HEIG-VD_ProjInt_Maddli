@@ -50,9 +50,9 @@ interface storyUtils {
 export const storyUtils = reactive<storyUtils>({
     subStories: {},
     story: [],
-    choices: [],
+    choices: JSON.parse(sessionStorage.getItem('choices') || '[]'),
     slides: [],
-    currentSlideIndex: 0,
+    currentSlideIndex: Number(sessionStorage.getItem('currentSlideIndex')) || 0,
     duration: '',
     deck: null,
     isDeckInitialized: false,
@@ -60,6 +60,7 @@ export const storyUtils = reactive<storyUtils>({
     // Method to add a choice to the choices array
     addChoice(choice: { questionId: number; answerId: number; isCorrect: boolean }) {
         this.choices.push(choice);
+        sessionStorage.setItem('choices', JSON.stringify(this.choices));
     },
 
     // Method to retrieve all choices
@@ -79,6 +80,7 @@ export const storyUtils = reactive<storyUtils>({
     // Method to update the current slide index
     updateCurrentSlideIndex(index: number) {
         this.currentSlideIndex = index;
+        sessionStorage.setItem('currentSlideIndex', index.toString());
     },
 
     // Method to retrieve the total number of slides
@@ -183,8 +185,10 @@ export const storyUtils = reactive<storyUtils>({
             ...options,
         });
 
-        this.deck.initialize({ width: '100%', height: '100%' });
-        this.isDeckInitialized = true;
+        this.deck.initialize({ width: '100%', height: '100%' }).then(() => {
+            this.goToSlide(this.currentSlideIndex);
+            this.isDeckInitialized = true;
+        });
 
         // Add event listener to update currentSlideIndex when slide changes
         this.deck.on('slidechanged', (event: any) => {

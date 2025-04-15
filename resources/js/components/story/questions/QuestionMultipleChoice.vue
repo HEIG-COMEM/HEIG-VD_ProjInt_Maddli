@@ -8,9 +8,11 @@ const props = defineProps<{
     answers: { id: number; q: string }[];
     correctAnswer: number;
 }>();
-
-const selectedAnswer = ref<{ id: number; q: string } | null>(null);
-const isButtonDisabled = ref(false);
+const storedChoices = storyUtils.getChoicesByQuestionId(props.questionId);
+const selectedAnswer = ref<{ id: number; q: string } | null>(
+    storedChoices.length > 0 ? (props.answers.find((answer) => answer.id === storedChoices[0].answerId) ?? null) : null,
+);
+const isButtonDisabled = ref(storedChoices.length > 0);
 
 function handleChoice(answer: { id: number; q: string }) {
     // Allow changing the answer until validation
