@@ -119,21 +119,21 @@ const playVideo = () => {
                         name="Sarah Johnson"
                         title="Youth Team Coach"
                         description="The Club helped me become a coach and I am now leading my team with confidence and purpose."
-                        profile-img-url="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5"
+                        profile-img-url="/assets/images/p1.png"
                         :rating="4"
                     />
                     <TestimonialCard
                         name="Zoé Maître"
                         title="New coach"
                         description="My Mentor has been invaluable to my development as a new coach."
-                        profile-img-url="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5"
+                        profile-img-url="/assets/images/p2.png"
                         :rating="5"
                     />
                     <TestimonialCard
                         name="Emma Thompson"
                         title="Academy Director"
                         description="This program opened doors I never thought possible. Now I'm leading a successful academy."
-                        profile-img-url="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5"
+                        profile-img-url="/assets/images/p3.png"
                         :rating="4"
                     />
                 </div>
