@@ -58,7 +58,7 @@ const playVideo = () => {
                                 ref="videoPlayer"
                                 poster="/assets/images/home-hero-video-poster.png"
                                 preload="auto"
-                                src="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                                src="/assets/videos/Hello-Coach-Video.mp4"
                                 class="h-auto w-full rounded-lg"
                                 @play="isPlaying = true"
                                 :controls="isPlaying ? true : false"
