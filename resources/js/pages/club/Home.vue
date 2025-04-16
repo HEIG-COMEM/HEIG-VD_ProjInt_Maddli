@@ -48,7 +48,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                 </AppOnBoardingCard>
             </div>
             <div class="relative min-h-[100vh] flex-1 rounded-xl border border-sidebar-border/70 p-4 dark:border-sidebar-border md:min-h-min">
-                <H3>Why is it important to talk to each other</H3>
+                <H3>Real Voices to Guide Your Journey</H3>
                 <P>
                     Becoming a coach is not just about taking a course — it’s about understanding what it really means to lead, support, and grow with
                     a team. That’s why connecting with others who have already gone through this journey is so important. By talking to ambassadors,
