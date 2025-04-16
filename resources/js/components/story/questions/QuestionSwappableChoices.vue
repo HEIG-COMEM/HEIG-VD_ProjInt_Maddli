@@ -6,6 +6,7 @@ import { onMounted, ref } from 'vue';
 
 const props = defineProps<{
     question: string;
+    hint: string;
     choices: string[];
     questionId: number;
 }>();
@@ -46,6 +47,7 @@ onMounted(() => {
             class="mt-2 flex max-w-3xl flex-col items-center justify-center gap-1 rounded-xl border-2 border-gray-200 bg-white p-2 text-center shadow-lg md:rounded-2xl lg:gap-2 lg:rounded-3xl lg:p-4 xl:gap-4"
         >
             <p class="md:text-md text-sm font-bold text-black lg:text-xl xl:text-2xl">{{ props.question }}</p>
+            <p class="text-xs text-gray-500">{{ hint }}</p>
 
             <!-- Swappable Choices Container -->
             <div :class="['container flex flex-col gap-2', { 'disabled-container': isContainerDisabled }]">
