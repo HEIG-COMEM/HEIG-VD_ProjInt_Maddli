@@ -19,7 +19,7 @@ import { Timer } from 'lucide-vue-next';
                 </div>
             </div>
             <DialogBubble
-                text="I am a ambassador of the Hello Coach program."
+                text="I am an ambassador of the Hello Coach program."
                 tailPosition="left"
                 class="!left-[50%] !top-[5%] !max-w-[16rem] md:!left-[50%] md:!top-[5%] md:!max-w-[20rem] xl:!left-[55%] xl:!top-[10%] xl:!max-w-md"
             />

@@ -16,7 +16,7 @@ const bg = '/assets/story/bg/2-2.png';
         />
         <DialogBubble
             class="!left-[20%] !top-[10%] !max-w-xs md:!left-[25%] md:!top-[5%] xl:!left-[28%] xl:!top-[20%] xl:!max-w-lg 2xl:!left-[25%]"
-            text="The game starts in less then an hour. It’s time to warm-up."
+            text="The game starts in less than an hour. It’s time to warm-up."
         />
     </section>
 </template>

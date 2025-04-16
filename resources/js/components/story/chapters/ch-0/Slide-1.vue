@@ -2,7 +2,7 @@
 import Character from '@/components/story/characters/Character.vue';
 import Caption from '@/components/story/ui/Caption.vue';
 import { storyUtils } from '@/stores/storyUtils';
-import { MoveDown, MoveLeft, MoveRight, MoveUp, Timer } from 'lucide-vue-next';
+import { MoveDown, MoveLeft, MoveRight, MoveUp, Timer, Volume2 } from 'lucide-vue-next';
 </script>
 
 <template>
@@ -17,11 +17,14 @@ import { MoveDown, MoveLeft, MoveRight, MoveUp, Timer } from 'lucide-vue-next';
                         Duration: {{ storyUtils.getDuration() }}
                     </div>
                 </div>
+                <div class="absolute top-0 flex items-center justify-center sm:right-[20%] lg:right-[5%]">
+                    <Volume2 class="h-8 w-8 text-white lg:h-12 lg:w-12 xl:h-16 xl:w-16" />
+                </div>
             </div>
             <div class="flex flex-col items-end">
                 <div class="flex flex-col items-center justify-center gap-4">
                     <div
-                        class="absolute right-[8%] top-[27%] flex items-center justify-center md:right-[5.6%] md:top-[28%] xl:right-[5.5%] xl:top-[44%] 2xl:right-[4.8%] 2xl:top-[59%]"
+                        class="absolute right-[8%] top-[27%] flex items-center justify-center md:right-[4.5%] md:top-[26%] xl:right-[5.5%] xl:top-[44%] 2xl:right-[4.8%] 2xl:top-[59%]"
                     >
                         <div class="relative flex items-center justify-center">
                             <div class="absolute h-12 w-12 animate-ping rounded-full border-2 border-white opacity-50"></div>

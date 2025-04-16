@@ -16,7 +16,7 @@ const bg = '/assets/story/bg/3-2_4-2_5-2.png';
         />
         <DialogBubble
             class="!left-[20%] !top-[10%] !max-w-xs md:!left-[25%] md:!top-[5%] xl:!left-[23%] xl:!top-[15%] xl:!max-w-lg 2xl:!left-[30%]"
-            text="You are one goal down.. You need to find the right words to remotivate the team."
+            text="You are one goal down... You need to find the right words to remotivate the team."
         />
     </section>
 </template>

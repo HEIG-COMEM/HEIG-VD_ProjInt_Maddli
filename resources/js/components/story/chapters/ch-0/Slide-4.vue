@@ -20,7 +20,7 @@ import { Timer } from 'lucide-vue-next';
             </div>
 
             <DialogBubble
-                text="You will step into the role of a football coach and follow me through a typical match day"
+                text="You will step into the role of a football coach and follow me through a typical match day."
                 tailPosition="right"
                 class="!left-[35%] !top-[5%] max-w-[16rem] md:!left-[35%] md:!top-[5%] md:!max-w-[20rem] xl:!left-[25%] xl:!top-[10%] xl:!max-w-lg"
             />
