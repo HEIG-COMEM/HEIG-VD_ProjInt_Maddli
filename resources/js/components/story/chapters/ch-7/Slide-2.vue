@@ -22,7 +22,7 @@ const bg = '/assets/story/bg/7-2.png';
             class="!-top-[20%] !left-[75%] md:!-top-[15%] md:!left-[70%] xl:!left-[85%] xl:!top-[45%]"
         />
         <DialogBubble
-            class="!left-[20%] !top-0 max-w-[15rem] md:!left-[27%] xl:!left-[32%] xl:!top-[10%] xl:max-w-xs 2xl:!left-[40%] 2xl:!top-[15%] 2xl:max-w-xs"
+            class="!left-[20%] !top-0 max-w-[15rem] md:!left-[27%] xl:!left-[32%] xl:!top-[10%] xl:max-w-xs 2xl:!left-[35%] 2xl:!top-[10%] 2xl:max-w-xs"
             text="Well done coach ! It was a great game."
             tail-position="right"
         />
